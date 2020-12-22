@@ -14,19 +14,11 @@ exclude:
 
 # Site settings
 title: NASA1515 기술 블로그
-<<<<<<< HEAD
 subtitle: "시스템엔지니어 나사의 블로그"
 email: h43254@gmail.com
 name: WONSEOK LEE
 description: >
   nasa's SE blog
-=======
-subtitle: "DevOps 엔지니어 나사 블로그"
-email: h43254@gmail.com
-name: WONSEOK LEE
-description: >
-  nasa's DevOps blog
->>>>>>> 2d1580feffdaaa35ae2d982912eb384ab330ecff
 
 baseurl: ""
 url: "http://nasa1515.github.io" 
