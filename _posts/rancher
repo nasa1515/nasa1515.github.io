@@ -1,0 +1,106 @@
+
+
+    [root@nasa-master nasa]# curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+    [root@nasa-master nasa]# 
+    [root@nasa-master nasa]# chmod 700 get_helm.sh
+    [root@nasa-master nasa]# ./get_helm.sh
+    Downloading https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz
+    Verifying checksum... Done.
+    Preparing to install helm into /usr/local/bin
+    helm installed into /usr/local/bin/helm
+
+
+    [root@nasa-master nasa]# helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+    "rancher-latest" has been added to your repositories
+
+
+    [root@nasa-master nasa]# kubectl create namespace cattle-system
+    namespace/cattle-system created
+
+
+
+
+```
+[root@nasa-master nasa]# kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
+
+customresourcedefinition.apiextensions.k8s.io/certificaterequests.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/certificates.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/challenges.acme.cert-manager.io created
+customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io created
+customresourcedefinition.apiextensions.k8s.io/issuers.cert-manager.io created
+customresourcedefinition.apiextensions.k8s.io/orders.acme.cert-manager.io created
+[root@nasa-master nasa]# 
+[root@nasa-master nasa]# kubectl create namespace cert-manager
+namespace/cert-manager created
+[root@nasa-master nasa]# 
+[root@nasa-master nasa]# 
+[root@nasa-master nasa]# helm repo add jetstack https://charts.jetstack.io
+"jetstack" has been added to your repositories
+[root@nasa-master nasa]# helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "rancher-latest" chart repository
+...Successfully got an update from the "jetstack" chart repository
+Update Complete. ⎈Happy Helming!⎈
+[root@nasa-master nasa]# helm install \
+>   cert-manager jetstack/cert-manager \
+>   --namespace cert-manager \
+>   --version v0.15.0
+NAME: cert-manager
+LAST DEPLOYED: Wed Sep 23 06:32:56 2020
+NAMESPACE: cert-manager
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+cert-manager has been deployed successfully!
+
+In order to begin issuing certificates, you will need to set up a ClusterIssuer
+or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
+
+More information on the different types of issuers and how to configure them
+can be found in our documentation:
+
+https://cert-manager.io/docs/configuration/
+
+For information on how to configure cert-manager to automatically provision
+Certificates for Ingress resources, take a look at the `ingress-shim`
+documentation:
+
+https://cert-manager.io/docs/usage/ingress/
+
+```
+
+
+```
+[root@nasa-master nasa]# kubectl get pods --namespace cert-manager
+NAME                                       READY   STATUS    RESTARTS   AGE
+cert-manager-77f4c9d4b-bq6l7               1/1     Running   0          36s
+cert-manager-cainjector-7cd4857fc7-4lmxf   1/1     Running   0          36s
+cert-manager-webhook-586c9597db-7p2vx      1/1     Running   0          36s
+
+```
+
+
+```
+[root@nasa-master baremetal]# kubectl get all -n cattle-system -o wide
+NAME                          READY   STATUS    RESTARTS   AGE     IP          NODE         NOMINATED NODE   READINESS GATES
+pod/rancher-9c5d7bcf9-69j6c   1/1     Running   0          8m22s   10.42.0.3   nasa-node2   <none>           <none>
+pod/rancher-9c5d7bcf9-rksj5   1/1     Running   1          8m22s   10.32.0.4   nasa-node3   <none>           <none>
+pod/rancher-9c5d7bcf9-w5lm2   1/1     Running   0          8m22s   10.46.0.4   nasa-node1   <none>           <none>
+
+
+NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+service/rancher   ClusterIP   10.99.129.121   <none>        80/TCP    8m22s   app=rancher
+
+
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES                   SELECTOR
+deployment.apps/rancher   3/3     3            3           8m22s   rancher      rancher/rancher:v2.4.8   app=rancher
+
+NAME                                DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES                   SELECTOR
+replicaset.apps/rancher-9c5d7bcf9   3         3         3       8m22s   rancher      rancher/rancher:v2.4.8   app=rancher,pod-template-hash=9c5d7bcf9
+```
+
+
+
+
+이 대로 해봤는데 인그레스를 어케 띄우는징를 모르겠다 진짜

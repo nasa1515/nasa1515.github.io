@@ -1,0 +1,130 @@
+# External gems
+# See http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html for making `jekyll archives` work.
+plugins:
+  - jekyll-archives
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-include-cache
+
+exclude:
+  - "/vendor/"
+  - .jekyll-cache
+
+# encoding: utf-8
+
+# Site settings
+title: NASA1515 기술 블로그
+<<<<<<< HEAD
+subtitle: "시스템엔지니어 나사의 블로그"
+email: h43254@gmail.com
+name: WONSEOK LEE
+description: >
+  nasa's SE blog
+=======
+subtitle: "DevOps 엔지니어 나사 블로그"
+email: h43254@gmail.com
+name: WONSEOK LEE
+description: >
+  nasa's DevOps blog
+>>>>>>> 2d1580feffdaaa35ae2d982912eb384ab330ecff
+
+baseurl: ""
+url: "http://nasa1515.github.io" 
+cover: "/assets/PINGMAIN.jpg"
+logo: "/assets/PINGGU.jpg"
+timezone: Asia/Seoul
+
+# Build settings
+markdown: kramdown
+paginate: 5
+paginate_path: "/page:num/"
+inter_post_navigation: true
+highlightjs_theme: "monokai-sublime"
+
+
+# Archive settings (see https://github.com/jekyll/jekyll-archives/)
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: "archive"
+  permalinks:
+    category: "/category/:name/"
+
+    
+# Disqus comments
+disqus_shortname: nasa1415
+
+# Google analytics
+# ga_tracking_id: "UA-XXXX-1"
+
+# Category descriptions (for archive pages)
+# descriptions:
+#   - cat: jekyll
+#     desc: "Posts describing Jekyll setup techniques."
+
+#   - cat: dummy
+#     desc: "Just some placeholder posts, lorem ipsum and the rest."
+#   - cat: blog
+#     desc: "Just some placeholder posts, lorem ipsum and the rest."
+
+
+# Social icons and sharing options
+#
+# Social settings are used in two places:
+# * In the footer, as links to your personal profiles
+# * After each blog post for sharing widgets
+#
+# Example:
+#
+# social:
+#   - name: Twitter                         # Name of the service
+#     icon: twitter                         # Font Awesome icon to use (minus fa- prefix)
+#     username: "@TheBenCentra"             # (User) Name to display in the footer link
+#     url: https://twitter.com/TheBenCentra # URL of your profile (leave blank to not display in footer)
+#     desc: Follow me on Twitter            # Description to display as link title, etc
+#     share: true                           # Include in the "Share" section of posts
+social:
+
+  - name: GitHub
+    icon: github
+    username: nasa1515
+    url: https://github.com/nasa1515
+    desc: Fork me on GitHub
+    share: false
+
+  # - name: LinkedIn
+  #   icon: linkedin
+  #   username: Ben Centra
+  #   url: https://www.linkedin.com/pub/ben-centra/47/769/60a
+  #   desc: Connect with me on LinkedIn
+  #   share: true
+
+  # - name: Instagram
+  #   icon: instagram
+  #   username:
+  #   url:
+  #   desc: Follow me on Instagram
+  #   share: false
+
+  # - name: Reddit
+  #   icon: reddit
+  #   username:
+  #   url:
+  #   desc: Share to Reddit
+  #   share: true
+
+# Social sharing protocols
+# These are for automatically generating sharing metadata for FB and Twitter
+# OS Protocol is for sharing the source of your site, if you're interested. For more, see osprotocol.com
+protocols:
+    fb_image: "/assets/logo-ball.png"
+    fb_image_width: 612
+    fb_image_height: 605
+    fb_image_type: "image/png"
+
+    twitter_image: "/assets/logo-ball.png"
+
+    os_repo: "https://github.com/bencentra/centrarium.com"
+    os_rcs_type: "git"
+    os_src: "git@github.com:bencentra/centrarium.com.git"

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+{% include_cached head.html %}
+<title>
+	{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+</title>
+
+<body>
+	{% include_cached header.html %}
+	<div class="page-content">
+		{{ content }}
+	</div>
+	{% include_cached footer.html %} {% include_cached tawk_to.html %}
+</body>
+
+</html>

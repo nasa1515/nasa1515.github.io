@@ -1,0 +1,945 @@
+---
+layout: post
+title: "[LINUX] - RHCSA 대비 실습 풀이"
+author: Lee Wonseok
+categories: LINUX
+comments: true
+tags: LINUX
+cover: "/assets/LINUX.jpg"
+---
+
+
+# RHCSA 실습 문제 풀이
+
+**머리말**  
+
+이번에 RHCSA 자격증을 응시해서 시험준비, 리눅스 복기 겸 문제 풀이 포스트를 옵려봅니다.
+
+---
+
+
+**목차**
+
+- [문제](#a1)
+
+- [풀이](#a2)
+
+
+----
+
+
+## **``사전 준비``**  
+
+* **실습을 위해 VMWARE를 사용했습니다!**
+
+* ### **``문제``** <a name="a1"></a>
+
+
+    ```
+    1. 초기 부팅문제 해결
+    root 패스워드 설정 : P@ssw0rd
+    부팅 문제 해결 : /etc/fstab
+
+    2. 변경할 네트워크 정보
+    vmware nat 네트워크 설정 확인 (192.168.100,0/24)
+    NetworkManager 연결 이름: static
+    IP: 192.168.100.100
+    netmask : 255.255.255.0
+    gateway: 192.168.100.2
+    DNS: 8.8.8.8
+
+    3. 호스트이름 설정
+    호스트이름 : server.cccr.local
+
+    4. YUM repository 설정 
+    (설정 전 /etc/yum.repos.d/ 디렉토리 내 *.repo 파일 삭제 후 진행)
+    http://ftp.kaist.ac.kr/CentOS/8/BaseOS/x86_64/os/
+    http://ftp.kaist.ac.kr/CentOS/8/AppStream/x86_64/os/
+
+    5. 웹 서비스 설치
+    웹 서비스를 설치하시오 (httpd)
+    웹 서비스 기본 폴더(/var/www/html)에 index.html 파일을 생성하시오. (내용: helloworld)
+    웹 서비스는 99/TCP 포트에서 서비스를 제공하도록 설정하시오
+    웹 서비스를 시작하고, 재부팅 후에도 시작되도록 설정하시오.
+    curl 또는 웹 브라우저를 사용하여 localhost:99 페이지가 표시되는지 확인하시오
+
+    6. 사용자 설정
+    다음 사용자를 추가하시오. 이 사용자는 sudo 명령어를 사용할 수 있도록 설정하시오.
+    teacher
+    다음 그룹을 추가하시오
+    students (GID: 3000)
+    다음 사용자를 students 보조그룹에 포함되도록 생성하시오
+    kim, lee, park
+    다음 사용자를 추가하시오. 이 사용자는 UID 10000번으로 생성하며, 로그인하지 못하는 사용자로 지정하시오.
+    각 사용자의 암호는 모두 P@ssw0rd로 설정하시오
+
+    7. SELinux 설정
+    SELinux가 Enforcing 상태인지 확인하고, 아닐 경우 Enforcing으로 변경하시오.
+
+    8. 공유폴더 설정
+    root 계정으로 /cccrshared 디렉토리를 생성하시오
+    /cccrshared 디렉토리에 생성되는 파일의 소유 그룹이 students이 되도록 설정하시오.
+    students 그룹 사용자가 파일을 생성할 수 있도록 설정하시오.
+    /cccrshared 디렉토리에 생성되는 파일은 소유자만이 지울 수 있도록 설정하시오.
+
+    9. 파일 권한 설정
+    root 사용자로 /etc/hosts 파일을 /cccrshared 디렉토리에 복사하시오
+    소유자는 kim, 소유그룹은 students로 설정하시오
+    소유자에 대한 읽기/쓰기 권한, 소유그룹 및 기타 사용자에 대한 읽기권한을 설정하시오.
+    lee 사용자에 대해 읽기/쓰기 권한을 부여하시오.
+    park 사용자에 대해 권한이 없도록 설정하시오.
+
+    10. 작업 예약
+    kim 사용자로 다음 작업을 예약하시오
+    매 정시마다 /cccrshared 폴더의 hosts 파일을 /home/kim/hosts.tar.xz 파일로 압축하시오.
+    lee 사용자로 다음 작업을 예약하시오
+    매주 월요일 아침 9시에 /cccrshared 폴더에 present 파일을 생성하시오.
+
+    11. 파일 탐색
+    /usr/bin 내에 있는 파일 중 setuid가 설정되어 있는 파일을 탐색하여, 확인된 파일 목록을 /root/setuid.txt 파일로 저장하시오.
+
+    12. 디스크 파티셔닝 구성
+    /dev/sda 장치에 다음 파티션을 추가하시오
+    LVM 용도, 10G
+    /dev/sdb 장치에 MBR 파티션을 생성하시오
+    1번 파티션 : 스왑 파티션 용도, 4G
+    2번 파티션 : xfs 파일시스템, 2G
+    3번 파티션 : LVM 용도, 10G
+    위에서 생성한 각 파티션을 다음과 같이 설정하시오.
+    1번 파티션 :  스왑에 추가. 재부팅시에도 자동 등록되도록 설정
+    2번 파티션 : /disk1에 마운트, 재부팅시에도 마운트되도록 설정
+    /dev/sdc 장치에 GPT 파티션을 생성하시오.
+    1번 파티션 : LVM 용도, 10G
+
+    13. LVM 구성
+    이전 문제에서 각 디스크에 생성한 10G 파티션을 사용하여 LVM을 구성하시오
+    볼륨 그룹 이름 : myvg
+    볼륨 그룹의 PE Size : 10M
+    myvg 볼륨 그룹에서 다음 논리볼륨을 생성하시오
+    이름: mylv1	크기: 100M
+    이름: mylv2	크기: PE 20개
+    각 논리 볼륨을 다음과 같이 설정하시오
+    mylv1 : /lvm/1에 마운트
+    mylv2 : /lvm/2에 마운트
+    각 볼륨은 시스템 부팅 시 자동으로 마운트되도록 설정초기 부팅문제 해결
+    root 패스워드 설정 : P@ssw0rd
+    부팅 문제 해결 : /etc/fstab
+    ```
+
+---
+
+## **``풀이``**  <a name="a2"></a>
+
+
+* ### **문제 1. 초기 부팅문제 해결**
+
+    ```
+    root 패스워드 설정 : P@ssw0rd
+    부팅 문제 해결 : /etc/fstab
+    ```
+
+
+* **emergency mode 진입**  
+
+    **응급 모드로 들어가려면 부팅시 커널 선택 목록에서 알파벳 'e' 를  눌러서 grub 부팅 옵션 화면에 들어갑니다.**
+
+
+
+    ![스크린샷, 2020-10-06 10-46-27](https://user-images.githubusercontent.com/69498804/95149572-3b4e4580-07c1-11eb-9a0a-06a46c247a62.png)
+
+
+* **rd.break 모드에서 root 암호 복구하기Link to rd.break 모드에서 root 암호 복구**
+
+    ![스크린샷, 2020-10-06 10-48-22](https://user-images.githubusercontent.com/69498804/95149656-75b7e280-07c1-11eb-9780-6e26eb734627.png)
+    **linux로 시작하는 라인 맨 뒤에 ``rd.break`` 구문을 추가 한 뒤 ctrl + x로 부팅**
+
+
+* **부팅 후 switch_root 로 표시됩니다.**  
+    **이후 아래 명령어 작업을 진행하여 ROOT 패스워드를 재설정 합니다.**
+
+    ![스크린샷, 2020-10-06 10-37-30](https://user-images.githubusercontent.com/69498804/95149770-b7488d80-07c1-11eb-9942-d028bafdfc26.png)
+
+    ```
+    mount -o remount,rw /sysroot - root 파일 시스템을 읽기 쓰기로 리마운트
+
+    chroot /sysroot - root 파일 시스템을 변경하기 위한 명령
+
+    passwd root - root 계정 패스워드 변경
+
+    touch /.autorelabel -  SELinux context relabeling 을 수행.
+
+    fixfiles onboot - 작업 확인!
+    ```
+
+
+* **이제 아래 환경에서 ROOT로 접속을 할 수 있습니다!!**
+
+
+    ![스크린샷, 2020-10-06 10-54-17](https://user-images.githubusercontent.com/69498804/95150059-540b2b00-07c2-11eb-87f2-e39e47fed9d5.png)
+
+
+* **이제 부팅 문제를 해결하기 위해 /etc/fatab을 확인해봅시다.**
+
+    ![스크린샷, 2020-10-06 10-55-47](https://user-images.githubusercontent.com/69498804/95150140-8157d900-07c2-11eb-9ab4-8240f01036ce.png)
+    **특정 디바이스의 설정이 default로 되어있습니다. defaults로 변경!**  
+    **이상한 디바이스의 마운트 설정이 있습니다 해당 구문 삭제**
+
+* **/etc/fstab 파일 수정 후 문제가 없는지 확인을 해봅시다**
+
+    ![스크린샷, 2020-10-06 10-58-58](https://user-images.githubusercontent.com/69498804/95150342-f3302280-07c2-11eb-9958-328d74de16de.png)
+
+    **문제 없이 동작하는 것을 확인했습니다!!**
+
+* **재부팅 후 정상적으로 부팅과 접속이 되는 것을 확인!!**
+
+    ![스크린샷, 2020-10-06 11-01-29](https://user-images.githubusercontent.com/69498804/95150523-4d30e800-07c3-11eb-821c-a8e081ab0695.png)
+
+---
+
+* ### **문제 2. 네트워크 설정**
+
+    ```
+    vmware nat 네트워크 설정 확인 (192.168.100,0/24)
+    NetworkManager 연결 이름: static
+    IP: 192.168.100.100
+    netmask : 255.255.255.0
+    gateway: 192.168.100.2
+    DNS: 8.8.8.8
+    ```
+
+* **저는 VMWARE 환경에서 진행하여 VMWARE NAT를 설정해주었습니다**
+
+<br/>
+
+
+
+* **우선 네트워크 디바이스를 확인해봅시다!**
+
+    ![스크린샷, 2020-10-06 11-06-32](https://user-images.githubusercontent.com/69498804/95150793-0099dc80-07c4-11eb-9555-522d6864dc75.png)
+
+    ```
+    명령어 : nmcli cont show
+    ```
+    **특정 디바이스 하나가 연결되어있는 것을 확인했고 해당 디바이스를 설정해봅시다**
+
+    ![스크린샷, 2020-10-06 11-44-00](https://user-images.githubusercontent.com/69498804/95152971-3d1c0700-07c9-11eb-996e-038a89157c59.png)
+
+
+    ```
+    명령어
+
+    ## 새로운 디바이스 추가 명령어
+    nmcli con add con-name static type ethernet ipv4.method manual ipv4.addresses 192.168.100.100/24 ipv4.gateway 192.168.100.2 ipv4.dns 8.8.8.8
+
+    ## 설정을 리로드
+
+    nmcli con reload
+    
+    ## 해당 디바이스 UP
+    
+    nmcli con up static
+
+    ## 설정 확인!
+
+    nmcli con show
+    ifconfig ens33
+    ```
+
+    **위의 명령을 마치면 아래와 같이 외부로 PING이 가능합니다**
+
+    ![스크린샷, 2020-10-06 11-46-15](https://user-images.githubusercontent.com/69498804/95153080-8cface00-07c9-11eb-811a-387f54d55bf1.png)
+
+---
+
+* ### **문제 3. 호스트 이름 설정**
+
+    ```
+    호스트이름 : server.cccr.local
+    ```
+
+
+* **현재 호스트 이름을 확인 후 변경 해줍시다**
+
+    ![스크린샷, 2020-10-06 11-49-43](https://user-images.githubusercontent.com/69498804/95153272-08f51600-07ca-11eb-93d0-b4603dd1ea0c.png)
+
+    ```
+    명령어
+
+    hostname - 현재 호스트 이름 확인
+
+    hostnamectl set-hostname "바꿀 이름" 
+    ```
+
+
+---
+
+* ### **문제 4. YUM 저장소 설정**
+
+    ```
+    (설정 전 /etc/yum.repos.d/ 디렉토리 내 *.repo 파일 삭제 후 진행)
+    http://ftp.kaist.ac.kr/CentOS/8/BaseOS/x86_64/os/
+    http://ftp.kaist.ac.kr/CentOS/8/AppStream/x86_64/os/
+    ```
+
+
+    ```
+    추가 명령어 : #yum-config-manager --add-repo={url}
+
+    yum clean all
+    ```
+
+
+* **우선 현재 활성화되어있는 저장소를 확인합니다**
+
+    ![스크린샷, 2020-10-06 11-56-47](https://user-images.githubusercontent.com/69498804/95153700-0941e100-07cb-11eb-8f77-990640a50b37.png)
+
+
+* **REPO파일의 위치는 /etc/yum.repo.d/ 위치에 있으며 해당 파일들을 조회합니다**
+
+    ![스크린샷, 2020-10-06 11-57-56](https://user-images.githubusercontent.com/69498804/95153750-2f678100-07cb-11eb-9e6c-91d0f1573241.png)
+
+* **이제 기존의 Repo 파일을 모두 삭제한 뒤 문제 서식에 맞게 재 작성합니다**
+
+    ![스크린샷, 2020-10-06 12-09-57](https://user-images.githubusercontent.com/69498804/95154471-dc8ec900-07cc-11eb-8ae4-5f9b21a3d7cc.png)
+
+    ```
+    형식 
+
+    [저장소 이름]
+    name=표시 될 저장소의 이름
+    baseurl=다운 받을 저장소의 위치
+    gpgcheck=1 패키지를 받을때 gpgchek 여부 1 혀용, 0 차단
+    enabled=1 
+    gpgkey= gpg check 시 key의 경로
+    ```
+
+
+
+* **새롭게 추가된 Repo 파일을 읽어옵시다**
+
+    ```
+    명령어 
+
+    yum repolist
+    ```
+
+    ![스크린샷, 2020-10-06 12-05-27](https://user-images.githubusercontent.com/69498804/95154182-3cd13b00-07cc-11eb-8580-12a392e25ae0.png)
+
+    **정상적으로 저장소를 읽어오고 패키지 파일 목록도 읽어오네요**
+
+
+---
+
+* ### **문제 5. 웹 서비스 설치**
+
+    ```
+    웹 서비스를 설치하시오 (httpd)
+    웹 서비스 기본 폴더(/var/www/html)에 index.html 파일을 생성하시오. (내용: helloworld)
+    웹 서비스는 99/TCP 포트에서 서비스를 제공하도록 설정하시오
+    웹 서비스를 시작하고, 재부팅 후에도 시작되도록 설정하시오.
+    curl 또는 웹 브라우저를 사용하여 localhost:99 페이지가 표시되는지 확인하시오
+    ```
+
+* **웹 서비스를 설치합시다**
+
+    ```
+    명령어 
+
+    yum -y install httpd
+
+    ```
+
+
+    ```
+    [root@practice yum.repos.d]# yum -y install httpd
+    Failed to set locale, defaulting to C.UTF-8
+    nasa1515-base                                                         62 kB/s | 3.9 kB     00:00    
+    nasa1515-app                                                          47 kB/s | 4.3 kB     00:00    
+    Dependencies resolved.
+    =====================================================================================================
+    Package               Arch      Version                                      Repository        Size
+    =====================================================================================================
+    Installing:
+    httpd                 x86_64    2.4.37-21.module_el8.2.0+494+1df74eae        nasa1515-app     1.7 M
+    Installing dependencies:
+    apr                   x86_64    1.6.3-9.el8                                  nasa1515-app     125 k
+    apr-util              x86_64    1.6.1-6.el8                                  nasa1515-app     105 k
+    centos-logos-httpd    noarch    80.5-2.el8                                   nasa1515-base     24 k
+    httpd-filesystem      noarch    2.4.37-21.module_el8.2.0+494+1df74eae        nasa1515-app      36 k
+    httpd-tools           x86_64    2.4.37-21.module_el8.2.0+494+1df74eae        nasa1515-app     103 k
+    mod_http2             x86_64    1.11.3-3.module_el8.2.0+486+c01050f0.1       nasa1515-app     156 k
+    Installing weak dependencies:
+    apr-util-bdb          x86_64    1.6.1-
+    ....
+    ....
+    ....(중략)
+    Installed:
+    apr-1.6.3-9.el8.x86_64                                                                             
+    apr-util-1.6.1-6.el8.x86_64                                                                        
+    apr-util-bdb-1.6.1-6.el8.x86_64                                                                    
+    apr-util-openssl-1.6.1-6.el8.x86_64                                                                
+    centos-logos-httpd-80.5-2.el8.noarch                                                               
+    httpd-2.4.37-21.module_el8.2.0+494+1df74eae.x86_64                                                 
+    httpd-filesystem-2.4.37-21.module_el8.2.0+494+1df74eae.noarch                                      
+    httpd-tools-2.4.37-21.module_el8.2.0+494+1df74eae.x86_64                                           
+    mod_http2-1.11.3-3.module_el8.2.0+486+c01050f0.1.x86_64                                            
+
+    Complete!
+    ```
+
+* **문제에서 지정해준 기본 경로에 index 파일을 아래와 같이 생성합니다.**
+
+    ![스크린샷, 2020-10-06 12-13-18](https://user-images.githubusercontent.com/69498804/95154676-545cf380-07cd-11eb-9dc4-39744ac453a2.png)
+
+
+* **문제에서 지정해준 포트 설정을 변경합니다**  
+ 
+    **웹 서버의 설정 파일은 /etc/httpd/conf/httpd.conf 입니다**
+    ![스크린샷, 2020-10-06 12-14-24](https://user-images.githubusercontent.com/69498804/95154740-7c4c5700-07cd-11eb-9c42-17e9265f2c9b.png)
+
+* **SELINUX 설정을 추가해줍니다**
+
+    ```
+    [root@practice /]# semanage port -l | grep http
+    http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010
+    http_cache_port_t              udp      3130
+    http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
+    pegasus_http_port_t            tcp      5988
+    pegasus_https_port_t           tcp      5989
+    [root@practice /]# 
+    [root@practice /]# 
+    [root@practice /]# semanage port -a -t http_port_t -p tcp 99
+    [root@practice /]# 
+    [root@practice /]# semanage port -l | grep http
+    http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010
+    http_cache_port_t              udp      3130
+    http_port_t                    tcp      99, 80, 81, 443, 488, 8008, 8009, 8443, 9000
+    pegasus_http_port_t            tcp      5988
+    pegasus_https_port_t           tcp      5989
+
+    [root@practice webfile]# semanage fcontext -a -t httpd_sys_content_t '/webfile(/.*)?'
+    [root@practice webfile]# restorecon -Rv /webfile/
+
+    ```
+
+
+
+
+* **이제 웹서버를 시작 후 자동 시작도 등록해줍시다**
+
+    ![스크린샷, 2020-10-06 12-22-50](https://user-images.githubusercontent.com/69498804/95155238-ab16fd00-07ce-11eb-9953-01d95f8f7181.png)
+
+
+* **curl 명령어로 보면 정상적으로 문자가 출력됩니다!**
+
+    ![스크린샷, 2020-10-06 12-23-39](https://user-images.githubusercontent.com/69498804/95155311-d4378d80-07ce-11eb-9361-1f1c4200293b.png)
+
+
+---
+
+* ### **문제 6. 사용자 설정**
+
+
+    ```
+    1. 다음 사용자를 추가하시오. 이 사용자는 sudo 명령어를 사용할 수 있도록 설정하시오.
+    teacher
+    2. 다음 그룹을 추가하시오
+    students (GID: 3000)
+    3. 다음 사용자를 students 보조그룹에 포함되도록 생성하시오
+    kim, lee, park
+    4.다음 사용자를 추가하시오. 이 사용자는 UID 10000번으로 생성하며, 로그인하지 못하는 사용자로 지정하시오.(test)
+    각 사용자의 암호는 모두 P@ssw0rd로 설정하시오
+
+    ```
+
+
+
+* **teacher 사용자를 추가하고 sudo 명령을 사용하게 설정해보죠**
+
+    ```
+    [root@practice html]# useradd teacher
+    [root@practice html]# 
+    [root@practice html]# usermod -aG wheel teacher
+    [root@practice html]# 
+    [root@practice html]# sudo visudo
+    ```
+    **유저 생성이 되었고 wheel 그룹에 추가해주면서 sudoers 파일을 수정해줍니다.**
+
+    ```
+    (수정전)
+    ## Same thing without a password
+    # %wheel ALL=(ALL) NOPASSWD: ALL
+
+    (수정후)
+    ## Same thing without a password
+    %wheel ALL=(ALL) NOPASSWD: ALL
+    ```
+
+* **이제 나머지 사용자를 생성 및 설정해보겠습니다**
+
+    ```
+    [root@practice html]# groupadd -g 3000 students
+    [root@practice html]# 
+    [root@practice html]# useradd -G students kim
+    [root@practice html]# useradd -G students lee
+    [root@practice html]# useradd -G students park
+    [root@practice html]# useradd test -s /sbin/nologin -u 10000 
+    echo P@ssw0rd | passwd --stdin kim
+    echo P@ssw0rd | passwd --stdin lee
+    echo P@ssw0rd | passwd --stdin park
+    echo P@ssw0rd | passwd --stdin test
+    ```
+
+---
+
+
+* ### **문제 7. SELinux 설정**
+
+    ```
+    SELinux가 Enforcing 상태인지 확인하고, 아닐 경우 Enforcing으로 변경하시오.
+    ```
+
+* **설정을 해봅시다**
+
+    ```
+    [root@practice /]# vim /etc/selinux/config
+
+    SELINUX=enforcing
+
+    [root@practice /]# getenforce 
+    Permissive
+    [root@practice /]# 
+    [root@practice /]# setenforce 1
+    [root@practice /]# 
+    [root@practice /]# getenforce 
+    Enforcing
+    ```
+
+---
+
+* ### **문제 8. 공유폴더 설정**
+
+    ```
+    1. root 계정으로 /cccrshared 디렉토리를 생성하시오
+    2. /cccrshared 디렉토리에 생성되는 파일의 소유 그룹이 students이 되도록 설정하시오.
+    3. students 그룹 사용자가 파일을 생성할 수 있도록 설정하시오.
+    4. /cccrshared 디렉토리에 생성되는 파일은 소유자만이 지울 수 있도록 설정하시오.
+    ```
+
+* **작업을 해봅시다!**
+
+    ```
+    [root@practice /]# mkdir /cccrshared
+    [root@practice /]# chmod g+w /cccrshared    ## root로 디렉토리를 생성하면 쓰기권한이 없음!
+    [root@practice /]# chgrp students /cccrshared/   ## 소유그룹 변경
+    [root@practice /]# chmod g+s /cccrshared/     ## setgid로 생성 소유 그룹 변경
+    [root@practice /]# chmod o+t /cccrshared/     ## 소유자만 지울수 있게 Sticky bit 설정
+    ```
+
+---
+
+* ### **문제 9. 파일 권한 설정**
+
+
+    ```
+    1. root 사용자로 /etc/hosts 파일을 /cccrshared 디렉토리에 복사하시오
+    2. 소유자는 kim, 소유그룹은 students로 설정하시오
+    3. 소유자에 대한 읽기/쓰기 권한, 소유그룹 및 기타 사용자에 대한 읽기권한을 설정하시오.
+    4. lee 사용자에 대해 읽기/쓰기 권한을 부여하시오.
+    5. park 사용자에 대해 권한이 없도록 설정하시오.
+    ```
+
+
+* **작업을 해봅시다!**
+
+    ```
+    [root@practice /]# cp /etc/hosts /cccrshared/
+    [root@practice cccrshared]# chown kim:students hosts
+    [root@practice cccrshared]# chmod 644 hosts 
+
+    [root@practice cccrshared]# getfacl /cccrshared/hosts
+    getfacl: Removing leading '/' from absolute path names
+    # file: cccrshared/hosts
+    # owner: kim
+    # group: students
+    user::rw-
+    group::r--
+    other::r--
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# setfacl -m u:lee:rw /cccrshared/hosts
+    [root@practice cccrshared]# setfacl -m u:park:- /cccrshared/hosts
+    ```
+
+
+* ### **문제 10. 작업 예약**
+
+    ```
+    1. kim 사용자로 다음 작업을 예약하시오
+    매 정시마다 /cccrshared 폴더의 hosts 파일을 /home/kim/hosts.tar.xz 파일로 압축하시오.
+    2. lee 사용자로 다음 작업을 예약하시오
+    매주 월요일 아침 9시에 /cccrshared 폴더에 present 파일을 생성하시오.
+    ```
+
+
+* **작업을 해봅시다!**
+
+    ```
+    [root@practice cccrshared]# crontab -e
+
+    # 구문 추가
+    0 *  *  *  *  * kim tar Jcf /home/kim/hosts.tar.xz /cccrshared/hosts
+    0 9  *  *  1 touch /cccrshared/present
+
+    [root@practice cccrshared]# crontab -l
+    0  *  *  *  *  kim tar Jcf /home/kim/hosts.tar.xz /cccrshared/hosts
+    0  9  *  *  1  touch /cccrshared/present
+    [root@practice cccrshared]# 
+    ```
+
+
+* ### **문제 11. 파일 탐색**
+
+    ```
+    /usr/bin 내에 있는 파일 중 setuid가 설정되어 있는 파일을 탐색하여, 확인된 파일 목록을 /root/setuid.txt 파일로 저장하시오.
+    ```
+
+
+
+
+* **작업을 해봅시다!**
+
+    ```
+    [root@practice cccrshared]# find /usr/bin -perm -4000
+    /usr/bin/fusermount
+    /usr/bin/su
+    /usr/bin/chage
+    /usr/bin/gpasswd
+    /usr/bin/newgrp
+    /usr/bin/mount
+    /usr/bin/pkexec
+    /usr/bin/umount
+    /usr/bin/crontab
+    /usr/bin/passwd
+    /usr/bin/chfn
+    /usr/bin/chsh
+    /usr/bin/at
+    /usr/bin/sudo
+    [root@practice cccrshared]# find /usr/bin -perm -4000 > /root/setuid.txt
+    [root@practice cccrshared]# cat /root/setuid.txt
+    /usr/bin/fusermount
+    /usr/bin/su
+    /usr/bin/chage
+    /usr/bin/gpasswd
+    /usr/bin/newgrp
+    /usr/bin/mount
+    /usr/bin/pkexec
+    /usr/bin/umount
+    /usr/bin/crontab
+    /usr/bin/passwd
+    /usr/bin/chfn
+    /usr/bin/chsh
+    /usr/bin/at
+    /usr/bin/sudo
+    ```
+
+---
+
+
+* ### **문제 12. 디스크 파티셔닝 구성**
+
+    ```
+    1. /dev/sda 장치에 다음 파티션을 추가하시오
+    LVM 용도, 10G
+
+    2. /dev/sdb 장치에 MBR 파티션을 생성하시오
+    1번 파티션 : 스왑 파티션 용도, 4G
+    2번 파티션 : xfs 파일시스템, 2G
+    3번 파티션 : LVM 용도, 10G
+
+    3.위에서 생성한 각 파티션을 다음과 같이 설정하시오.
+    1번 파티션 :  스왑에 추가. 재부팅시에도 자동 등록되도록 설정
+    2번 파티션 : /disk1에 마운트, 재부팅시에도 마운트되도록 설정
+
+    4./dev/sdc 장치에 GPT 파티션을 생성하시오.
+    1번 파티션 : LVM 용도, 10G
+    
+    ```
+
+
+
+* **작업을 해봅시다!**
+
+    ```
+    [root@practice cccrshared]# fdisk /dev/sda
+    n -> default -> +10G -> t -> 6 -> 8e -> w
+
+    ```
+
+    ```
+    [root@practice cccrshared]# fdisk /dev/sdb
+    n -> 1 -> default -> +4G -> t -> 82
+    n -> 2 -> default -> +2G
+    n -> 3 -> default -> +10G -> t -> 8e
+
+    Device     Boot    Start      End  Sectors Size Id Type
+    /dev/sdb1           2048  8390655  8388608   4G 82 Linux swap / Solaris
+    /dev/sdb2        8390656 12584959  4194304   2G 83 Linux
+    /dev/sdb3       12584960 33556479 20971520  10G 8e Linux LVM
+    ```
+
+    ```
+    ## 스왑 생성
+    [root@practice cccrshared]# mkswap /dev/sdb1
+    Setting up swapspace version 1, size = 4 GiB (4294963200 bytes)
+    no label, UUID=caffb4b0-29ac-46e2-8b17-b0cb2a3591a1
+    [root@practice cccrshared]# file -s /dev/sdb1
+    /dev/sdb1: Linux/i386 swap file (new style), version 1 (4K pages), size 1048575 pages, no label, UUID=caffb4b0-29ac-46e2-8b17-b0cb2a3591a1
+    [root@practice cccrshared]# swapon /dev/sdb1
+    [root@practice cccrshared]# blkid
+    /dev/sdb1: UUID="caffb4b0-29ac-46e2-8b17-b0cb2a3591a1" TYPE="swap" PARTUUID="01dcb358-01"
+    [root@practice cccrshared]#
+    [root@practice cccrshared]# vim /etc/fstab
+
+    # 구문 추가!
+    UUID=caffb4b0-29ac-46e2-8b17-b0cb2a3591a1 swap                    swap    defaults        0 0
+
+
+    ## fstab 정상 설정 확인을 위해 스왑 off 후 확인
+    [root@practice cccrshared]# swapoff /dev/sdb1
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# lsblk
+    NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+    sda      8:0    0   60G  0 disk 
+    |-sda1   8:1    0    1G  0 part /boot
+    |-sda2   8:2    0   20G  0 part /
+    |-sda3   8:3    0    4G  0 part [SWAP]
+    |-sda4   8:4    0    1K  0 part 
+    `-sda5   8:5    0   10G  0 part /home
+    sdb      8:16   0   20G  0 disk 
+    |-sdb1   8:17   0    4G  0 part 
+    |-sdb2   8:18   0    2G  0 part 
+    `-sdb3   8:19   0   10G  0 part 
+    sdc      8:32   0   20G  0 disk 
+    `-sdc1   8:33   0   10G  0 part 
+    sr0     11:0    1 1024M  0 rom  
+
+    ## -a 옵션으로 fstab 읽어서 마운트 정상!
+    [root@practice cccrshared]# swapon -a
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# lsblk
+    NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+    sda      8:0    0   60G  0 disk 
+    |-sda1   8:1    0    1G  0 part /boot
+    |-sda2   8:2    0   20G  0 part /
+    |-sda3   8:3    0    4G  0 part [SWAP]
+    |-sda4   8:4    0    1K  0 part 
+    `-sda5   8:5    0   10G  0 part /home
+    sdb      8:16   0   20G  0 disk 
+    |-sdb1   8:17   0    4G  0 part [SWAP]
+    |-sdb2   8:18   0    2G  0 part 
+    `-sdb3   8:19   0   10G  0 part 
+    sdc      8:32   0   20G  0 disk 
+    `-sdc1   8:33   0   10G  0 part 
+    sr0     11:0    1 1024M  0 rom  
+    ```
+
+
+    ```
+    [root@practice cccrshared]# mkfs.xfs /dev/sdb2
+    meta-data=/dev/sdb2              isize=512    agcount=4, agsize=131072 blks
+            =                       sectsz=512   attr=2, projid32bit=1
+            =                       crc=1        finobt=1, sparse=1, rmapbt=0
+            =                       reflink=1
+    data     =                       bsize=4096   blocks=524288, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+    naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+    log      =internal log           bsize=4096   blocks=2560, version=2
+            =                       sectsz=512   sunit=0 blks, lazy-count=1
+    realtime =none                   extsz=4096   blocks=0, rtextents=0
+    [root@practice cccrshared]# mkdir /disk1
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# mount /dev/sdb2 /disk1/
+    [root@practice cccrshared]# df -h
+    Filesystem      Size  Used Avail Use% Mounted on
+    devtmpfs        1.9G     0  1.9G   0% /dev
+    tmpfs           1.9G     0  1.9G   0% /dev/shm
+    tmpfs           1.9G  9.0M  1.9G   1% /run
+    tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+    /dev/sda2        20G  2.2G   18G  11% /
+    /dev/sda5        10G  104M  9.9G   2% /home
+    /dev/sda1       976M  141M  769M  16% /boot
+    tmpfs           377M     0  377M   0% /run/user/0
+    /dev/sdb2       2.0G   47M  2.0G   3% /disk1
+
+
+    [root@practice cccrshared]# blkid /dev/sdb2
+    /dev/sdb2: UUID="c07cb215-94ce-4364-8f97-c0419597b6ae" TYPE="xfs" PARTUUID="01dcb358-02"
+
+    [root@practice cccrshared]# vim /etc/fstab 
+    [root@practice cccrshared]# 
+
+    ## 구문추가
+    UUID=c07cb215-94ce-4364-8f97-c0419597b6ae /disk1                  xfs     defaults        0 0
+
+    ## fstab 설정 확인
+
+    root@practice cccrshared]# umount /disk1
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# mount -a
+    [root@practice cccrshared]# df -h
+    Filesystem      Size  Used Avail Use% Mounted on
+    devtmpfs        1.9G     0  1.9G   0% /dev
+    tmpfs           1.9G     0  1.9G   0% /dev/shm
+    tmpfs           1.9G  9.0M  1.9G   1% /run
+    tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+    /dev/sda2        20G  2.2G   18G  11% /
+    /dev/sda5        10G  104M  9.9G   2% /home
+    /dev/sda1       976M  141M  769M  16% /boot
+    tmpfs           377M     0  377M   0% /run/user/0
+    /dev/sdb2       2.0G   47M  2.0G   3% /disk1
+    ```
+
+
+* ### **문제 13. LVM 구성**
+
+
+    ```
+    1. 이전 문제에서 각 디스크에 생성한 10G 파티션을 사용하여 LVM을 구성하시오
+    볼륨 그룹 이름 : myvg
+    볼륨 그룹의 PE Size : 10M
+    
+    2. myvg 볼륨 그룹에서 다음 논리볼륨을 생성하시오
+    이름: mylv1	크기: 100M
+    이름: mylv2	크기: PE 20개
+    
+    3. 각 논리 볼륨을 다음과 같이 설정하시오
+    mylv1 : xfs 파일시스템으로 구성. /lvm/1에 마운트
+    mylv2 : ext4 파일시스템으로 구성. /lvm/2에 마운트
+    
+    4. 각 볼륨은 시스템 부팅 시 자동으로 마운트되도록 설정
+    ```
+
+
+
+
+* **작업을 해봅시다!**
+
+
+    ```
+    ## pv 생성
+
+    [root@practice cccrshared]# pvcreate /dev/sdb3 /dev/sdc1 /dev/sda6
+    Physical volume "/dev/sdb3" successfully created.
+    Physical volume "/dev/sdc1" successfully created.
+    Physical volume "/dev/sda6" successfully created.
+    [root@practice cccrshared]# pvs
+    PV         VG Fmt  Attr PSize  PFree 
+    /dev/sda6     lvm2 ---  10.00g 10.00g
+    /dev/sdb3     lvm2 ---  10.00g 10.00g
+    /dev/sdc1     lvm2 ---  10.00g 10.00g
+    ```
+
+    ```
+
+    ## VG 생성
+
+
+    # vgcreate [vg name] [pv] -> 형식
+    
+    [root@practice cccrshared]# vgcreate -s 10M myvg /dev/sda6 /dev/sdb3 /dev/sdc1
+    Volume group "myvg" successfully created
+    [root@practice cccrshared]# vgs
+    VG   #PV #LV #SN Attr   VSize  VFree 
+    myvg   3   0   0 wz--n- 29.97g 29.97g
+    [root@practice cccrshared]# vgdisplay 
+    --- Volume group ---
+    VG Name               myvg
+    System ID             
+    Format                lvm2
+    Metadata Areas        3
+    Metadata Sequence No  1
+    VG Access             read/write
+    VG Status             resizable
+    MAX LV                0
+    Cur LV                0
+    Open LV               0
+    Max PV                0
+    Cur PV                3
+    Act PV                3
+    VG Size               29.97 GiB
+    PE Size               10.00 MiB
+    ```
+
+    ```
+
+    ## LV 생성
+
+    lvcreate -n [name] -L [size] [vg name] -> 형식
+    # -l [PE갯수]
+
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# lvcreate -n mylv1 -L 100M myvg
+    Logical volume "mylv1" created.
+    [root@practice cccrshared]# lvcreate -n mylv2 -l 20 myvg
+    Logical volume "mylv2" created.
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# lvs
+    LV    VG   Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+    mylv1 myvg -wi-a----- 100.00m                                                    
+    mylv2 myvg -wi-a----- 200.00m  
+
+    ```
+
+    ```
+
+    ## 파일시스템 설정
+
+    [root@practice cccrshared]# mkfs.xfs /dev/myvg/mylv1 
+    meta-data=/dev/myvg/mylv1        isize=512    agcount=4, agsize=6400 blks
+            =                       sectsz=512   attr=2, projid32bit=1
+            =                       crc=1        finobt=1, sparse=1, rmapbt=0
+            =                       reflink=1
+    data     =                       bsize=4096   blocks=25600, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+    naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+    log      =internal log           bsize=4096   blocks=1368, version=2
+            =                       sectsz=512   sunit=0 blks, lazy-count=1
+    realtime =none                   extsz=4096   blocks=0, rtextents=0
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# mkfs.ext4 /dev/myvg/mylv2 
+    mke2fs 1.45.4 (23-Sep-2019)
+    /dev/myvg/mylv1 contains a xfs file system
+    Proceed anyway? (y,N) 
+    ```
+
+    ```
+    ## 마운트 설정
+
+    [root@practice cccrshared]# mkdir -p /lvm/{1,2}
+    [root@practice cccrshared]# vim /etc/fstab
+
+    ## 구문 추가
+
+    /dev/myvg/mylv1	/lvm/1	xfs	defaults 0 0
+    /dev/myvg/mylv2	/lvm/2	ext4	defaults 0 0
+    [root@practice cccrshared]# mount -a
+    [root@practice cccrshared]# 
+    [root@practice cccrshared]# df -h
+    Filesystem              Size  Used Avail Use% Mounted on
+    devtmpfs                1.9G     0  1.9G   0% /dev
+    tmpfs                   1.9G     0  1.9G   0% /dev/shm
+    tmpfs                   1.9G  9.0M  1.9G   1% /run
+    tmpfs                   1.9G     0  1.9G   0% /sys/fs/cgroup
+    /dev/sda2                20G  2.2G   18G  11% /
+    /dev/sda5                10G  104M  9.9G   2% /home
+    /dev/sda1               976M  141M  769M  16% /boot
+    tmpfs                   377M     0  377M   0% /run/user/0
+    /dev/sdb2               2.0G   47M  2.0G   3% /disk1
+    /dev/mapper/myvg-mylv1   95M  6.0M   89M   7% /lvm/1
+    /dev/mapper/myvg-mylv2  190M  1.6M  175M   1% /lvm/2
+    ```
+
+
+
+
+

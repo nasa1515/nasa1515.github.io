@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://nasa1515.github.io/sitemap.xml

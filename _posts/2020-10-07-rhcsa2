@@ -1,0 +1,643 @@
+---
+layout: post
+title: "[LINUX] - RHCSA 대비 실습 풀이 - 2"
+author: Lee Wonseok
+categories: LINUX
+comments: true
+tags: LINUX
+cover: "/assets/LINUX.jpg"
+---
+
+
+# RHCSA 실습 문제 풀이 2
+
+**머리말**  
+
+저번 RHCSA 실습 풀이를 이어서 두번째 실습시간입니다.
+
+---
+
+
+**목차**
+
+- [문제](#a1)
+
+- [풀이](#a2)
+
+
+----
+
+
+## **``사전 준비``**  
+
+* **실습을 위해 VMWARE를 사용했습니다!**
+
+* ### **``문제``** <a name="a1"></a>
+
+
+    ```
+    1. 초기 부팅문제 해결
+    root 패스워드 설정 : P@ssw0rd
+    부팅 문제 해결
+
+
+    2. 변경할 네트워크 정보
+    vmware nat 네트워크 설정 확인 (192.168.100,0/24)
+    NetworkManager 연결 이름: static
+    IP: 192.168.100.100
+    netmask : 255.255.255.0
+    gateway: 192.168.100.2
+    DNS: 8.8.8.8
+
+    3. 호스트이름 설정
+    호스트이름 : server.cccr.local
+
+    4. YUM repository 설정 
+    (설정 전 /etc/yum.repos.d/ 디렉토리 내 *.repo 파일 삭제 후 진행)
+    http://ftp.kaist.ac.kr/CentOS/8/BaseOS/x86_64/os/
+    http://ftp.kaist.ac.kr/CentOS/8/AppStream/x86_64/os/
+
+    5. NTP 설정
+    네트워크 시간 동기화를 위해 time.bora.net 서버를 유일한 시간 동기화 서버로 등록하고, 정상적으로 시간이 동기화되는지 확인하시오.
+
+    6. 웹 서비스 설치
+    웹 서비스를 설치하시오 (httpd)
+    웹서비스에서 사용할 컨텐츠를 제공하기 위한 /mywww/html 디렉토리를 생성하고, 디렉토리 내에 index.html 파일을 작성하시오.
+    웹 서비스의 기본 페이지가 /mywww/html 경로의 파일을 사용하여 4567/TCP 포트에서 서비스를 제공하도록 설정하시오
+    웹 서비스를 시작하고, 재부팅 후에도 시작되도록 설정하시오.
+    curl 또는 웹 브라우저를 사용하여 localhost:4567 페이지가 표시되는지 확인하시오
+    정상적으로 페이지가 표시되지 않을 경우, 문제를 해결하시오.
+
+    7. 사용자 설정
+    다음 사용자를 추가하시오. 이 사용자는 sudo 명령어를 사용할 수 있도록 설정하시오.
+    webadmin
+    다음 그룹을 추가하시오
+    developers (GID: 3000)
+    다음 사용자의 주 그룹을 employees로 지정하여 생성하시오
+    webdev1, webdev2, webdev3
+    다음 사용자를 추가하시오. 이 사용자는 UID 10000번으로 생성하며, 로그인하지 못하는 사용자로 지정하시오.
+    dbadmin
+    각 사용자의 암호는 모두 P@ssw0rd로 설정하시오
+
+    8. SELinux 설정
+    SELinux가 Enforcing 상태인지 확인하고, 아닐 경우 Enforcing으로 변경하시오.
+
+    9. 공유폴더 설정
+    root 계정으로 /project/webcontents 디렉토리를 생성하시오
+    root 사용자와 developers 그룹의 사용자를 제외하고 디렉토리에 진입할 수 없도록, 디렉토리 내에 developers 그룹에 소속된 사용자가 파일을 생성할 수 있도록 설정하시오.
+    /project/webcontents 디렉토리에 생성되는 파일의 소유 그룹이 developers가 되도록 설정하시오.
+
+    10. 파일 권한 설정
+    root 사용자로 /etc/passwd 파일을 /tmp 디렉토리에 복사하시오
+    /tmp/passwd 파일에 대해 developers 그룹의 읽기/쓰기 권한을 설정하시오.
+    root 사용자로 /project/dbfiles 디렉토리를 생성하고, dbadmin 사용자가 이후 /project/dbfiles 디렉토리 내에 생성되는 모든 파일에 대해 읽기/쓰기 권한을 가지도록 설정하시오. 또한 생성된 디렉토리에 대한 진입할 수 있는 권한도 부여되도록 설정하시오.
+
+    11. 작업 예약
+    webdev1 사용자로 다음 작업을 예약하시오
+    매 주 일요일 자정에 /project/count 파일에 /etc/passwd 파일에 등록된 사용자의 수를 숫자로 저장하시오
+    webdev2 사용자로 다음 작업을 예약하시오
+    12월의 월~토요일 아침 8시 30분에  /project/merrychristmas 파일을 생성하시오.
+
+    12. 파일 탐색
+    root 사용자를 사용하여 /etc 내에 있는 파일 중 내용에 root가 포함되어 있는 파일의 목록을 /root/rootlist.txt 파일로 저장하시오.
+
+    13. 디스크 파티셔닝 구성
+    디스크 파티셔닝 구성
+    /dev/sda 장치에 다음 파티션을 추가하시오
+    LVM 용도, 10G
+    /dev/sdb 장치에 MBR 파티션을 생성하시오
+    1번 파티션 : ext4 파일시스템, 2G
+    2번 파티션 : LVM 용도, 10G
+    위에서 생성한 각 파티션을 다음과 같이 설정하시오.
+    1번 파티션 : /ext4에 마운트, 재부팅시에도 마운트되도록 설정
+    /dev/sdc 장치에 GPT 파티션을 생성하시오.
+    1번 파티션 : LVM 용도, 10G
+
+
+    14. LVM 구성
+    이전 문제에서 각 디스크에 생성한 10G 파티션을 사용하여 LVM을 구성하시오
+    볼륨 그룹 이름 : vg_new
+    볼륨 그룹의 PE Size : 4M
+    vg_new 볼륨 그룹에서 다음 논리볼륨을 생성하시오 (PE크기에 따른 오차 허용)
+    이름: lv1	크기: 1.5G
+    이름: lv2	크기: PE 1000개
+    각 논리 볼륨을 다음과 같이 설정하시오
+    lv1 : xfs 파일시스템으로 구성. /lvm/1에 마운트
+    lv2 : ext4 파일시스템으로 구성. /lvm/2에 마운트
+    각 볼륨은 시스템 부팅 시 자동으로 마운트되도록 설정
+
+    15. 논리 볼륨 관리
+    현재 사용중인 testvg의 PV중 /dev/sda에 있는 PV를 볼륨 그룹에서 제거하시오.
+    /dev/sdc 장치에서 5G 파티션을 생성하여 vg_new에 포함시키시오.
+    lv1 논리 볼륨의 크기를 2G로 변경하시오.
+
+    16. nfs 연결
+    nfsserver.zip 파일을 다운로드한 후, vmware에서 불러오시오
+    다음과 같이 네트워크 설정을 작성하시오.
+    NetworkManager 연결 이름: static
+    IP: 192.168.100.200
+    netmask : 255.255.255.0
+    gateway: 192.168.100.2
+    DNS: 8.8.8.8
+    192.168.100.100 시스템에서 nfsserver 시스템에서 사용가능한 nfs 공유를 확인하시오
+    nfs 서버에서 공유되고 있는 /shares 디렉토리를 /nfsmount 경로에 읽기전용으로 마운트하시오.
+
+    17. nfs 자동마운트
+    /rhome 경로를 생성하고, /rhome이 nfsserver의 /rhome 경로의 디렉토리를 자동 마운트하도록 설정하시오.
+    새로운 사용자 ruser1을 UID 10001으로 생성하시오. 이 때, 사용자의 홈 디렉토리는 /rhome/ruser1을 사용하도록 작성하시오.
+    ```
+
+
+
+## **``풀이``**  <a name="a2"></a>
+
+
+* ### **문제 1 ~ 4. 초기 셋팅**
+
+    **부팅등의 사전작업은 [예전 포스트](https://nasa1515.github.io/linux/2020/10/06/rhcsa.html)에 공유되어있습니다!**
+
+---
+
+* ### **문제 5. NTP 설정**  
+    
+    ```
+    네트워크 시간 동기화를 위해 time.bora.net 서버를 유일한 시간 동기화 서버로 등록하고, 정상적으로 시간이 동기화되는지 확인하시오
+    ```
+
+
+* **레드헷 버전이 올라감에 따라 이제 NTPD로 시간동기화를 하지 않고 chronyd라는 것으로 관리합니다**
+
+* **/etc/chronyd.conf 에 문제의 해당 서버 주소를 추가해줍니다**
+
+    ![스크린샷, 2020-10-07 12-03-35](https://user-images.githubusercontent.com/69498804/95282895-59857580-0895-11eb-8e90-f2fd230c9960.png)
+
+
+* **이후 Chronyd를 재시작 후 상태를 확인해보죠**
+
+    ```
+    [root@practice /]# systemctl restart chronyd.service 
+    [root@practice /]# 
+    [root@practice /]# chronyc sources
+    210 Number of sources = 1
+    MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+    ===============================================================================
+    ^* time.bora.net                 3   6    77     9   +804us[+1212us] +/-   25ms
+    [root@practice /]# date
+    Wed Oct  7 12:09:36 KST 2020
+    ```
+    **정상적으로 동기화되어 있습니다.**
+
+
+---
+
+* ### **문제 6. 웹 서비스 설치**  
+
+* **해당문제도 [예전 포스트](https://nasa1515.github.io/linux/2020/10/06/rhcsa.html)로!**
+
+
+---
+
+
+* ### **문제 7. 사용자 설정**  
+
+    ```
+    1. 다음 사용자를 추가하시오. 이 사용자는 sudo 명령어를 사용할 수 있도록 설정하시오.
+    webadmin
+    
+    2. 다음 그룹을 추가하시오
+    developers (GID: 3000)
+    
+    3. 다음 사용자의 주 그룹을 employees로 지정하여 생성하시오
+    webdev1, webdev2, webdev3
+    
+    4. 다음 사용자를 추가하시오. 이 사용자는 UID 10000번으로 생성하며, 로그인하지 못하는 사용자로 지정하시오.
+    dbadmin
+    
+    5. 각 사용자의 암호는 모두 P@ssw0rd로 설정하시오
+    ```
+
+
+* **번호 순으로 풀어봅시다!**
+
+    ```
+    [root@practice /]# useradd wbadmin
+    [root@practice /]# usermod -aG wheel wbadmin
+    [root@practice /]# sudo visudo
+    ```
+
+    ```
+    [root@practice /]# groupadd -g 3000 devlopers
+    [root@practice /]# tail -1 /etc/group
+    devlopers:x:3000:
+    ```
+    
+    ```
+    [root@practice /]# groupadd employees
+    [root@practice /]# useradd -G employees webdev1
+    [root@practice /]# useradd -G employees webdev2
+    [root@practice /]# useradd -G employees webdev3
+    [root@practice /]# tail -10 /etc/group | grep employees
+    employees:x:3001:webdev1,webdev2,webdev3
+    [root@practice /]# 
+    ```
+
+    ```
+    [root@practice /]# useradd dbadmin -s /sbin/nologin -u 10000
+    [root@practice /]# tail -1 /etc/passwd
+    dbadmin:x:10000:10000::/home/dbadmin:/sbin/nologin
+    ```
+
+    ```
+    [root@practice /]# echo P@ssw0rd | passwd --stdin webdev1
+    Changing password for user webdev1.
+    passwd: all authentication tokens updated successfully.
+    [root@practice /]# echo P@ssw0rd | passwd --stdin webdev2
+    Changing password for user webdev2.
+    passwd: all authentication tokens updated successfully.
+    [root@practice /]# echo P@ssw0rd | passwd --stdin webdev3
+    Changing password for user webdev3.
+    passwd: all authentication tokens updated successfully.
+    [root@practice /]# echo P@ssw0rd | passwd --stdin dbadmin
+    Changing password for user dbadmin.
+    passwd: all authentication tokens updated successfully.
+    ```
+
+---
+
+
+* ### **문제 8. 사용자 설정**  
+
+* **해당문제도 [예전 포스트](https://nasa1515.github.io/linux/2020/10/06/rhcsa.html)로!**
+
+
+---
+
+
+* ### **문제 9. 공유폴더 설정**  
+
+    ```
+    1. root 계정으로 /project/webcontents 디렉토리를 생성하시오
+    
+    2. root 사용자와 developers 그룹의 사용자를 제외하고 디렉토리에 진입할 수 없도록, 디렉토리 내에 
+    developers 그룹에 소속된 사용자가 파일을 생성할 수 있도록 설정하시오.
+    
+    3. /project/webcontents 디렉토리에 생성되는 파일의 소유 그룹이 developers가 되도록 설정하시오.
+    ```
+
+
+* **번호 순으로 풀어봅시다!**
+
+    ```
+    [root@practice /]# mkdir -p /project/webcontents
+    [root@practice /]# 
+    [root@practice /]# ls -lart /project/
+    total 0
+    drwxr-xr-x.  2 root root   6 Oct  7 13:42 webcontents
+    ```
+
+    ```
+    [root@practice project]# chgrp devlopers webcontents/
+    [root@practice project]# chmod g+s webcontents/
+    [root@practice project]# ls -alrt 
+    total 0
+    drwx--s--t.  2 root devlopers   6 Oct  7 13:42 webcontents
+    ```
+
+* ### **문제 10. 파일 권한 설정**  
+
+    ```
+    1. root 사용자로 /etc/passwd 파일을 /tmp 디렉토리에 복사하시오
+    
+    2. /tmp/passwd 파일에 대해 developers 그룹의 읽기/쓰기 권한을 설정하시오.
+    
+    3. root 사용자로 /project/dbfiles 디렉토리를 생성하고, dbadmin 사용자가 이후 /project/dbfiles 
+    디렉토리 내에 생성되는 모든 파일에 대해 읽기/쓰기 권한을 가지도록 설정하시오. 또한 생성된 디렉토리에 대한 진입할 수 있는 권한도 부여되도록 설정하시오.
+    ```
+
+
+* **번호 순으로 풀어봅시다!**
+
+
+    ```
+    [root@practice project]# 
+    [root@practice project]# cp /etc/passwd /tmp/
+    [root@practice tmp]# setfacl -m g:devlopers:rw- passwd 
+    [root@practice tmp]# 
+    [root@practice tmp]# getfacl passwd 
+    # file: passwd
+    # owner: root
+    # group: root
+    user::rw-
+    group::r--
+    group:devlopers:rw-
+    mask::rw-
+    other::r--
+    ```
+
+    ```
+    [root@practice tmp]# mkdir /project/dbfiles
+    [root@practice tmp]# 
+    [root@practice tmp]# setfacl -m u:dbadmin:rwx /project/dbfiles/
+    [root@practice tmp]# setfacl -m u:dbadmin:rwx /project/dbfiles/
+    [root@practice tmp]# setfacl -m d:u:dbadmin:rwX /project/dbfiles/
+    [root@practice tmp]# 
+    [root@practice tmp]# 
+    [root@practice tmp]# getfacl /project/dbfiles
+    getfacl: Removing leading '/' from absolute path names
+    # file: project/dbfiles
+    # owner: root
+    # group: root
+    user::rwx
+    user:dbadmin:rw-
+    group::r-x
+    mask::rwx
+    other::r-x
+    default:user::rwx
+    default:user:dbadmin:rwx
+    default:group::r-x
+    default:mask::rwx
+    default:other::r-x
+    ```
+
+
+* ### **문제 11. 작업 예약**  
+
+    ```
+    1. webdev1 사용자로 다음 작업을 예약하시오
+    매 주 일요일 자정에 /project/count 파일에 /etc/passwd 파일에 등록된 사용자의 수를 숫자로 저장하시오
+    
+    2.webdev2 사용자로 다음 작업을 예약하시오
+    12월의 월~토요일 아침 8시 30분에  /project/merrychristmas 파일을 생성하시오.
+    ```
+
+
+* **번호 순으로 풀어봅시다!**
+
+    ```
+    [root@practice tmp]# crontab -l
+    *  0  *  *  *  7  webdev1 cat /etc/passwd | wc -l > /project/count
+    30  8  * 12  1-7  webdev2 touch /project/merrychristmas
+    ```
+
+
+
+---
+
+
+
+* ### **문제 12. 파일 탐색**  
+
+    ```
+    root 사용자를 사용하여 /etc 내에 있는 파일 중 내용에 root가 포함되어 있는 파일의 목록을 /root/rootlist.txt 파일로 저장하시오.
+    ```
+
+
+* **번호 순으로 풀어봅시다!**
+
+    ```
+    [root@practice tmp]# grep -l "root" /etc/* >> /root/rootlist.txt^C
+    [root@practice tmp]# cat /root/^C
+
+    syntax error. Last token seen: /
+    Garbled time
+    [root@practice tmp]# 
+    [root@practice tmp]# cat /root/rootlist.txt 
+    /etc/aliases
+    /etc/anacrontab
+    /etc/chrony.keys
+    /etc/crontab
+    /etc/group
+    /etc/group-
+    /etc/grub2.cfg
+    /etc/gshadow
+    /etc/gshadow-
+    /etc/kdump.conf
+    /etc/mime.types
+    /etc/nanorc
+    /etc/oddjobd.conf
+    /etc/passwd
+    /etc/passwd-
+    /etc/services
+    /etc/shadow
+    /etc/shadow-
+    /etc/sudoers
+    /etc/updatedb.conf
+    /etc/xattr.conf
+    ```
+
+---
+
+
+* ### **문제 13. 디스크 파티셔닝 구성**  
+
+
+* **해당문제도 [예전 포스트](https://nasa1515.github.io/linux/2020/10/06/rhcsa.html)로!**
+
+---
+
+
+* ### **문제 14. LVM 구성**  
+
+* **해당문제도 [예전 포스트](https://nasa1515.github.io/linux/2020/10/06/rhcsa.html)로!**
+
+---
+
+
+* ### **문제 15. 논리 볼륨 관리**  
+
+
+    ```
+    1. 현재 사용중인 testvg의 PV중 /dev/sda에 있는 PV를 볼륨 그룹에서 제거하시오.
+    
+    2. /dev/sdc 장치에서 5G 파티션을 생성하여 vg_new에 포함시키시오.
+    
+    3. lv1 논리 볼륨의 크기를 2G로 변경하시오.
+    ```
+
+
+
+* **번호 순으로 풀어봅시다!**
+
+    ```
+    [root@practice tmp]# vgreduce vg_new /dev/sda6
+    Physical volume "/dev/sda6" still in use
+    [root@practice tmp]# 
+    [root@practice tmp]# pvmove /dev/sda6
+    /dev/sda6: Moved: 0.29%
+    ^[[C  /dev/sda6: Moved: 27.75%
+    /dev/sda6: Moved: 100.00%
+    [root@practice tmp]# 
+    [root@practice tmp]# vgreduce vg_new /dev/sda6
+    Removed "/dev/sda6" from volume group "vg_new"
+    [root@practice tmp]# 
+    [root@practice tmp]# vgs
+    VG     #PV #LV #SN Attr   VSize  VFree  
+    vg_new   2   2   0 wz--n- 19.99g <14.59g
+    ```
+
+    ```
+    [root@practice tmp]# pvcreate /dev/sdc2
+    Physical volume "/dev/sdc2" successfully created.
+    [root@practice tmp]# 
+    [root@practice tmp]# vgex
+    vgexport  vgextend  
+    [root@practice tmp]# vgex
+    vgexport  vgextend  
+    [root@practice tmp]# vgex
+    vgexport  vgextend  
+    [root@practice tmp]# vgextend vg_new /dev/sdc2
+    Volume group "vg_new" successfully extended
+    [root@practice tmp]# vgs
+    VG     #PV #LV #SN Attr   VSize   VFree 
+    vg_new   3   2   0 wz--n- <24.99g 19.58g
+    ```
+
+    ```
+    [root@practice tmp]# lvextend -r -L 2G  /dev/vg_new/lv1 
+    Size of logical volume vg_new/lv1 changed from 1.50 GiB (384 extents) to 2.00 GiB (512 extents).
+    Logical volume vg_new/lv1 successfully resized.
+    meta-data=/dev/mapper/vg_new-lv1 isize=512    agcount=4, agsize=98304 blks
+            =                       sectsz=512   attr=2, projid32bit=1
+            =                       crc=1        finobt=1, sparse=1, rmapbt=0
+            =                       reflink=1
+    data     =                       bsize=4096   blocks=393216, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+    naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+    log      =internal log           bsize=4096   blocks=2560, version=2
+            =                       sectsz=512   sunit=0 blks, lazy-count=1
+    realtime =none                   extsz=4096   blocks=0, rtextents=0
+    data blocks changed from 393216 to 524288
+    [root@practice tmp]# lvs
+    LV   VG     Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+    lv1  vg_new -wi-ao----  2.00g                                                    
+    lv2  vg_new -wi-ao---- <3.91g   
+    ```
+
+---
+
+
+
+* ### **문제 16. nfs 연결**  
+
+    ```
+    nfsserver.zip 파일을 다운로드한 후, vmware에서 불러오시오
+    다음과 같이 네트워크 설정을 작성하시오.
+    NetworkManager 연결 이름: static
+    IP: 192.168.100.200
+    netmask : 255.255.255.0
+    gateway: 192.168.100.2
+    DNS: 8.8.8.8
+
+    1. 192.168.100.100 시스템에서 nfsserver 시스템에서 사용가능한 nfs 공유를 확인하시오
+    
+    2. nfs 서버에서 공유되고 있는 /shares 디렉토리를 /nfsmount 경로에 읽기전용으로 마운트하시오.
+    ```
+
+
+* **번호 순으로 풀어봅시다!**
+
+    ```
+    root@nfsserver ~]# 
+    [root@nfsserver ~]# cat /etc/exports
+    /shares	192.168.100.*(rw,no_root_squash)
+    [root@nfsserver ~]# exportfs -avr
+    exporting 192.168.100.*:/shares
+    [root@nfsserver ~]# showmount -e localhost
+    Export list for localhost:
+    /shares 192.168.100.*
+    ```
+
+    ```
+    ## clinet 설치
+    [root@practice tmp]# yum -y install nfs-utils.x86_64 
+
+    [root@practice tmp]# systemctl status nfs-client.target 
+    ● nfs-client.target - NFS client services
+    Loaded: loaded (/usr/lib/systemd/system/nfs-client.target; enabled; vendor preset: disabled)
+    Active: active since Wed 2020-10-07 17:03:09 KST; 38s ago
+
+    Oct 07 17:03:09 server.cccr.local systemd[1]: Reached target NFS client services.
+
+    [root@practice tmp]# showmount -e 192.168.100.200
+    Export list for 192.168.100.200:
+    /shares 192.168.100.*
+    [root@practice tmp]# mkdir /nfsmount
+
+    [root@practice tmp]# firewall-cmd --add-service=nfs --permanent 
+    success
+    [root@practice tmp]# 
+    [root@practice tmp]# firewall-cmd --reload 
+    success
+
+
+    [root@practice tmp]# mount -t nfs -o ro,sync 192.168.100.200:/shares /nfsmount
+    [root@practice tmp]# df -h /nfsmount
+    Filesystem               Size  Used Avail Use% Mounted on
+    192.168.100.200:/shares   20G  1.9G   19G  10% /nfsmount
+    [root@practice tmp]# 
+    [root@practice tmp]# 
+    [root@practice tmp]# ls -alrt /nfsmount/
+    total 8
+    drwxr-xr-x.  2 root root   19 Oct  6 09:34 .
+    -rw-r--r--.  1 root root    7 Oct  6 09:34 hello
+    dr-xr-xr-x. 21 root root 4096 Oct  7 17:05 ..
+    ```
+
+---
+
+
+* ### **문제 17. nfs 자동마운트**  
+    
+    ```
+    1. /rhome 경로를 생성하고, /rhome이 nfsserver의 /rhome 경로의 디렉토리를 자동 마운트하도록 설정하시오.
+    
+    2. 새로운 사용자 ruser1을 UID 10001으로 생성하시오. 이 때, 사용자의 홈 디렉토리는 /rhome/ruser1을 사용하도록 작성하시오.
+    ```
+
+
+
+* **번호 순으로 풀어봅시다!**
+
+
+    ```
+    [root@practice auto.master.d]# mkdir /rhome
+    [root@practice auto.master.d]# 
+    [root@practice tmp]# yum -y install autofs
+    ...
+    ...
+    [root@practice auto.master.d]# systemctl status autofs
+    [root@practice auto.master.d]# 
+    [root@practice auto.master.d]# 
+    [root@practice auto.master.d]# systemctl enable autofs
+    Created symlink /etc/systemd/system/multi-user.target.wants/autofs.service → /usr/lib/systemd/system/autofs.service.
+
+    ### 맵 파일 생성
+    [root@practice /]# vim /etc/auto.master.d/200.autofs
+
+    /rhome  /etc/auto.indirect ## 구문 추가
+
+    [root@practice /]# vim /etc/auto.indirect
+    *       -rw,sync        192.168.100.200:/rhome/&
+
+    ## &설정은 맨앞의 *를 받아온다 특정 유저를 받아오려면 *가 아닌 직접맵을 사용
+    ```
+
+    ```
+    [root@practice auto.master.d]# useradd -M -d /rhome/ruser1 -u 10001 ruser1
+    [root@practice auto.master.d]# tail -1 /etc/passwd
+    ruser1:x:10001:10001::/rhome/ruser1:/bin/bash
+
+    [root@server ~]# setsebool use_nfs_home_dirs 1 -P
+    [root@server ~]# 
+    [root@server ~]# 
+    [root@server ~]# 
+    [root@server ~]# 
+    [root@server ~]# getsebool -a | grep use_nfs_home_dirs
+    use_nfs_home_dirs --> on
+
+
+    [root@server ~]# su - ruser1
+    [ruser1@server ~]$ df -h /rhome/ruser1/
+    Filesystem                     Size  Used Avail Use% Mounted on
+    192.168.100.200:/rhome/ruser1   20G  1.9G   19G  10% /rhome/ruser1
+    ```
