@@ -45,7 +45,9 @@ tags: DevOps
 **목차**
 
 - [Harbor 설치](#a1)
-- [Jenkins에 OWASP ZAP 설치](#a2)
+- [HTTP 연결 방법](#a2)
+- [클러스터 연결](#a3)
+- [쿠버네티스 시크릿 생성](#a4)
 
 ---
 
@@ -107,7 +109,7 @@ tags: DevOps
 
 ---
 
-### **그러나 Harbor는 HTTPS가 기본입니다.**  
+### **그러나 Harbor는 HTTPS가 기본입니다.**  <a name="a2"></a>
 
 <br/>
 
@@ -140,7 +142,7 @@ tags: DevOps
 
 ---
 
-### **그러나 HUB에 로그인이 안되는 문제가 발생했습니다.**
+### **그러나 HUB에 로그인이 안되는 문제가 발생했습니다.** <a name="a3"></a>
   
 
 <br/>
@@ -214,7 +216,7 @@ tags: DevOps
 
 ---
 
-### **또 그러나 ~ 클러스터에 올려진 Argcod는 쿠버네티스 기반으로 띄워져 있기에..**
+### **또 그러나 ~ 클러스터에 올려진 Argcod는 쿠버네티스 기반으로 띄워져 있기에..** <a name="a4"></a>
 
 * **쿠버네티스 클러스터에 아래와 같이 시크릿을 추가해줘야 정상적으로 연동이 됩니다..**
 
@@ -250,4 +252,44 @@ tags: DevOps
 
 --- 
 
-### **자 그럼
+### **자 그럼 설치, 연동 모두 완료되었으니 Jenkins에서 다음과 같이 연결합니다.**
+
+<br/>
+
+* **Harbor의 경우 별 다른 APP 설치 없이 파이프라인 스크립트에서 바로 연결이 가능합니다.**
+
+
+* **저의 경우 스크립트 환경변수에 다음과 같이 할당했습니다.**
+
+    ```
+    pipeline {
+        environment {
+            slack_channel = '#studying'
+            REGISTRY = 'cccr/jisun'
+            REGISTRY_IP = '34.64.237.112'       <<-- Harbor IP
+            REGISTRYCREDENTIAL = 'harbor'       <<-- Credential
+            DOCKER_IMAGE = ''
+            TAG_NUM = ''
+        }
+    ...
+    ...(중략)
+
+            stage('Docker image push to Harbor') {    <<-- 다음과 같이 푸시하도록.
+                steps{
+                    script {
+                        docker.withRegistry('http://$REGISTRY_IP', REGISTRYCREDENTIAL) {
+                            DOCKER_IMAGE.push('${BUILD_NUMBER}')
+                            DOCKER_IMAGE.push("latest")
+                        }
+                    }
+                    sh 'docker rmi $REGISTRY:latest'
+                    sh 'docker rmi $REGISTRY_IP/$REGISTRY:$BUILD_NUMBER'
+                    sh 'docker rmi $REGISTRY_IP/$REGISTRY:latest'
+                }
+    ```
+
+<br/>
+
+* ### **그럼 최종적으로 아래와 같이 Harbor를 통해서 이미지를 관리할 수 있게 됩니다.**
+
+    ![gg](https://user-images.githubusercontent.com/69498804/102946406-eee2ee00-4503-11eb-87d6-fad094b4187f.PNG)
