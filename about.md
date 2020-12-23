@@ -6,7 +6,8 @@ permalink: /about/
 
 
 <p align="center">
-<img src="./assets/myimage.png" alt="mypic" width="60%" height="60%" />
+<img src="https://user-images.githubusercontent.com/69498804/102948258-de814200-4508-11eb-9e72-73c5d583fe15.PNG" alt="mypic" width="60%" 
+height="60%" />
 </p>
 
 ## NASA1515 - Lee Wonseok (이원석)
