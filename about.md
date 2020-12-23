@@ -4,7 +4,10 @@ title: About
 permalink: /about/
 ---
 
-![내사진](/assets/myimage.png)
+
+<p align="center">
+<img src="./assets/myimage.png" alt="mypic" width="60%" height="60%" />
+</p>
 
 ## NASA1515 - Lee Wonseok (이원석)
 
