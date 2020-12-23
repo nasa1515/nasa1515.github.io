@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
+![내사진](/assets/myimage.png)
 
-
-## NASA1515 - Lee Wonseok 
+## NASA1515 - Lee Wonseok (이원석)
 
 
 * **DevOps 엔지니어를 희망하여 관련 기술을 운영하는 블로그입니다.**
