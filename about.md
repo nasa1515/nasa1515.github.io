@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: 블로그 주인
 permalink: /about/
 ---
 
