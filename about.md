@@ -51,7 +51,7 @@ permalink: /about/
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/69498804/103046467-b9093c80-45cb-11eb-859e-6a22551ef45d.PNG" width="60%" height="60%" />
-</p>
+</p> 
 
 <br/>
 
@@ -88,3 +88,12 @@ permalink: /about/
 스스로 방법을 찾게 되고 용기를 얻었다.  
 팀원들과 같이 노력한 결과로 코엑스에서 프로젝트에 대한 발표회도 진행했고  
 자랑스럽게도 최우수상을 수상했다.
+
+**결과물**  
+
+* **최우수상 탔다!!**
+
+  ![KakaoTalk_20201224_093545708](https://user-images.githubusercontent.com/69498804/103046728-9e839300-45cc-11eb-968c-eb1c834b21bd.jpg)
+
+
+- 블로그 게시글에 DevOps 카테고리 참고!
