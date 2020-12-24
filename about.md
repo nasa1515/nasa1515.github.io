@@ -98,8 +98,21 @@ permalink: /about/
 
 * **전체적인 진행 프로세스 동영상**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qNksz-lEgic?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/qNksz-lEgic?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+  * **전체적인 프로세스 요약**
 
+    **1. 소스코드를 Clone 해온 뒤 Build 테스트**  
+    **2. Dependency-Check Analysis 로 코드 정적분석**  
+    **3. Sonarqube and Quality gate 정적분석**  
+    **4. 위의 검사에서 에러가 없으면 Docker image build**  
+    **5. 빌드한 도커이미지를 HARBOR 저장소에 PUSH**  
+    **6. HARBOR에 저장된 이미지의 에러 검사**  
+    **7. 새로운 빌드 넘버로 메니페스트 수정 후 GITOPS 저장소로 푸시**  
+    **8. ArgoCD로 Sync 요청**  
+    **9. ArgoCD는 새로 추가된 메니페스트와 이미 배포되어있는 메니페스트를 diff해 재 배포**  
+    **10. 서비스 배포가 완료되었으면 OWASP ZAP으로 전체적인 서비스 보안 동적분석**
 
-- 전체적인 진행 과정은 블로그 게시글에 DevOps 카테고리 참고!
+<br/>
+
+- **인프라 구축부터 툴 설치 과정은 블로그 게시글에 DevOps 카테고리 참고!**
