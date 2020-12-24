@@ -44,7 +44,16 @@ permalink: /about/
 
 
 
-<h3 id="javaCamp">DevSecOps CI/CD PIPELINE With 조민재 멘토</h3>
+<h3 id="CICD"><center>DevSecOps CI/CD PIPELINE With 조민재 멘토</center></h3>  
+
+<br/>
+
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/69498804/103046467-b9093c80-45cb-11eb-859e-6a22551ef45d.PNG" width="60%" height="60%" />
+</p>
+
+<br/>
 
 **DevSecOps CI/CD PIPELINE Project ?**
 
