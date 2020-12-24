@@ -96,4 +96,10 @@ permalink: /about/
   ![KakaoTalk_20201224_093545708](https://user-images.githubusercontent.com/69498804/103046728-9e839300-45cc-11eb-968c-eb1c834b21bd.jpg)
 
 
-- 블로그 게시글에 DevOps 카테고리 참고!
+* **전체적인 진행 프로세스 동영상**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qNksz-lEgic?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+- 전체적인 진행 과정은 블로그 게시글에 DevOps 카테고리 참고!
