@@ -55,9 +55,9 @@ permalink: /about/
 
 <br/>
 
-**DevSecOps CI/CD PIPELINE Project ?**
+## **DevSecOps CI/CD PIPELINE Project ?**
 
-* 내용 : 3명의 팀원으로 CCCR 아카데미에서 진행한 GCP 기반의 DevSecOps 프로젝트이다.  
+* 내용 : 3명의 팀원으로 진행한 GCP 기반의 DevSecOps 파이프라인 구축 프로젝트이다.  
   
 * 기간 : 2020. 9 ~ 2020. 11
 * 목표 : Cloud Native Service를 MAS로 운영하기 위해 인프라 구축, 설계를 진행한다
