@@ -290,7 +290,7 @@ tags: DevOps
 
 <br/>
 
-* ### **그럼 최종적으로 아래와 같이 Harbor를 통해서 이미지를 관리할 수 있게 됩니다.**
+* **그럼 최종적으로 아래와 같이 Harbor를 통해서 이미지를 관리할 수 있게 됩니다.**
 
     ![gg](https://user-images.githubusercontent.com/69498804/102946406-eee2ee00-4503-11eb-87d6-fad094b4187f.PNG)
 
