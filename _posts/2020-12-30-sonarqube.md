@@ -37,6 +37,8 @@ tags: DevOps
 ### [6. GCP의 FileStore (NFS) 사용해 DB 데이터 백업](https://nasa1515.github.io/devops/2020/10/21/CICD5.html)
 ### [7. Jenkins로 Dvmn 앱 이미지 빌드 및 푸시하기](https://nasa1515.github.io/devops/2020/10/21/CICD6.html)
 ### [8. Harbor 이미지 저장소 도입](https://nasa1515.github.io/devops/2020/12/23/CICD-harbor.html)
+### [9. Anchore With Jenkins](https://nasa1515.github.io/devops/2020/12/28/anchor.html)
+
 
 ---
 
