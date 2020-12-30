@@ -132,3 +132,68 @@ tags: DevOps
 * **정상적으로 설정이 되었다면 다음과 같이 웹훅이 생성됩니다.**
 
     ![AAAAAAAAAAADDDDD](https://user-images.githubusercontent.com/69498804/103322240-b6ea2680-4a80-11eb-9bfe-eb624f8054b9.PNG)
+
+
+
+### **여기까지 완료되었다면 이제 Jenkins에서 SonarQube를 사용하실 수 있습니다.!!**
+
+---
+
+
+
+### **Jenkins Pipeline Script 수정** <a name="a3"></a>
+
+
+**그럼 파이프라인 스크립트 내에 SonarQube와 관련된 내용을 삽입해보겠습니다.**
+
+
+* **파이프라인 내용**
+
+    ```
+    properties([
+    parameters([
+        string(name: 'sonar.projectKey', defaultValue: 'com.appsecco:dvja'),
+        string(name: 'sonar.host.url', defaultValue: 'http://34.64.237.112:9000'),
+        string(name: 'sonar.login', defaultValue: '608cacd6bb83c50712ebb34c4cba377c841cdebb')
+    ]) 
+    ])
+    ...
+    ```
+
+    **우선 간단하게 파이프라인을 작성하기위해 변수 설정을 했습니다.**
+
+<br/>
+
+* **그리고 SonarQube와 SonarQube 내에있는 Dependency-Check를 작성해줍니다.**
+
+    ```
+            stage ('Dependency-Check Analysis') {
+                steps {
+                    sh '/var/lib/jenkins/dependency-check/bin/dependency-check.sh --scan `pwd` --format XML --out /var/lib/jenkins/workspace/ci-build-pipeline/dependency-check-report --prettyPrint'
+                    
+                    dependencyCheckPublisher pattern: 'dependency-check-report/dependency-check-report.xml'
+                }
+            }
+            stage('Sonarqube and Quality gate') {
+                options {
+                    timeout(time: 5, unit: 'MINUTES')
+                    retry(2)
+                }
+                steps {
+                    withSonarQubeEnv('SonarQube Server') {
+                        sh "mvn sonar:sonar"
+                    }
+                    script {
+                        qualitygate = waitForQualityGate()
+                        if (qualitygate.status != "OK") {
+                            currentBuild.result = "FAILURE"
+                        }
+                    }
+                }
+            }
+    ```
+<br/>
+
+### **여기까지만 하면 파이프라인 내에서는 SonarQube는 정상동작합니다.**
+
+---
