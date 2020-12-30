@@ -86,5 +86,24 @@ tags: DevOps
 
 ### **Jenkins 설정** <a name="a2"></a>
 
+<br/>
+
+* **Jenkins 내에서 SonarQube를 사용하기 위해서는 아래 플러그인 설치가 필요합니다.**
+
+    ![AAAAAA](https://user-images.githubusercontent.com/69498804/103322025-cf0d7600-4a7f-11eb-8081-02b118e9b30c.PNG)
 
 
+    * **자세한 플러그인 정보는 [링크](https://plugins.jenkins.io/sonar/) 확인해주세요**
+
+
+
+<br/>
+
+* **플러그인 설치가 완료되었다면 Jenkins 환경설정에서 Sonarqube 서버의 설정이 필요합니다.**
+
+    ![222222](https://user-images.githubusercontent.com/69498804/103322080-09771300-4a80-11eb-8022-2f2b6e12fd14.PNG)C
+
+    * **설치한 SonarQube 서버의 정보를 기입해줍니다**
+
+
+<br/>
