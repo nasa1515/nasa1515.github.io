@@ -62,8 +62,29 @@ tags: DevOps
 
 **음 읽어보니 개발자들에게 유용한 정적분석 툴입니다.**
 
----ㅊ
+---
 
+<br/>
+
+
+
+### **SonarQube 설치** <a name="a1"></a>
+
+* **이번 포스트에서 SonarQube의 설치과정은 다루지 않습니다.**  
+  **즉 이미 SonarQube 서버와, Jenkins 서버가 설치되었다는 가정하에 진행하였습니다.**
+
+
+* **설치에 관련된 포스트는 [여기](https://www.lesstif.com/software-architect/sonarqube-39126262.html)를 참고해주세요**
+
+<br/>
+
+
+
+---
+
+
+
+### **Jenkins 설정** <a name="a2"></a>
 
 
 
