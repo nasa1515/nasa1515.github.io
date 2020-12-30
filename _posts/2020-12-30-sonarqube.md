@@ -101,9 +101,34 @@ tags: DevOps
 
 * **플러그인 설치가 완료되었다면 Jenkins 환경설정에서 Sonarqube 서버의 설정이 필요합니다.**
 
-    ![222222](https://user-images.githubusercontent.com/69498804/103322080-09771300-4a80-11eb-8022-2f2b6e12fd14.PNG)C
+    ![222222](https://user-images.githubusercontent.com/69498804/103322080-09771300-4a80-11eb-8022-2f2b6e12fd14.PNG)
 
     * **설치한 SonarQube 서버의 정보를 기입해줍니다**
 
 
 <br/>
+
+
+* **Jenkins Global tool configuration 탭에서 Scanner에 대한 설정을 합니다.**
+
+    ![3332131](https://user-images.githubusercontent.com/69498804/103322135-54912600-4a80-11eb-8b21-23d6f51e0fea.PNG)
+
+    * **별다르게 상이하는 부분은 없이 동일하게 설정하면 동작됩니다.**
+
+
+
+
+<br/>
+
+* **이제 SonarQube 서버에서 Jenkins 서버에 대한 Webhook을 설정합니다.**
+
+    ![3333333333](https://user-images.githubusercontent.com/69498804/103322208-97eb9480-4a80-11eb-8848-bd3142e2bb53.PNG)
+
+    * **Jenkins 서버의 IP와 Port로 웹훅을 걸어주시면 됩니다.**
+
+
+<br/>
+
+* **정상적으로 설정이 되었다면 다음과 같이 웹훅이 생성됩니다.**
+
+    ![AAAAAAAAAAADDDDD](https://user-images.githubusercontent.com/69498804/103322240-b6ea2680-4a80-11eb-9bfe-eb624f8054b9.PNG)
