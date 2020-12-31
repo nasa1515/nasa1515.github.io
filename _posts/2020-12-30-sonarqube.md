@@ -122,7 +122,19 @@ tags: DevOps
 
     * **별다르게 상이하는 부분은 없이 동일하게 설정하면 동작됩니다.**
 
+<br/>
 
+* **파이프라인 프로젝트에서 SonarQube의 변수들을 선언 해줍니다(스크립트의 편의성을 위함)**  
+
+    ![KakaoTalk_20201228_200226180](https://user-images.githubusercontent.com/69498804/103388784-54f7f280-4b4e-11eb-8547-d643c8756523.png)
+
+    ![KakaoTalk_20201228_200226346](https://user-images.githubusercontent.com/69498804/103388805-6fca6700-4b4e-11eb-8064-e7896067a891.png)
+
+
+<br/>
+
+
+---
 
 
 <br/>
