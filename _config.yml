@@ -18,7 +18,7 @@ subtitle: "DevOps Enginner NaSa'S Blog"
 email: h43254@gmail.com
 name: WONSEOK LEE
 description: >
-  nasa's SE blog
+  nasa's DevOps blog
 
 baseurl: ""
 url: "http://nasa1515.github.io" 
@@ -28,7 +28,7 @@ timezone: Asia/Seoul
 
 # Build settings
 markdown: kramdown
-paginate: 5
+paginate: 3
 paginate_path: "/page:num/"
 inter_post_navigation: true
 highlightjs_theme: "monokai-sublime"
@@ -109,6 +109,7 @@ social:
 # Social sharing protocols
 # These are for automatically generating sharing metadata for FB and Twitter
 # OS Protocol is for sharing the source of your site, if you're interested. For more, see osprotocol.com
+
 protocols:
     fb_image: "/assets/logo-ball.png"
     fb_image_width: 612
