@@ -220,3 +220,26 @@ tags: DevOps
 <br/>
 
 ### **파이프라인 실행 결과** <a name="a4"></a>
+
+
+
+* **이제 모든 파이프라인 구성이 완료되었습니다.**
+
+
+    ![캡처](https://user-images.githubusercontent.com/69498804/103388929-262e4c00-4b4f-11eb-8ff4-ac9d873625eb.PNG)
+
+
+    * **파이프라인 스크립트의 STAGE별 순서 진행도를 위와같이 확인 할 수 있습니다.**
+    * **또한 SonarQube의 분석 결과 그래프도 위와 같이 확인 할 수 있습니다.**
+
+
+
+<br/>
+
+* **SonarQube의 Check-style 등의 경우 다른 리포트를 생성합니다.**  
+
+    ![KakaoTalk_20201228_200227145](https://user-images.githubusercontent.com/69498804/103388989-91781e00-4b4f-11eb-8614-1ebeac419ec4.png)
+
+    * **PASSED의 경우 사용자가 ERROR Level을 임의로 설정 할 수 있습니다.**
+
+    
