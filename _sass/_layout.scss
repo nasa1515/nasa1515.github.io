@@ -78,11 +78,11 @@ pre code.hljs {
 	&.has-cover {
 		color: $white;
 		text-shadow: 0 2px 1px rgba(0, 0, 0, 0.67) !important;
-		background-position: 100% 100%;
+		background-position: 40% 40%;
 		background-size: cover;
 
 		.title {
-			font-size: modular-scale(7);
+			font-size: modular-scale(6);
 		}
 
 		.subtitle,
