@@ -5,19 +5,19 @@ permalink: /about/
 cover: "/assets/1800-550.jpg"
 ---
 
-<br>
+<br/>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/69498804/102948258-de814200-4508-11eb-9e72-73c5d583fe15.PNG" width="60%" height="60%" />
 </p>
 
-<br>
+<br/>
 
 <center><h2>IM</h2><h3>NASA1515 - Lee Wonseok (이원석)</h3></center>
 
 <center><h4>DevOps 엔지니어를 희망하여 관련 기술을 운영하는 블로그입니다.</h4></center>
 
-<br>
+<br/>
 
 <span class="page-divider">
   <span class="one"></span>
