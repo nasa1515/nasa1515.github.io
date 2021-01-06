@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 블로그 주인
+title: ABOUT
 permalink: /about/
 cover: "/assets/1800-550.jpg"
 ---
