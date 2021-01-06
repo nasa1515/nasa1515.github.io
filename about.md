@@ -5,6 +5,7 @@ permalink: /about/
 cover: "/assets/1800-550.jpg"
 ---
 
+<br>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/69498804/102948258-de814200-4508-11eb-9e72-73c5d583fe15.PNG" width="60%" height="60%" />
