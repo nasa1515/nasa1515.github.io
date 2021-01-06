@@ -22,7 +22,7 @@ description: >
 
 baseurl: ""
 url: "http://nasa1515.github.io" 
-cover: "/assets/2100-450.png"
+cover: "/assets/2100-500.png"
 logo: "/assets/PINGGU.jpg"
 timezone: Asia/Seoul
 
