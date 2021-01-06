@@ -2,6 +2,23 @@
 layout: default
 ---
 
+<head> </head>
+<div class="post">
+	<div class="post-header-container {% if page.cover %}has-cover{% endif %}" {%
+		if
+		page.cover
+		%}style="background-image: url({{ page.cover | prepend: site.baseurl }});" {%
+		endif
+		%}>
+		<div class="scrim {% if page.cover %}has-cover{% endif %}">
+			<header class="post-header">
+				<p class="info">
+					by <strong>{{ page.author }}</strong>
+				</p>
+			</header>
+		</div>
+	</div>
+
 <div class="wrapper">
 	<div class="page">
 		<header class="post-header">
