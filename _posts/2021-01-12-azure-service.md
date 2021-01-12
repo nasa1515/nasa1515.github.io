@@ -3,7 +3,7 @@ layout: post
 title: "[AZURE] SERVICE - 컴퓨팅, 네트워크.."
 author: Lee Wonseok
 categories: AZURE
-date: 2021-01-12 12:36
+date: 2021-01-12 13:36
 comments: true
 cover: "/assets/1800-550.jpg"
 tags: AZURE
@@ -69,7 +69,7 @@ tags: AZURE
 
 * **Azure 컴퓨팅 서비스 예제**  
 
-    |서비스 이름|서비스 기능|
+    |**서비스 이름**|**서비스 기능**|
     |:---|---------|
     |Azure Virtual Machines	|Azure에서 호스트된 Windows 또는 Linux VM(가상 머신)|
-    
+
