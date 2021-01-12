@@ -76,14 +76,13 @@ tags: AZURE
 
 |**서비스 이름**|**서비스 기능**|
 |:---|---------|
-|Azure Virtual Machines	|Azure에서 호스트된 Windows 또는 Linux VM(가상 머신)|
-|Azure Virtual Machine Scale Sets	|Azure에서 호스트된 Windows 또는 Linux VM의 스케일링|
-|Azure Kubernetes Service	|컨테이너화된 서비스를 실행하는 VM을 위한 클러스터 관리|
-|Azure Service Fabric	|Azure 또는 온-프레미스에서 실행되는 분산 시스템 플랫폼|
-|Azure Batch	|병렬 및 고성능 컴퓨팅 애플리케이션을 위한 관리 서비스|
-|Azure Container Instances	|서버 또는 VM을 프로비저닝하지 않고 Azure에서 실행되는 컨테이너화된 앱|
-|Azure Functions	|이벤트 기반의 서버리스 컴퓨팅 서비스|
+|**Azure Virtual Machines**|Azure에서 호스트된 Windows 또는 Linux VM(가상 머신)|
+|**Azure Virtual Machine Scale Sets**|Azure에서 호스트된 Windows 또는 Linux VM의 스케일링|
+|**Azure Kubernetes Service**|컨테이너화된 서비스를 실행하는 VM을 위한 클러스터 관리|
+|**Azure Service Fabric**|Azure 또는 온-프레미스에서 실행되는 분산 시스템 플랫폼|
+|**Azure Batch**|병렬 및 고성능 컴퓨팅 애플리케이션을 위한 관리 서비스|
+|**Azure Container Instances**|서버 또는 VM을 프로비저닝하지 않고 Azure에서 실행되는 컨테이너화된 앱|
+|**Azure Functions**|이벤트 기반의 서버리스 컴퓨팅 서비스|
 
 
----
 
