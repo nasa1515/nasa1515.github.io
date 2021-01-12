@@ -39,7 +39,8 @@ tags: AZURE
 
 * **AZURE 전체 서비스**
 
-    ![azure-services](https://user-images.githubusercontent.com/69498804/104278532-19fda380-54ec-11eb-97fc-24f612788848.png)
+![azure-services](https://user-images.githubusercontent.com/69498804/104278532-19fda380-54ec-11eb-97fc-24f612788848.png)
+
 
 <br/>
 
@@ -66,11 +67,23 @@ tags: AZURE
 
 *컴퓨팅 서비스는 회사가 Azure 플랫폼으로 이전하는 주된 이유 중 하나입니다. Azure에서는 애플리케이션 및 서비스를 호스팅하는 다양한 옵션을 제공합니다. 다음은 Azure의 컴퓨팅 서비스 예제입니다.*
 
-**간단히 VM(인스턴스) SERVICE**
+**간단히 요약 : VM(인스턴스) SERVICE**
 
-* **Azure 컴퓨팅 서비스 예제**  
+<br/>
 
-    |**서비스 이름**|**서비스 기능**|
-    |:---|---------|
-    |Azure Virtual Machines	|Azure에서 호스트된 Windows 또는 Linux VM(가상 머신)|
+
+**Azure 컴퓨팅 서비스 예제**  
+
+|**서비스 이름**|**서비스 기능**|
+|:---|---------|
+|Azure Virtual Machines	|Azure에서 호스트된 Windows 또는 Linux VM(가상 머신)|
+|Azure Virtual Machine Scale Sets	|Azure에서 호스트된 Windows 또는 Linux VM의 스케일링|
+|Azure Kubernetes Service	|컨테이너화된 서비스를 실행하는 VM을 위한 클러스터 관리|
+|Azure Service Fabric	|Azure 또는 온-프레미스에서 실행되는 분산 시스템 플랫폼|
+|Azure Batch	|병렬 및 고성능 컴퓨팅 애플리케이션을 위한 관리 서비스|
+|Azure Container Instances	|서버 또는 VM을 프로비저닝하지 않고 Azure에서 실행되는 컨테이너화된 앱|
+|Azure Functions	|이벤트 기반의 서버리스 컴퓨팅 서비스|
+
+
+---
 
