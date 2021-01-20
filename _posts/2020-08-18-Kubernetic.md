@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kubernetes] - 볼륨"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-18 13:36
 comments: true

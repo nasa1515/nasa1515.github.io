@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[GCP] - Toy Project"
-author: Lee Wonseok
+author: nasa1515
 categories: GCP
 comments: true
 cover: "/assets/GCP.png"

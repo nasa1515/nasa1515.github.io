@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[AZURE] SERVICE - 컴퓨팅, 네트워크.."
-author: Lee Wonseok
+author: nasa1515
 categories: AZURE
 date: 2021-01-12 13:36
 comments: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kubernetes] - Service"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-18 12:36
 comments: true

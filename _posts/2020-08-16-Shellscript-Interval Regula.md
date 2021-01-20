@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Shell Script] - 정규표현식"
-author: Lee Wonseok
+author: nasa1515
 categories: [Shell Script]
 date: 2020-08-16 12:36
 comments: true

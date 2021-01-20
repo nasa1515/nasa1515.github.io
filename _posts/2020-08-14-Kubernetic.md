@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kubernetes] - 쿠버네티스란?"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-14 09:36
 comments: true

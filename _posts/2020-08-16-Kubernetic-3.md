@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kubernetes] - INGRESS, Deployment 보충 자료 모음"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-16 11:36
 comments: true

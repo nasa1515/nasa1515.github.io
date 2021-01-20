@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[DevOps] - SonarQube With Jenkins"
-author: Lee Wonseok
+author: nasa1515
 categories: DevOps
 date: 2020-12-30 12:36
 comments: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kubernetes] - GCP 기반 k8s환경구성 - [kubeadm]"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-16 09:36
 comments: true

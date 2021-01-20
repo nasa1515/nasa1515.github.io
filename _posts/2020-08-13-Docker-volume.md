@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[DOCKER] - VOLUMES"
-author: Lee Wonseok
+author: nasa1515
 categories: DOCKER
 date: 2020-08-13 13:55
 comments: true

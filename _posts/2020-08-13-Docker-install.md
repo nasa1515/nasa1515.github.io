@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[DOCKER] - Install"
-author: Lee Wonseok
+author: nasa1515
 categories: DOCKER
 date: 2020-08-13 09:36
 comments: true

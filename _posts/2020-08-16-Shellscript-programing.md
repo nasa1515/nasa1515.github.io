@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Shell Script] - 특수,위치,아규먼트 매개 변수"
-author: Lee Wonseok
+author: nasa1515
 categories: [Shell Script]
 date: 2020-08-16 13:36
 comments: true

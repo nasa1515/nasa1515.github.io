@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[LINUX] - This-Provisioning"
-author: Lee Wonseok
+author: nasa1515
 categories: LINUX
 comments: true
 cover: "/assets/LINUX.jpg"

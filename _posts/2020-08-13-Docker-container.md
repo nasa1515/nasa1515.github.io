@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[DOCKER] - CONTAINER"
-author: Lee Wonseok
+author: nasa1515
 categories: DOCKER
 date: 2020-08-13 12:55
 comments: true

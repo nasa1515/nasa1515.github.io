@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kubernetes] - 1.17버전 이상 헬스 체크 에러 리포트"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-16 12:36
 comments: true

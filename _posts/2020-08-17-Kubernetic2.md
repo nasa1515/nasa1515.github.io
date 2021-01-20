@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kubernetes] - 쿠버네티스의 아키텍쳐 개념"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-17 10:36
 comments: true

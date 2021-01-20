@@ -2,7 +2,7 @@
 
 layout: post
 title: "[Kubernetes] - 레이블 및 셀렉터"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-17 13:36
 comments: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kubernetes] - 쿠버네티스 명령어 정리"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-17 11:36
 comments: true

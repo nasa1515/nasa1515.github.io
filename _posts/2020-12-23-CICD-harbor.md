@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[DevOps] - Harbor 저장소 사용"
-author: Lee Wonseok
+author: nasa1515
 categories: DevOps
 date: 2020-12-23 12:36
 comments: true

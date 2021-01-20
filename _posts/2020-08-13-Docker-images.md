@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[DOCKER] - 이미지 관리"
-author: Lee Wonseok
+author: nasa1515
 categories: DOCKER
 date: 2020-08-13 10:55
 comments: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[DOCKER] - 네트워크 (NETWORK)"
-author: Lee Wonseok
+author: nasa1515
 categories: DOCKER
 date: 2020-08-14 09:36
 comments: true

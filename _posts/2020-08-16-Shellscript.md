@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Shell Script] - 리눅스 명령어 sed"
-author: Lee Wonseok
+author: nasa1515
 categories: [Shell Script]
 date: 2020-08-15 09:36
 comments: true

@@ -2,7 +2,7 @@
 
 layout: post
 title: "[Kubernetes] - 컨트롤러"
-author: Lee Wonseok
+author: nasa1515
 categories: Kubernetes
 date: 2020-08-17 14:36
 comments: true

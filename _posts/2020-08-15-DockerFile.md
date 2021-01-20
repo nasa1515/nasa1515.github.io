@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[DOCKER] - Dockerfile"
-author: Lee Wonseok
+author: nasa1515
 categories: DOCKER
 date: 2020-08-15 10:36
 comments: true
