@@ -1,0 +1,120 @@
+---
+layout: post
+title: "[AZURE] Azure Resource & Resource Manager"
+author: nasa1515
+categories: AZURE
+date: 2021-01-22 12:36
+comments: true
+cover: "/assets/1800-550.jpg"
+tags: AZURE
+---
+
+
+
+## **Azure Resource & Resource Manager**
+
+
+<br/>
+
+**머리말**  
+ 
+**이전 포스트에서 미처 다 설명하지 못한 부분을 이어서 포스트 하겠습니다.**  
+**실습 전 가장 중요한 이론의 내용들에 대해서는 다 이해하고 가야합니다.**  
+
+ 
+---
+
+- [이전포스트 - Subscription & management Group](https://nasa1515.github.io/azure/2021/01/21/azure.subscriptions.html)
+
+
+**목차**
+
+
+- [Resources](#a1)
+- [Resources Group](#a2)
+- [Azure Resource Manager](#a3)
+- [관리그룹 (Management Group)](#a4)
+
+
+
+---
+
+## **Azure Resources**   <a name="a1"></a>
+
+<br/>
+
+**리소스 (Resources)는 간단하게 AZURE 서비스 라고 이해 하면 됩니다.**  
+**Azure로 사용, 관리 가능한 VM, Storage acconut, DB, VNET 모두 리소스입니다.**
+
+
+---
+
+<br/>
+
+## **Azure Resources Group**   <a name="a2"></a>
+
+**리소스 그룹은 AZURE를 사용하기 위한 필수 요소 입니다.**  
+
+**리소스 그룹을 간단히 말하면 리소스의 논리 컨테이너? 입니다**  
+**즉 구독을 통해 만든 리소스의 모든 것을 묶었다고 보면 됩니다.**  
+
+* **모든 리소스는 리소스 그룹에 있어야하며**  
+* **리소스는 단일 리소스 그룹에 멤버여야 합니다.**  
+
+---
+<br/>
+
+* **Logical grouping**  
+
+    **리소스 그룹의 용도는 리소스를 간편하게 관리하고 구성하는 것입니다.**  
+    **그러나 무수히 많은 리소스를 질서있고 체계적으로 관리하기 위해서는  
+    Logical grouping (논리 그룹화)가 필요합니다.**
+
+    ![resource-group](https://user-images.githubusercontent.com/69498804/105316667-8bcca000-5c04-11eb-8cde-9c33a2757c5c.png)
+
+
+
+<br/>
+
+* **Life cycle**
+
+    **리소스 그룹을 삭제하면 그룹에 속해 있던 리소스들도 모두 삭제됩니다**  
+    **때문에 Life Cycle로 관리하면 TESTING 환경에서 유용하게 사용됩니다.**
+
+<br/>
+
+
+* **Authorization**
+
+    **리소스 그룹은 RBAC의 권한을 적용하는 범위 입니다.**  
+    **RBAC를 통해 필요한 리소스만 사용하도록 엑세스를 제한 할 수 있습니다.**  
+
+---
+
+
+<br/>
+
+## **Azure Resource Manager**  <a name="a3"></a>
+
+**Azure Resource Manager는 배포 및 관리 서비스 입니다.**  
+**계정에서 리소스를 만들고, 업데이트하고, 삭제할 수 있는 관리 계층을 제공합니다.**  
+
+**Azure 도구, API, SDK에서 요청을 보내면 Resource Manager에서 요청을 받습니다.** 
+**Resource Manager가 요청을 인증하고, 권한을 부여합니다.**  
+
+
+**아래 그림을 보면 이해가 쉽습니다.**
+
+
+![consistent-management-layer](https://user-images.githubusercontent.com/69498804/105319055-a6ecdf00-5c07-11eb-8d36-5579fe1ddf6d.png)
+
+* **그림과 같이 Portal에서 사용할 수 있는 모든 기능은  
+Powershell, Cli, rest client, SDK를 통해 사용할 수 있습니다.**
+
+
+<br/>
+
+###  **장점**
+
+* **스크립트가 아닌 template을 통해 인프라를 관리 합니다.**  
+    **(Resource Manager template)은 배포 정의 JSON 파일입니다)**
