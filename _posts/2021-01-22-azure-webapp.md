@@ -46,7 +46,8 @@ tags: AZURE
 Build, Hosting 할 수 있는 HTTP 기반 서비스 입니다.***  
 
 
-***.NET, .NET Core, Java, Ruby, Node.js, PHP 또는 Python으로 기반 APP은 Windows,Linux 기반 환경 양쪽에서 실행하고 간편하게 확장할 수 있습니다.***
+***.NET, .NET Core, Java, Ruby, Node.js, PHP 또는 Python 기반 APP은  
+Windows,Linux 기반 환경 양쪽에서 실행하고 간편하게 확장할 수 있습니다.***
 
 * **이번 포스트에서는 Code가 아닌 Portal을 이용해서 실습을 진행합니다.**  
 **따라서 MarketPlace를 통해 진행합니다.**
