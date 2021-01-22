@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[AZURE] App Service로 Word Press 띄우기"
+title: "[AZURE] - App Service로 Word Press 띄우기"
 author: nasa1515
 categories: AZURE
 date: 2021-01-22 14:36

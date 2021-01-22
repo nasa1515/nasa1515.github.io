@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[AZURE] Azure Resource & Resource Manager"
+title: "[AZURE] - Azure Resource & Resource Manager"
 author: nasa1515
 categories: AZURE
 date: 2021-01-22 12:36
