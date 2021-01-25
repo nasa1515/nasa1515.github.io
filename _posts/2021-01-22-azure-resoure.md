@@ -43,7 +43,7 @@ tags: AZURE
 
 <br/>
 
-**리소스 (Resources)는 간단하게 AZURE 서비스 라고 이해 하면 됩니다.**  
+**리소스 (Resources)는 간단하게 AZURE의 "단일 서비스들" 이라고 이해 하면 됩니다.**  
 **Azure로 사용, 관리 가능한 VM, Storage acconut, DB, VNET 모두 리소스입니다.**
 
 
