@@ -24,9 +24,13 @@ tags: AZURE
  
 ---
 
+**Azure 시리즈**
+
+
 - [이전포스트 - Subscription & management Group](https://nasa1515.github.io/azure/2021/01/21/azure.subscriptions.html)
 - [이전포스트 - Resource & Resource Manager](https://nasa1515.github.io/azure/2021/01/22/azure-resoure.html)
 - [이전포스트 - Region & availability zones](https://nasa1515.github.io/azure/2021/01/22/azure.region.html)  
+- [이전포스트 - App Service로 WordPress 띄우기](https://nasa1515.github.io/azure/2021/01/22/azure-webapp.html)  
 
 
 **목차**

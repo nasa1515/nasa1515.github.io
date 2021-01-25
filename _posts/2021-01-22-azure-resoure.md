@@ -24,6 +24,8 @@ tags: AZURE
  
 ---
 
+**Azure 시리즈**
+
 - [이전포스트 - Subscription & management Group](https://nasa1515.github.io/azure/2021/01/21/azure.subscriptions.html)
 
 
