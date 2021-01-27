@@ -3,7 +3,7 @@ layout: post
 title: "[AZURE] - NetWork (Vnet)"
 author: nasa1515
 categories: AZURE
-date: 2021-01-27 12:36
+date: 2021-01-27 13:36
 comments: true
 cover: "/assets/1800-550.jpg"
 tags: AZURE
@@ -36,6 +36,7 @@ tags: AZURE
 
 
 - [Azure Netowrk Resource](#a1)
+- [가상 네트워크 연결](#a2)
 
 --- 
 
@@ -101,7 +102,7 @@ Subnet 간 패킷이 라우팅 되는 Custom table을 생성 할 수 있습니�
 <br/>
 
 
-### **가상 네트워크 연결**
+### **가상 네트워크 연결** <a name="a2"></a>
 
 **``Network peering`` 을 사용해서 다른 위치에 있는 Vnet과 상호 연결 할 수 있습니다.**
 
