@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[AZURE] - NetWork (Vnet)"
+title: "[AZURE] - NETWORK (VNET)"
 author: nasa1515
 categories: AZURE
 date: 2021-01-27 13:36
@@ -11,7 +11,7 @@ tags: AZURE
 
 
 
-## **Azure NetWork (Vnet)**
+## **Azure NETWORK (VNET)**
 
 
 <br/>
