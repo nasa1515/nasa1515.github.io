@@ -51,6 +51,8 @@ tags: AZURE
 
 --- 
 
+<br/>
+
 ## **RG, Resources 잠금 (locks)**   <a name="a1"></a>
 
 
@@ -66,7 +68,7 @@ tags: AZURE
 
 <br/>
 
-**잠금(locks)을 사용할 수 있는 대상**  
+### **잠금(locks)을 사용할 수 있는 대상**  
 
 * **구독**
 * **RG**
@@ -74,7 +76,7 @@ tags: AZURE
 
 <br/>
 
-**잠금 유형** 
+### **잠금 유형** 
 
 * **읽기 전용 잠금 (Read-Only)**
 * **삭제 잠금 (Delete)**
@@ -83,5 +85,18 @@ tags: AZURE
 
 **위 두가지 잠금 중 Read-Only 잠금이 더 강력합니다.**  
 **간단히 Delete Locks은 수정은 가능하지만 삭제만 불가능하고**  
-**Read-Only Locks는 수정과 삭제 모두 불가능합니다.**
+**Read-Only Locks는 수정과 삭제 모두 불가능합니다.**  
+**추가적으로 Locks도 하위 리소스에 상속됩니다.**  
+**예를 들어 구독에 설정한 잠금은 속해있는 모든 리소스 그룹에 상속됩니다.**
+
+<br/>
+
+* **Locks Type 그림 참고**
+
+    ![2222](https://user-images.githubusercontent.com/69498804/106989236-1096ec80-67b5-11eb-9442-6b7928a68991.JPG)
+
+
+
+<br/>
+
 
