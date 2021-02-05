@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[AZURE] - RG, Resource 잠금, 삭제하기"
+title: "[AZURE] - RG, Resource Locks, Delete"
 author: nasa1515
 categories: AZURE
 date: 2021-02-05 13:36
@@ -11,7 +11,7 @@ tags: AZURE
 
 
 
-## **RG, Resource 잠금, 삭제하기**
+## **RG, Resource Locks, Delete**
 
 
 <br/>
@@ -44,11 +44,44 @@ tags: AZURE
 **목차**
 
 
-- [RG, Resources 잠금](#a1)
-- [RG, Respirces 삭제](#a2)
+- [RG, Resources Locks](#a1)
+- [RG, Respirces Delete](#a2)
 
 
 
 --- 
 
-## **RG, Resources 잠금**   <a name="a1"></a>
+## **RG, Resources 잠금 (locks)**   <a name="a1"></a>
+
+
+**Resources 와 RG는 운명 공동체입니다.**  
+**Resources를 효율적이고 편리하게 관리하기 위해 존재하는게 RG이니까요**  
+**그러나 이 편리함이 가끔은 단점이 될 수도 있습니다.**  
+**노력을 들인 리소스들이 한번에 몽땅 삭제 될 수도 있기 때문이죠**  
+
+**물론 RG를 삭제할 때 이름을 한번 더 입력하는 등의 안전장치는 있지만**  
+**이 안전장치 또한 RG가 여러개이면 헷갈릴 가능성이 매우 높습니다.**  
+**그래서 중요한 Resources를 관리하고 있는 RG에 대한 추가적인 보호 조치가 필요합니다.**  
+**이 목적으로 Azure에서는 Locks 기능을 제공합니다.**  
+
+<br/>
+
+**잠금(locks)을 사용할 수 있는 대상**  
+
+* **구독**
+* **RG**
+* **Resources**
+
+<br/>
+
+**잠금 유형** 
+
+* **읽기 전용 잠금 (Read-Only)**
+* **삭제 잠금 (Delete)**
+
+<br/>
+
+**위 두가지 잠금 중 Read-Only 잠금이 더 강력합니다.**  
+**간단히 Delete Locks은 수정은 가능하지만 삭제만 불가능하고**  
+**Read-Only Locks는 수정과 삭제 모두 불가능합니다.**
+
