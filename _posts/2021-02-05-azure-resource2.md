@@ -249,9 +249,44 @@ tags: AZURE
 
 **리소스를 이동하는 실습을 위해서 NASA-RG02라는 RG를 하나 더 생성했습니다.**  
 
+![2222](https://user-images.githubusercontent.com/69498804/106978582-db33d400-679f-11eb-989f-884dc7b63d2b.JPG)
+
+<br/>
+
+* **기존 RG 페이지의 명령 바의 ``이동`` 버튼을 사용합니다.**
+
+    ![111111](https://user-images.githubusercontent.com/69498804/106978756-3ebe0180-67a0-11eb-80a6-f10dd1f7d8f2.JPG)
+
+
+<br/>
+
+* **``리소스 이동`` 블레이드에서 이동할 RG를 선택하고 이동합니다.** 
+
+    ![333333](https://user-images.githubusercontent.com/69498804/106978880-83499d00-67a0-11eb-802f-37cd3ae1ca82.JPG)
+
+    * **저처럼 미리 이동 할 RG를 만들어도 되지만 해당 블레이드에서 생성해도 됩니다.**
+
+
+<br/>
+
+* **이동 시 약간의 시간이 소요되고 다음과 같은 NOTI를 띄워줍니다.**
+
+    ![캡처](https://user-images.githubusercontent.com/69498804/106979232-44681700-67a1-11eb-9171-788ba9a9a5ef.JPG)
+
+<br/>
+
+* **이동이 완료되고, 다음과 같이 NASA-RG02 RG에서 PIP를 확인 할 수 있습니다.**
+
+
+    ![캡처](https://user-images.githubusercontent.com/69498804/106979590-ff90b000-67a1-11eb-9a4c-7fad79dbe6d8.JPG)
 
 
 
+<br/>
+
+
+
+---
 
 <br/>
 
