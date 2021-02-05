@@ -105,3 +105,103 @@ tags: AZURE
 <br/>
 
 ## **RG, Resources Locks 생성** <a name="a2"></a>
+
+<br/>
+
+**기존에 만들어 두었던 리소스들에 잠금을 설정해보겠습니다.**
+
+* **RG : NASA-RG02**
+* **PIP : NASA-PIP01**
+
+
+<br/>
+
+* **NASA-RG02 RG의 NASA-PIP01 리소스의 잠금 메뉴를 선택합니다.**
+
+    ![1111111](https://user-images.githubusercontent.com/69498804/106989749-23f68780-67b6-11eb-85b4-e37977f2c2e0.JPG)
+
+
+<br/>
+
+* **NASA-LOCKS-D01 이름을 가진 Delete Type의 Locks을 생성합니다.**
+
+    ![333333](https://user-images.githubusercontent.com/69498804/106990499-b77c8800-67b7-11eb-94a5-b1aab14e985e.JPG)
+
+<br/>
+
+* **Locks가 정상적으로 할당되었는지 PIP Resource를 삭제해보겠습니다.**  
+
+    ![캡처](https://user-images.githubusercontent.com/69498804/106990579-d8dd7400-67b7-11eb-8d3e-fd392250ddac.JPG)
+
+<br/>
+
+* **Resource Locks의 영향으로 삭제하지 못한다는 Noti를 확인할 수 있습니다.**
+
+    ![캡처w](https://user-images.githubusercontent.com/69498804/106990662-07f3e580-67b8-11eb-86e2-f8daa1991312.JPG)
+
+
+<br/>
+
+* **또한 RG를 삭제하려고 해도 다음과 같이 Noti를 띄우면 삭제가 불가능 합니다.**  
+
+    ![캡처3](https://user-images.githubusercontent.com/69498804/106990806-5903d980-67b8-11eb-8d82-85f92cc19f23.JPG)
+
+
+    * **NASA-RG02 RG 내의 Resources 중 하나가 Locks 상태이기 때문에  
+    RG나 다른 Resource도 삭제가 불가능 합니다.**
+
+
+<br/>
+
+* **추가적으로 PIP에 설정한 Locks은 RG에서도 확인이 가능합니다.**
+
+    ![캡처4](https://user-images.githubusercontent.com/69498804/106990968-a97b3700-67b8-11eb-83c6-e3d9c5895827.JPG)
+
+    * **그리고 RG의 Locks 메뉴에서 RG에 대한 Locks도 추가할 수 있습니다.**
+
+<br/>
+
+
+---
+
+<br/>
+
+
+## **RG, Resources Locks 삭제** <a name="a4"></a>
+
+
+**Azure의 Resources는 두가지 방법으로 삭제가 가능합니다.** 
+
+<br/>
+
+* **1. 리소스를 일일히 삭제하는 방법**
+* **2. RG를 삭제해 RG에 포함된 하위 Resources 까지 모두 삭제하는 방법**  
+
+
+<br/>
+
+* **1번 방법의 경우 삭제할 Resource tab에서 Delete 메뉴로 가능합니다.**
+
+    ![캡처6](https://user-images.githubusercontent.com/69498804/106991288-3faf5d00-67b9-11eb-8e9c-fffa32fb9894.JPG)
+
+
+<br/>
+
+* **2번의 경우 RG 자체를 삭제하면 됩니다.** 
+
+    ![캡처7](https://user-images.githubusercontent.com/69498804/106991389-771e0980-67b9-11eb-9259-d326443a22a9.JPG)
+
+    * **RG NAME을 입력하는 안전장치를 해제한 뒤 삭제합시다.**
+
+
+<br/>
+
+* **NASA-RG02와 PIP 모두 삭제 되었습니다.**
+
+    ![캡처111](https://user-images.githubusercontent.com/69498804/106991612-f3b0e800-67b9-11eb-8f37-0038195f6a57.JPG)
+
+<br/>
+
+
+---
+
