@@ -45,7 +45,8 @@ tags: AZURE
 
 
 - [RG, Resources Locks](#a1)
-- [RG, Respirces Delete](#a2)
+- [RG, Resources Locks 생성](#a2)
+- [RG, Respirces Delete](#a3)
 
 
 
@@ -99,4 +100,8 @@ tags: AZURE
 
 <br/>
 
+---
 
+<br/>
+
+## **RG, Resources Locks 생성** <a name="a2"></a>
