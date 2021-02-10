@@ -63,10 +63,6 @@ tags: AZURE
 
 
 - [Visual Studio(VS) Code 설치](#a1)
-- [PowerShell Core 설치](#a2)
-- [LB TEST!!](#a3)
-
-
 
 --- 
 
@@ -89,4 +85,88 @@ tags: AZURE
 ---
 
 
-## **2. PowerShell Core 설치** <a name="a2"></a>  
+## **2. Node.js 설치** <a name="a2"></a>  
+
+<br/>
+
+* **[Nodejs 페이지](https://nodejs.org/en/)로 이동하여 Node.js를 설치합니다.**
+
+    ![캡처](https://user-images.githubusercontent.com/69498804/107476689-b2ee1000-6bb9-11eb-96c5-35c821aab95f.JPG)
+
+<br/>
+
+---
+
+## **3. VSCODE에서 Azure Account extension 설치**
+
+<br/>
+
+* **VSCODE의 Extension Tab에서 Azure Account를 설치합니다!**
+
+    ![캡처3](https://user-images.githubusercontent.com/69498804/107476968-3f98ce00-6bba-11eb-89a1-62c4f9f51d5a.JPG)
+
+
+<br/>
+
+
+---
+
+### **4. 설치가 완료되었으면 명령 단축으로 이동합니다.**  
+
+<br/>
+
+* **shift + Ctrl + P 단축키로 접속해 Azure:Sign In을 선택**
+
+    ![캡처444](https://user-images.githubusercontent.com/69498804/107477160-9d2d1a80-6bba-11eb-891a-7ea787f34218.JPG)
+
+
+<br>
+
+* **그 후 Azure 로그인 팝업 창이 발생하면 로그인합니다.**
+
+    ![555](https://user-images.githubusercontent.com/69498804/107477294-d6658a80-6bba-11eb-9ce7-41b4f80949b4.JPG)
+
+
+<br/>
+
+* **정상적으로 로그인이 되었다면 화면 왼쪽 하단에 로그인 ID가 보입니다.**
+
+    ![캡처4444](https://user-images.githubusercontent.com/69498804/107477389-feed8480-6bba-11eb-9f97-ecb0e49b55c0.JPG)
+
+
+<br/>
+
+
+
+---
+
+## **Cloud Shell에 접속합니다.**
+
+<br/>
+
+
+* **로그인 완료 후 shift + Ctrl + P으로 Azure:Open PowerShell in Cloud Shell을 선택**
+
+    ![캡처777](https://user-images.githubusercontent.com/69498804/107477565-4b38c480-6bbb-11eb-9c77-18e53bbde690.JPG)
+
+
+<br/>
+
+
+* **이후 터미널이 실행되고 Cloud Shell에 접속됩니다.**
+
+    ![캡처5555](https://user-images.githubusercontent.com/69498804/107477612-673c6600-6bbb-11eb-9045-49d9f19764b4.JPG)
+
+
+<br/>
+
+
+---
+
+## **마치며…**  
+
+
+**이제 진정한 Azure의 시작입니다.**  
+**VSCODE 연동도 완료되었으니 앞으로 거의 대부분의 실습은 CLI로 진행합니다.**  
+
+
