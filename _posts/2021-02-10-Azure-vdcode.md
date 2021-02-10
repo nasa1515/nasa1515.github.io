@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[AZURE] - Visual Studio Coud 연결하기"
+title: "[AZURE] - Azure Cloud Shell From vscode"
 author: nasa1515
 categories: AZURE
 date: 2021-02-09 14:36
@@ -11,7 +11,7 @@ tags: AZURE
 
 
 
-## **Visual Studio Coud 연결하기**
+## **Azure Cloud Shell From vscode**
 
 
 <br/>
