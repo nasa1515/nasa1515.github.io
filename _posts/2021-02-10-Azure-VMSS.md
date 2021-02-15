@@ -20,7 +20,7 @@ tags: AZURE
   
 
 **이번 포스트에서 진행 할 VMSS는 제가 기존에 하던 IDC 업무를 그만두고 Cloud를 하게 만든 기술입니다.**  
-**앞서 진행했던 Scail-Up & Down 처럼 미리 프로비전할 필요 없이 자동적으로 프로비전되어 고가용성을 제공합니다.**  
+**앞서 진행했던 scale-Up & Down 처럼 미리 프로비전할 필요 없이 자동적으로 프로비전되어 고가용성을 제공합니다.**  
 
 
  
@@ -47,7 +47,7 @@ tags: AZURE
     - [Vnet 생성하기](https://nasa1515.github.io/azure/2021/02/05/vnet2.html)
     - [가상머신(VM)](https://nasa1515.github.io/azure/2021/02/08/VM2.html)
     - [Storage Service 생성](https://nasa1515.github.io/azure/2021/02/08/AZURE-Storageservice.html)
-    - [가용성(Availability)](https://nasa1515.github.io/azure/2021/02/08/scail.html)
+    - [가용성(Availability)](https://nasa1515.github.io/azure/2021/02/08/scale.html)
 
 
 
@@ -85,8 +85,8 @@ tags: AZURE
 **사용해야 하는 애플리케이션도 있다. (명절의 KTX, 블랙 프라이데이의 Amazon)**  
 **이렇게 VM 갯수가 많아지게 된다면 당연히 관리의 문제가 생기게 된다.**  
 **한번에 만드는건 PowerShell이나 Cli, Terraform등을 이용해서 가능하기도 하지만**  
-**VM의 Update, (Auto Scail) 등 관리요소가 많아지고 스크립트의 갯수도 늘어난다.**  
-**이런 상황에 사용하는 것이 Azure Virtual Machine Scail Set (VMSS)이다.**  
+**VM의 Update, (Auto scale) 등 관리요소가 많아지고 스크립트의 갯수도 늘어난다.**  
+**이런 상황에 사용하는 것이 Azure Virtual Machine scale Set (VMSS)이다.**  
 
 <br/>
 
@@ -106,7 +106,7 @@ tags: AZURE
 
 * **2. 리소스(트래픽) 변화에 따라 자동으로 애플리케이션 크기 조정이 필요할 때**  
 
-    **Auto Scail 기능을 지원하여 인스턴스의 성능 메트릭 기반으로 자동 조정됩니다.**  
+    **Auto scale 기능을 지원하여 인스턴스의 성능 메트릭 기반으로 자동 조정됩니다.**  
 
 <br/>
 
@@ -131,7 +131,7 @@ tags: AZURE
 
 <br/>
 
-**VMSS에서 Auto-Scail의 크기 조정의 개념과 같이 익혀야 할 게 오버프로비전입니다.**  
+**VMSS에서 Auto-Scale의 크기 조정의 개념과 같이 익혀야 할 게 오버프로비전입니다.**  
 
 **간단히 VM을 만들어 내는 걸 Provisioning이라고 합니다.**  
 **앞에서 배운 개념대로 보면 SSD를 가진 하나의 VM은 SLA 99.5%를 가지게 됩니다.**  
