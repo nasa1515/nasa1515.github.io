@@ -60,8 +60,6 @@ tags: AZURE
 
 - [Virtual Network Gateway - VPN](#a1)
 - [VNET-VNET VpnGW 생성 실습](#a2)
-- [VMSS의 Vnet](#a3)
-- [VMSS 생성](#a4)
 
 
 --- 
@@ -247,3 +245,36 @@ tags: AZURE
 * **추가적으로 VnetGW01에서 Data in, Out에도 IGMP Packet 만큼의 로그가 찍히게 됩니다.**  
 
     ![캡처2222](https://user-images.githubusercontent.com/69498804/107920205-e82aa180-6faf-11eb-92ff-99e3582a0b28.JPG)
+
+<br/>
+
+---
+
+## **S2S VpnGW 생성 실습**   <a name="a3"></a>  
+
+**이번에는 다른 On-Premise와 Azure의 연결을 지원하는 S2S의 실습을 진행해보겠습니다.**  
+**S2S는 Vnet-Vnet과는 다르게 추가적으로 local network gateway가 추가적으로 필요합니다.**  
+
+![diagram](https://user-images.githubusercontent.com/69498804/107920870-fcbb6980-6fb0-11eb-8873-6458365212f6.png)
+
+
+<br/>
+
+### **각 RG의 생성 Resource 정보**
+
+
+<br/>
+
+* **RG-Cloud** 
+
+    * **VM-Cloud**
+    * **Vnet-Cloud (East US) - IP : 10.1.0.0/16 / Subnet : 10.1.0.0/24**
+    * **VGW-Cloud - IP : 10.1.255.0/27 / PIP -(PIP-VGW-Cloud)**
+
+
+
+* **RG-ONPEMISE** 
+
+    * **VM-ONPEMISE**
+    * **Vnet-ONPEMISE (East Asia) - IP : 10.41.0.0/16 / Subnet : 10.41.0.0/24**
+    * **VGW-ONPEMISE - IP : 10.41.255.0/27 / PIP -(PIP-VGW-ONPEMISE)**
