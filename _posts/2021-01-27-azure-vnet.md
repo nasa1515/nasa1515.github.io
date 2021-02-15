@@ -78,16 +78,17 @@ tags: AZURE
 * **Virtual networks : VM뿐 아니라 대부분의 Resource를 연결**
 * **Service endpoints : SQL DB, Storage Account 등 다른 TYPE의 연결을 제공합니다.**
 
+
 <br/>
 
 ### **4. ON-Premise 리소스 통신**  
 **클라우드 <-> On-Premise의 통신방법은 세가지가 있습니다.**
 
-* **Point-to-site VPN : 반대 방향으로 작동한다는 점을 제외하고는  
+* **Point-to-site (P2S) VPN : 반대 방향으로 작동한다는 점을 제외하고는  
 회사 내의 VM <-> 회사 외의 VM을 연결하는 VPN과 동일합니다.**
 
 
-* **Site-to-site VPN : On-premise VPN Device & GateWay를 Azure VPN에 연결합니다.   
+* **Site-to-site (S2S) VPN : On-premise VPN Device & GateWay를 Azure VPN에 연결합니다.   
 이 경우 Azure Device는 Local 연결로 표시되고 암호화되며 인터넷에서 작동합니다.**
 
 * **Azure ExpressRoute : 큰 대역폭과 높은 수준의 보안을 제공합니다  
@@ -131,6 +132,7 @@ Subnet 간 패킷이 라우팅 되는 Custom table을 생성 할 수 있습니�
 **따라서 UDR을 사용해 Network traffice flow를 세밀하게 제어 합니다.**
 
 ---
+
 
 
 <br/>
