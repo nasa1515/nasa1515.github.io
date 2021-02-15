@@ -254,6 +254,9 @@ tags: AZURE
 
 **이번에는 다른 On-Premise와 Azure의 연결을 지원하는 S2S의 실습을 진행해보겠습니다.**  
 **S2S는 Vnet-Vnet과는 다르게 추가적으로 local network gateway가 추가적으로 필요합니다.**  
+**S2S 실습은 원래 ON-Premise 시스템이 구성되어있어야 하지만 간단한 예로 보여주기 위해서**  
+**저는 RG 그룹을 나눈 것으로 테스트하겠습니다.**  
+
 
 ![diagram](https://user-images.githubusercontent.com/69498804/107920870-fcbb6980-6fb0-11eb-8873-6458365212f6.png)
 
@@ -268,13 +271,29 @@ tags: AZURE
 * **RG-Cloud** 
 
     * **VM-Cloud**
-    * **Vnet-Cloud (East US) - IP : 10.1.0.0/16 / Subnet : 10.1.0.0/24**
-    * **VGW-Cloud - IP : 10.1.255.0/27 / PIP -(PIP-VGW-Cloud)**
+    * **Vnet-Cloud (East US) - IP : 10.0.0.0/16 / Subnet : 10.0.0.0/24**
+    * **VGW-Cloud - IP : 10.0.255.0/27 / PIP -(PIP-VGW-Cloud)**
 
 
 
 * **RG-ONPEMISE** 
 
     * **VM-ONPEMISE**
-    * **Vnet-ONPEMISE (East Asia) - IP : 10.41.0.0/16 / Subnet : 10.41.0.0/24**
-    * **VGW-ONPEMISE - IP : 10.41.255.0/27 / PIP -(PIP-VGW-ONPEMISE)**
+    * **Vnet-ONPEMISE (Japan East) - IP : 192.168.0.0/16 / Subnet : 192.168.0.0/24**
+    * **VGW-ONPEMISE - IP : 192.168.255.0/27 / PIP -(PIP-VGW-ONPEMISE)**
+
+
+<br/>
+
+---
+
+### **Vnet, VGW 의 생성방법은 VNET-VNET과 동일하기 때문에 넘어가겠습니다.**  
+
+<br/>
+
+**CLOUD, ON-PREMISE 영역 둘다 VGW를 생성 한 뒤 아래로 넘어가시면 됩니다.**  
+
+<br/>
+
+* **Local GW 생성**  
+
