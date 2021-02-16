@@ -291,9 +291,26 @@ tags: AZURE
 
 <br/>
 
-**CLOUD, ON-PREMISE 영역 둘다 VGW를 생성 한 뒤 아래로 넘어가시면 됩니다.**  
+**CLOUD, ON-PREMISE RG로 나눈 뒤 두 RG에 각각 VGW를 생성 한 뒤 아래로 넘어가시면 됩니다.**  
 
 <br/>
 
-* **Local GW 생성**  
+### **Local Gateway 생성**
+
+<br/>
+
+* **Local GW 생성 [아래와 같이 IP에 On-Premise 정보를 기입한다]**  
+
+    ![캡처](https://user-images.githubusercontent.com/69498804/108005181-5d8f8400-703b-11eb-960b-39ed8e315cb5.JPG)
+
+    * **Name : Local Network Gateway 이름 기입**  
+    * **Endpoint : IP, FQDN 두가지 방식 선택 가능**  
+    * **IP address : On-Premise 의 VPN IP**
+    * **Address Space : On-Premise에서 사용하는 IP 대역**
+
+<br/>
+
+---
+
+### **VPN Device 구성**  
 
