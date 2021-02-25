@@ -62,7 +62,7 @@ tags: DATA
 * #### **Enter Prise Data WareHousing**
 
     ***엔터프라이즈 영역에서 정적 Data (ex. 영업 데이터, 매출 데이터, 개발 데이터 등)을***  
-    ***ETL (extract, transform, load), 전처리(가공) 전 중앙에 모아 관리하는 논리 로직****
+    ***ETL (extract, transform, load), 전처리(가공) 전 중앙에 모아 관리하는 논리 로직***
 
 <br/>
 
@@ -94,4 +94,9 @@ tags: DATA
 
 ## **Azure Portal 에서 작업영역 생성**   <a name="a2"></a>  
 
-* #### **Porter에서 Create resource Tab에서 Synapse analystics 검색 후 설치**
+* #### **Porter에서 Create resource Tab에서 Azure Synapse analystics 검색 후 설치**
+
+    ![캡처2](https://user-images.githubusercontent.com/69498804/109130587-40725800-7795-11eb-871b-24912db54ae1.JPG)
+
+<br/>
+
