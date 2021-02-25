@@ -13,13 +13,43 @@ tags: AZURE
 
 ## [AZURE] SERVICE - 컴퓨팅, 네트워크...
 
-
 **머리말**  
  
 **이번 포스트부터 본격적인 이론 내용에 대해서 알아봤습니다.**  
 **AZURE 사용하면서 많이 사용하게 될 서비스들에 대해서 정리하려고 노력했습니다.**
 
  
+---
+
+**Azure 시리즈**
+
+* **이론**
+
+    - [Subscription & management Group](https://nasa1515.github.io/azure/2021/01/21/azure.subscriptions.html)
+    - [Resource & Resource Manager](https://nasa1515.github.io/azure/2021/01/22/azure-resoure.html)
+    - [Azure Region & availability zones](https://nasa1515.github.io/azure/2021/01/22/azure.region.html)
+    - [Azure Computing Service](https://nasa1515.github.io/azure/2021/01/25/azure.compute.html)
+    - [Azure Storage](https://nasa1515.github.io/azure/2021/01/26/azure.storage.html)
+    - [Azure Network VNET](https://nasa1515.github.io/azure/2021/01/26/azure-vnet.html)
+    - [Azure VPN GATEWAY](https://nasa1515.github.io/azure/2021/01/27/Azure-VPN.html)
+    - [Azure ExpressRoute](https://nasa1515.github.io/azure/2021/01/27/azure-expreroute.html)
+    - [Azure Storage Account](https://nasa1515.github.io/azure/2021/02/08/storage2.html)
+
+
+* **실습**
+
+    - [RG 생성, Resource 생성, TAGING, Resoureces 이동하기](https://nasa1515.github.io/azure/2021/02/05/azure-resource2.html)
+    - [Vnet 생성하기](https://nasa1515.github.io/azure/2021/02/05/vnet2.html)
+    - [가상머신(VM)](https://nasa1515.github.io/azure/2021/02/08/VM2.html)
+    - [Storage Service 생성](https://nasa1515.github.io/azure/2021/02/08/AZURE-Storageservice.html)
+    - [가용성(Availability)](https://nasa1515.github.io/azure/2021/02/08/scale.html)
+    - [가상 머신 확장 집합 (VMSS)](https://nasa1515.github.io/azure/2021/02/09/Azure-VMSS.html)   
+    - [Virtual Network Gateway - VPN](https://nasa1515.github.io/azure/2021/02/09/Azure-vpngw.html)   
+    - [Application GateWay](https://nasa1515.github.io/azure/2021/02/09/Azure-LB.html)   
+    - [LoadBalancer](https://nasa1515.github.io/azure/2021/02/09/Azure-lb2.html)   
+    - [VSCODE <-> Cloudshell](https://nasa1515.github.io/azure/2021/02/09/Azure-vdcode.html)   
+    - [VM 으로 LAPM 서비스 구축하기](https://nasa1515.github.io/azure/2021/02/24/AZURE-WEB.html)   
+
 ---
 
 **목차**
