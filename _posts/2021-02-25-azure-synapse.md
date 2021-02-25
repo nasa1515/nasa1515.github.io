@@ -73,7 +73,7 @@ tags: DATA
 
 <br/>
 
-* #### **Dedicated SQL은 다음과 같이 포함됩니다.** 
+* #### **Dedicated SQL은 다음과 같은 Synapse Architecture에 포함됩니다.** 
 
     ![dedicated-sql-pool (1)](https://user-images.githubusercontent.com/69498804/109120531-6abe1880-7789-11eb-8b03-7e3a301f9f3b.png)
 
