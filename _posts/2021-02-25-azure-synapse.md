@@ -94,3 +94,4 @@ tags: DATA
 
 ## **Azure Portal 에서 작업영역 생성**   <a name="a2"></a>  
 
+* #### **Porter에서 Create resource Tab에서 Synapse analystics 검색 후 설치**
