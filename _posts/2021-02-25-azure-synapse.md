@@ -57,6 +57,8 @@ tags: DATA
 **Synapse의 용어 중의 SQL Pool (SQL DW)은 Synapse Analytics에서 사용할 수 있는  
 엔터프라이즈 데이터 웨어하우징 기능을 나타냅니다.** 
 
+<br/>
+
 * #### **Enter Prise Data WareHousing**
 
     **``엔터프라이즈 영역에서 정적 Data (ex. 영업 데이터, 매출 데이터, 개발 데이터 등)을``**  
