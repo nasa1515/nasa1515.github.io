@@ -45,6 +45,13 @@ tags: AZURE
     - [Vnet 생성하기](https://nasa1515.github.io/azure/2021/02/05/vnet2.html)
     - [가상머신(VM)](https://nasa1515.github.io/azure/2021/02/08/VM2.html)
     - [Storage Service 생성](https://nasa1515.github.io/azure/2021/02/08/AZURE-Storageservice.html)
+    - [가용성(Availability)](https://nasa1515.github.io/azure/2021/02/08/scale.html)
+    - [가상 머신 확장 집합 (VMSS)](https://nasa1515.github.io/azure/2021/02/09/Azure-VMSS.html)   
+    - [Virtual Network Gateway - VPN](https://nasa1515.github.io/azure/2021/02/09/Azure-vpngw.html)   
+    - [Application GateWay](https://nasa1515.github.io/azure/2021/02/09/Azure-LB.html)   
+    - [LoadBalancer](https://nasa1515.github.io/azure/2021/02/09/Azure-lb2.html)   
+    - [VSCODE <-> Cloudshell](https://nasa1515.github.io/azure/2021/02/09/Azure-vdcode.html)   
+    - [VM 으로 LAPM 서비스 구축하기](https://nasa1515.github.io/azure/2021/02/24/AZURE-WEB.html)   
 
 ---
 
