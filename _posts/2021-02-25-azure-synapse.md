@@ -61,15 +61,15 @@ tags: DATA
 
 * #### **Enter Prise Data WareHousing**
 
-    **`엔터프라이즈 영역에서 정적 Data (ex. 영업 데이터, 매출 데이터, 개발 데이터 등)을`**  
-    **`ETL (extract, transform, load), 전처리(가공) 전 중앙에 모아 관리하는 논리 로직`**
+    ***엔터프라이즈 영역에서 정적 Data (ex. 영업 데이터, 매출 데이터, 개발 데이터 등)을***  
+    ***ETL (extract, transform, load), 전처리(가공) 전 중앙에 모아 관리하는 논리 로직****
 
 <br/>
 
 * #### **SQL 전용 풀(Dedicated-leading SQL), (전 SQL DW)**  
 
-    **`Synapse SQL을 사용할 때 프로비저닝되는 분석 리소스의 컬렉션을 표현합니다.`**  
-    **`SQL POOL의 크기와 가격은 DWU(Data WareHouse Unit)에 의해 결정됩니다.`** 
+    ***Synapse SQL을 사용할 때 프로비저닝되는 분석 리소스의 컬렉션을 표현합니다.***  
+    ***(SQL POOL의 크기와 가격은 DWU(Data WareHouse Unit)에 의해 결정됩니다.*** 
 
 <br/>
 
