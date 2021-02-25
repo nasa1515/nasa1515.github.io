@@ -19,8 +19,9 @@ tags: AZURE
 **머리말**  
   
 
-**이번 포스트에서 진행 할 VMSS는 제가 기존에 하던 IDC 업무를 그만두고 Cloud를 하게 만든 기술입니다.**  
-**앞서 진행했던 scale-Up & Down 처럼 미리 프로비전할 필요 없이 자동적으로 프로비전되어 고가용성을 제공합니다.**  
+**VMSS는 제가 기존에 하던 IDC 업무를 그만두고 Cloud를 하게 만든 기술입니다.**  
+**VMSS는 앞 포스트에서 진행했던 scale-Up & Down 처럼 미리 프로비전할 필요없이**  
+**자동적으로 프로비전되어 고가용성을 제공합니다.**  
 
 
  
@@ -71,20 +72,16 @@ tags: AZURE
 ## **가상 머신 확장 집합 (VMSS)**   <a name="a1"></a>
 
 
-
-
-<br>
-
-
 ### **VMSS를 사용하는 이유?**  
 
 <br>
 
-**예를 들어 같은 역할을 하는 VM이 적게는 수십에서 많게는 수백대가 필요한 상황이 있을 수 있다.**  
-**규모가 큰 인프라를 운영하거나, 평소에는 적은 수의 VM으로 운영되다가 갑자기 많은 수의 VM으로 확장해서**  
-**사용해야 하는 애플리케이션도 있다. (명절의 KTX, 블랙 프라이데이의 Amazon)**  
+**예를 들어 같은 역할을 하는 VM이 적게는 수십에서 많게는 수백대가 필요한 상황이 있을 수 있습니다.**  
+**규모가 큰 인프라를 운영하거나, 평소에는 적은 수의 VM 이었다, 갑자기 많은 수의 VM으로 확장해**  
+**사용해야 하는 애플리케이션도 있다. (명절의 KTX, 블랙 프라이데이의 Amazon 등등)**  
 **이렇게 VM 갯수가 많아지게 된다면 당연히 관리의 문제가 생기게 된다.**  
 **한번에 만드는건 PowerShell이나 Cli, Terraform등을 이용해서 가능하기도 하지만**  
+**결국 그 IAC를 짜는 것도 사람이기에...**
 **VM의 Update, (Auto scale) 등 관리요소가 많아지고 스크립트의 갯수도 늘어난다.**  
 **이런 상황에 사용하는 것이 Azure Virtual Machine scale Set (VMSS)이다.**  
 
@@ -92,15 +89,12 @@ tags: AZURE
 
 ### **주로 어떤 때 VMSS를 사용하게 될까?**  
 
-<br/>
-
 **대표적으로 많이 쓰이는 두가지 예를 들어보자**
 
 
 * **1. 여러 VM을 손쉽게 생성하고 관리할 때**  
 
     **VMSS는 최대 1,000개의 VM 인스턴스를 지원합니다. (Custom Image의 경우 600개)**  
-
 
 <br/>
 
@@ -129,8 +123,6 @@ tags: AZURE
 ### **오버프로비전(OverProvision)**   <a name="a2"></a>
 
 
-<br/>
-
 **VMSS에서 Auto-Scale의 크기 조정의 개념과 같이 익혀야 할 게 오버프로비전입니다.**  
 
 **간단히 VM을 만들어 내는 걸 Provisioning이라고 합니다.**  
@@ -153,7 +145,6 @@ tags: AZURE
 
 ### **VMSS의 Vnet** <a name="a3"></a>
 
-<br/>
 
 **VMSS가 VM을 자동적으로 생성하지만 VM의 갯수가 많아지게 되면 네트워크에 문제가 있을 수도 있다.**  
 **이유는 VMSS가 생성한 VM들은 Vnet 하나의 Subnet안에 모두 생성 되기 때문이다.**  
@@ -171,8 +162,6 @@ tags: AZURE
 ### **VMSS 생성하기** <a name="a4"></a>
 
 
-<br/>
-
 * #### **LoadBalancer 생성하기** 
 
     **VMSS를 사용하기 위해서는 LB는 Default로 필요합니다. (메트릭 분산 용)**
@@ -182,6 +171,7 @@ tags: AZURE
 <br>
 
 * #### **VMSS (집합) 생성하기**   
+
     **Create a Resource -> Scale Set 검색 후 생성**
 
     ![캡처4444](https://user-images.githubusercontent.com/69498804/107488742-1f253f80-6bcb-11eb-95f5-aa1cb3a6c2f7.JPG)
@@ -192,7 +182,7 @@ tags: AZURE
 
 <br/>
 
-* #### **VMSS Network 설정에서 LB Tab에서 YES를 선택해 부하분산 장치 뒤에 위치하게 합니다.**
+* #### **Network 설정에서 LB Tab에서 YES를 선택해 부하분산 장치 뒤에 위치하게 합니다.**
 
     ![캡처6565](https://user-images.githubusercontent.com/69498804/107490107-c656a680-6bcc-11eb-8ebc-9e8870171f93.JPG)
 
@@ -210,7 +200,7 @@ tags: AZURE
 
 <br/>
 
-* #### **정상적으로 VMSS가 만들어졌다면 다음과 같이 관리 되는 VM 2대를 확인 할 수 있습니다.**
+* #### **VMSS가 만들어졌다면 다음과 같이 관리 되는 VM 2대를 확인 할 수 있습니다.**
 
     ![캡처111111](https://user-images.githubusercontent.com/69498804/107490885-d0c57000-6bcd-11eb-867a-4bcc5a530fbd.JPG)
 
