@@ -70,7 +70,6 @@ tags: AZURE
 
 **Azure에서 VPN(Virtual Private Network)를 사용하는 경우는 다음과 같습니다.**
 
-<br/>
 
 * **S2S (Site-to-Site) : 가상네트워크와 On-Premise 네트워크를 연결하는 VPN, VPNgw와 LocalGW가 필요**  
 
@@ -95,12 +94,8 @@ tags: AZURE
 **이번 실습에서는 다른 RG의 다른 Resource를 가지고 있는 VM을 VpnGW로 통신을 해보겠습니다.**  
 
 
-<br/>
-
 ### **각 RG의 생성 Resource 정보**
 
-
-<br/>
 
 * **RG-VPN01** 
 
@@ -125,8 +120,6 @@ tags: AZURE
 
 **각각의 RG 그룹에 위의 정보에 맞게 Vnet Resource를 생성합니다.**  
 
-
-<br/>
 
 * **VM01의 Vnet**
 
@@ -173,7 +166,6 @@ tags: AZURE
 **그러나 지금 같이 VNet이 동일한 구독의 다른 RG인 경우 포털을 사용하여 연결할 수 있습니다.**   
 **그럼 이제 VNet1과 VNet2에 connection 만들겠습니다.**  
 
-<br/>
 
 * **Connection 생성 [생성한 GW01의 Connections Blade에 Add]** 
 
@@ -231,8 +223,6 @@ tags: AZURE
 
 ### **간단하게 VM01 -> VM99로 Ping(IGMP) TEST를 해봅시다.!!**
 
-<br/>
-
 * **VM01 (10.1.0.4)에 접속한 뒤 VM99의 IP인 10.41.0.4으로 Ping!**
 
     ![캡처232323](https://user-images.githubusercontent.com/69498804/107920087-b0bbf500-6faf-11eb-9b63-d2099dc0b17a.JPG)
@@ -249,3 +239,10 @@ tags: AZURE
 <br/>
 
 ---
+
+## **마치며…**  
+
+
+**간단하게 VNET-VNET 연결에 대해서만 실습을 진행해봤습니다.**  
+**아마 on-premise 프로젝트를 하게 된다면 S2S도 많이 사용 할 것 같지만**  
+**현재로서는 그렇게 필요성을 느끼지 못해서 실습은 정리하지 않았습니다!**
