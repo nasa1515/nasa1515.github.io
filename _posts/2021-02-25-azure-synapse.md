@@ -44,7 +44,7 @@ tags: DATA
 
 
 - [Azure Synapse Analytics](#a1)
-- [VM - PHP, Apache, MariaDB](#a2)
+- [Azure Portal 에서 작업영역 생성](#a2)
 
 
 --- 
@@ -61,5 +61,33 @@ tags: DATA
     **엔터프라이즈 영역에서 정적 Data (ex. 영업 데이터, 매출 데이터, 개발 데이터 등)을**  
     **ETL (extract, transform, load), 전처리(가공) 전 중앙에 모아 관리하는 논리 로직**
 
+<br/>
 
+* #### **SQL 전용 풀(Dedicated-leading SQL), (전 SQL DW)**  
+
+    **Synapse SQL을 사용할 때 프로비저닝되는 분석 리소스의 컬렉션을 표현합니다.**  
+    **SQL POOL의 크기와 가격은 DWU(Data WareHouse Unit)에 의해 결정됩니다.** 
+
+<br/>
+
+* #### **Dedicated SQL은 다음과 같이 포함됩니다.** 
+
+    ![dedicated-sql-pool (1)](https://user-images.githubusercontent.com/69498804/109120531-6abe1880-7789-11eb-8b03-7e3a301f9f3b.png)
+
+    **Synapse analytics에서 사용가능한 서비스 아키텍쳐**  
+    **각 서비스의 설명은 차후 포스트로 나눠서 진행 예정입니다.**
+
+    * **Deficated SQL Pools**
+    * **Serverless SQL Pool**
+    * **Apache Spark Pools**
+    * **Pipelines (Data 통합)**
+    * **Shared metadata system**
+    * **Connected Service**
+
+<br/>
+
+---
+
+
+## **Azure Portal 에서 작업영역 생성**   <a name="a2"></a>  
 
