@@ -19,9 +19,9 @@ tags: AZURE
 **머리말**  
   
 
-**지금까지의 포스트에서는 PowerShell을 이용할때 Portal을 통해서 입력했었습니다.**  
-**일일히 VM에 들어가고 인증하고 하는 과정들이 너무 불필요하게 느껴졌고**  
-**앞으로 Terraform등을 연동해서 실습을 할 예정이기에 이쯤에서 VSCODE의 연동이 필요하다고 느꼈습니다.**  
+**지금까지는 Azure Portal에서만 PowerShell을 이용 했었습니다.**  
+**그러나 일일히 VM에 들어가고 인증하고 하는 과정들이 너무 불필요하게 느껴졌고**  
+**앞으로 IAC등을 사용할 예정이기에 VSCODE의 연동이 필요하다고 느꼈습니다.**  
 **그래서 이번 포스트는 VSCODE의 연동입니다.**  
 
 
@@ -71,8 +71,6 @@ tags: AZURE
 ## **1. Visual Studio(VS) Code 설치**   <a name="a1"></a>    
 
 
-<br/>
-
 
 * **[VSCODE 페이지](https://code.visualstudio.com/download)로 이동하여 VS 코드를 설치합니다.**
 
@@ -87,7 +85,6 @@ tags: AZURE
 
 ## **2. Node.js 설치** <a name="a2"></a>  
 
-<br/>
 
 * **[Nodejs 페이지](https://nodejs.org/en/)로 이동하여 Node.js를 설치합니다.**
 
@@ -98,8 +95,6 @@ tags: AZURE
 ---
 
 ## **3. VSCODE에서 Azure Account extension 설치**
-
-<br/>
 
 * **VSCODE의 Extension Tab에서 Azure Account를 설치합니다!**
 
@@ -113,7 +108,6 @@ tags: AZURE
 
 ### **4. 설치가 완료되었으면 명령 단축으로 이동합니다.**  
 
-<br/>
 
 * **shift + Ctrl + P 단축키로 접속해 Azure:Sign In을 선택**
 
@@ -141,8 +135,6 @@ tags: AZURE
 ---
 
 ## **Cloud Shell에 접속합니다.**
-
-<br/>
 
 
 * **로그인 완료 후 shift + Ctrl + P으로 Azure:Open PowerShell in Cloud Shell을 선택**
