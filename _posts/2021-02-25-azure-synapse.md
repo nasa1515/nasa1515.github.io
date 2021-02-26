@@ -134,3 +134,27 @@ tags: DATA
 * #### **다음과 같은 Web URL에 접속됩니다!**
 
     ![캡처7](https://user-images.githubusercontent.com/69498804/109237303-a651f480-7814-11eb-8432-cd1bdb399f61.JPG)
+
+    **WEB URL에서는 다음과 같은 Blade로 나뉩니다.**
+    * **HOME : 홈 화면 UI**
+    * **DATA : DB or Linked 되어있는 Lake Storage 등**
+    * **Develop : SQL Scirpt, Data flow등 쿼리에 대한 작업**
+    * **Integrate : Develop 과정을 통합하는 파이프라인 작업**
+    * **Monitor : Develop, Integrate 작업에 대한 모니터링**
+    * **Manage : SQL Pools, Spark Pools, 파이프라인 등 관리**
+
+<br/>
+
+---
+
+* #### **간단하게 TEST_data를 넣어서 확인해봅시다.**
+
+    ![캡처8](https://user-images.githubusercontent.com/69498804/109240640-309d5700-781b-11eb-973f-2825baafa97a.JPG)
+
+    * **Data Tab -> Lake Storage의 파일시스템에 다음과 같이 UPload 가능**
+
+<br/>
+
+* #### **저는 다음과 같이 미리 생성해둔 test csv 파일을 업로드 했습니다.**
+
+    ![캡처5](https://user-images.githubusercontent.com/69498804/109240823-87a32c00-781b-11eb-85e3-421b3e2c98d8.JPG)
