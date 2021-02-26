@@ -92,7 +92,9 @@ tags: DATA
 ---
 
 
-## **Azure Portal 에서 작업영역 생성**   <a name="a2"></a>  
+## **Azure Portal 에서 Synapse Analystics 영역 생성**   <a name="a2"></a>  
+
+<br/>
 
 * #### **Porter에서 Create resource Tab에서 Azure Synapse analystics 검색 후 설치**
 
@@ -100,3 +102,17 @@ tags: DATA
 
 <br/>
 
+
+* #### **Basic 옵션 설정**
+
+    ![캡처3](https://user-images.githubusercontent.com/69498804/109235009-29bd1700-7810-11eb-9521-8cfa1ca9db1d.JPG)
+
+    * **RG**
+    * **Workspace name**
+    * **Region**
+    * **Account name**
+    * **File System name**
+
+<br/>
+
+---
