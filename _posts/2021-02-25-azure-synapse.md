@@ -116,3 +116,21 @@ tags: DATA
 <br/>
 
 ---
+
+* #### **생성된 Synapse workspace에 접속합니다.**
+
+    ![캡처4](https://user-images.githubusercontent.com/69498804/109237068-40fe0380-7814-11eb-92c3-17f4af65a87c.JPG)
+
+
+<br/>
+
+* #### **Work Space Web URL에 접속합니다.**
+
+    ![캡처6](https://user-images.githubusercontent.com/69498804/109237187-6c80ee00-7814-11eb-8783-9ceee0ed2c19.JPG)
+
+
+<br/>
+
+* #### **다음과 같은 Web URL에 접속됩니다!**
+
+    ![캡처7](https://user-images.githubusercontent.com/69498804/109237303-a651f480-7814-11eb-8432-cd1bdb399f61.JPG)
