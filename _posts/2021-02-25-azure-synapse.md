@@ -313,6 +313,22 @@ tags: DATA
 <br/>
 
 
+* #### **상단의 Publish all을 하게 되면 방금전에 사용했던 쿼리가 저장 및 등록됩니다.**
+
+    ![222131](https://user-images.githubusercontent.com/69498804/109261400-0f506100-7843-11eb-8cde-9caafb85f3e7.JPG)
+
+<br/>
+
+
+* #### **그럼 Develop Tab에 Script가 자동으로 생성됩니다.**
+
+    ![캡처33341](https://user-images.githubusercontent.com/69498804/109261495-3b6be200-7843-11eb-99f8-a7ef61007724.JPG)
+
+    * **해당 스크립트를 integrate 파이프라인에 넣어 자동화도 가능합니다.**
+
+<br/>
+
+
 #### **이번 포스트에서는 SQL Pools로 진행하는 방법만 다뤄봤습니다.** 
 #### **Serverless, Apache Spark 등의 방법은 추후에 포스트 예정입니다.** 
 
