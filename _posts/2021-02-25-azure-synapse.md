@@ -256,7 +256,7 @@ tags: DATA
 ---
 
 
-## **이제 DB에서 데이터를 뽑아서 BI를 사용해 시각화 해보죠**  
+## **이제 DB에서 데이터를 뽑아서 시각화 해보죠**  
 
 
 * #### **생성했던 Table에서 New SQL script -> Select TOP 100 rows 창을 접속**   
@@ -276,7 +276,7 @@ tags: DATA
     SELECT PassengerCount,
         SUM(TripDistanceMiles) as SumTripDistance,
         AVG(TripDistanceMiles) as AvgTripDistance
-    FROM  dbo.Trip
+    FROM  dbo.nasa1515
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
     ORDER BY PassengerCount;
@@ -285,3 +285,17 @@ tags: DATA
     * **위 스크립트는 총 주행거리,평균 주행거리, 승객 수 데이터를 뽑습니다.**  
 
 <br/>
+
+* #### **다음과 같이 SQL DB에서 해당 데이터가 호출되게 됩니다.**
+
+    ![캡처2](https://user-images.githubusercontent.com/69498804/109255651-c5ae4900-7837-11eb-9a7e-2a0bfd960e10.JPG)
+
+
+
+<br/>
+
+* #### **또한 호출해낸 결과를 다음과 같이 쉽게 시각화가 가능합니다.**  
+
+    ![캡처222222](https://user-images.githubusercontent.com/69498804/109255782-027a4000-7838-11eb-8b9c-0467ef957ec6.JPG)
+
+    * **View Tab을 Chart로만 변경하면 된다.**
