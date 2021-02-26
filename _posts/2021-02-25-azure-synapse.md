@@ -167,16 +167,79 @@ tags: DATA
 
 <br/>
 
-* #### **이 후 간단히 만든 TEST_data를 넣어서 확인해봅시다.**
+* #### **이 후 데이터를 넣어보겠습니다.**
 
-    ![캡처8](https://user-images.githubusercontent.com/69498804/109240640-309d5700-781b-11eb-973f-2825baafa97a.JPG)
+    **Develop Tab에서 + 단추로 새로 리소스 추가 -> SQL 스크립트를 생성**  
+    **아래 스크립트 삽입 후 실행 (Azure에서 제공하는 200만개 행 데이터)**
 
-    * **Data Tab -> Lake Storage의 파일시스템에 다음과 같이 UPload 가능**
+    ```
+    CREATE TABLE [dbo].[nasa1515]
+    (
+        [DateID] int NOT NULL,
+        [MedallionID] int NOT NULL,
+        [HackneyLicenseID] int NOT NULL,
+        [PickupTimeID] int NOT NULL,
+        [DropoffTimeID] int NOT NULL,
+        [PickupGeographyID] int NULL,
+        [DropoffGeographyID] int NULL,
+        [PickupLatitude] float NULL,
+        [PickupLongitude] float NULL,
+        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DropoffLatitude] float NULL,
+        [DropoffLongitude] float NULL,
+        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [PassengerCount] int NULL,
+        [TripDurationSeconds] int NULL,
+        [TripDistanceMiles] float NULL,
+        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FareAmount] money NULL,
+        [SurchargeAmount] money NULL,
+        [TaxAmount] money NULL,
+        [TipAmount] money NULL,
+        [TollsAmount] money NULL,
+        [TotalAmount] money NULL
+    )
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
+
+    COPY INTO [dbo].[nasa1515]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
+    WITH
+    (
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
+    )
+    OPTION (LABEL = 'COPY : Load [nasa1515].[Trip] - Taxi dataset');
+    ```
+
+    * **간단하게 dbo.nasa1515라는 데이블에 로드 하는 작업입니다.** 
 
 <br/>
 
-* #### **저는 다음과 같이 미리 생성해둔 test csv 파일을 업로드 했습니다.**
 
-    ![캡처5](https://user-images.githubusercontent.com/69498804/109240823-87a32c00-781b-11eb-85e3-421b3e2c98d8.JPG)
+* #### **스크립트를 실행하기 전 연결되어 있는 SQL Pools을 확인해주세요** 
+
+    ![캡처444](https://user-images.githubusercontent.com/69498804/109246549-d1910f80-7825-11eb-99ad-071d07d7229e.JPG)
+
+    * **저는 조금 전 만든 SQL Pools을 선택해서 RUN 했습니다.** 
+
+
+
+
+<br/>
+
+* #### **방법2. 미리 만든 Data를 업로드 가능**   
+
+    **Data Tab -> Lake Storage의 파일시스템에 데이터 UPload 가능**
+
+    ![캡처8](https://user-images.githubusercontent.com/69498804/109240640-309d5700-781b-11eb-973f-2825baafa97a.JPG)
+
+
 
 <br/>
