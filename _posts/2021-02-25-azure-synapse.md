@@ -299,3 +299,31 @@ tags: DATA
     ![캡처222222](https://user-images.githubusercontent.com/69498804/109255782-027a4000-7838-11eb-8b9c-0467ef957ec6.JPG)
 
     * **View Tab을 Chart로만 변경하면 된다.**
+
+
+<br/>
+
+
+* #### **추가적으로 Monitor Tab에서 쿼리에 대한 모니터링도 가능합니다.** 
+
+    ![ttest](https://user-images.githubusercontent.com/69498804/109260684-f0050400-7841-11eb-819e-e86e57090c4c.JPG)
+
+    * **기본적으로 파이프라인, 트리거, Pools들의 상태를 확인 가능**  
+
+<br/>
+
+
+#### **이번 포스트에서는 SQL Pools로 진행하는 방법만 다뤄봤습니다.** 
+#### **Serverless, Apache Spark 등의 방법은 추후에 포스트 예정입니다.** 
+
+
+<br/>
+
+---
+
+## **마치며…**  
+
+
+**Data쪽은 아직 아무것도 모르겠습니다.**  
+**조금 조금씩 기초 이론부터 시작해서 실습까지 인프라처럼 늘 수 있다고 생각합니다.**  
+
