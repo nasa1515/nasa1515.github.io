@@ -45,7 +45,7 @@ tags: DATA
 
 - [Azure Synapse Analytics](#a1)
 - [Azure Portal 에서 작업영역 생성](#a2)
-- [SQL Pools을 이용한 간단한 쿼리 테스트](#a3)
+- [Synapse SQL Pools을 이용한 간단한 쿼리 테스트](#a3)
 
 
 --- 
@@ -148,7 +148,7 @@ tags: DATA
 
 ---
 
-## **SQL Pools을 이용한 간단한 쿼리 테스트** <a name="a3"></a>  
+## **Synapse SQL Pools을 이용한 간단한 쿼리 테스트** <a name="a3"></a>  
 
 
 * #### **TEST를 위한 SQL Pools을 생성해봅시다.**
