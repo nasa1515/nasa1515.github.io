@@ -218,7 +218,7 @@ tags: DATA
     OPTION (LABEL = 'COPY : Load [nasa1515].[Trip] - Taxi dataset');
     ```
 
-    * **간단하게 dbo.nasa1515라는 테이블에 Load 하는 작업입니다.** 
+    * **간단하게 dbo.nasa1515라는 테이블을 만들고 데이터를 Load 하는 작업입니다.** 
 
 <br/>
 
