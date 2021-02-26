@@ -218,7 +218,7 @@ tags: DATA
     OPTION (LABEL = 'COPY : Load [nasa1515].[Trip] - Taxi dataset');
     ```
 
-    * **간단하게 dbo.nasa1515라는 데이블에 로드 하는 작업입니다.** 
+    * **간단하게 dbo.nasa1515라는 테이블에 Load 하는 작업입니다.** 
 
 <br/>
 
@@ -241,5 +241,47 @@ tags: DATA
     ![캡처8](https://user-images.githubusercontent.com/69498804/109240640-309d5700-781b-11eb-973f-2825baafa97a.JPG)
 
 
+
+<br/>
+
+
+
+* #### **스크립트 실행 후 DB에 테이블과 데이터를 확인합니다.**
+
+    ![캡처22211](https://user-images.githubusercontent.com/69498804/109254859-36546600-7836-11eb-8a94-113c77c54c3b.JPG)
+
+
+<br/>
+
+---
+
+
+## **이제 DB에서 데이터를 뽑아서 BI를 사용해 시각화 해보죠**  
+
+
+* #### **생성했던 Table에서 New SQL script -> Select TOP 100 rows 창을 접속**   
+
+    ![캡처11](https://user-images.githubusercontent.com/69498804/109255127-b5499e80-7836-11eb-8d7a-4e82169c906c.JPG)
+
+
+
+<br/>
+
+* #### **그럼 다음과 같은 Select 문이 나오는데 지우고 아래 스크립트를 입력 후 RUN**
+
+    ![캡처33333](https://user-images.githubusercontent.com/69498804/109255293-0c4f7380-7837-11eb-831e-a5237dbc0dfd.JPG)
+
+
+    ```
+    SELECT PassengerCount,
+        SUM(TripDistanceMiles) as SumTripDistance,
+        AVG(TripDistanceMiles) as AvgTripDistance
+    FROM  dbo.Trip
+    WHERE TripDistanceMiles > 0 AND PassengerCount > 0
+    GROUP BY PassengerCount
+    ORDER BY PassengerCount;
+    ```
+    * **넣었던 DB는 뉴욕 택시기사의 데이터입니다.**
+    * **위 스크립트는 총 주행거리,평균 주행거리, 승객 수 데이터를 뽑습니다.**  
 
 <br/>
