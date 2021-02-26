@@ -45,6 +45,7 @@ tags: DATA
 
 - [Azure Synapse Analytics](#a1)
 - [Azure Portal 에서 작업영역 생성](#a2)
+- [SQL Pools을 이용한 간단한 쿼리 테스트](#a3)
 
 
 --- 
@@ -147,7 +148,26 @@ tags: DATA
 
 ---
 
-* #### **간단하게 TEST_data를 넣어서 확인해봅시다.**
+## **SQL Pools을 이용한 간단한 쿼리 테스트** <a name="a3"></a>  
+
+
+* #### **TEST를 위한 SQL Pools을 생성해봅시다.**
+
+    ![캡처11](https://user-images.githubusercontent.com/69498804/109242652-d900ea80-781e-11eb-9651-f63c35cc4f96.JPG)
+
+    * **다음과 같은 Manage tab -> SQL Pools -> NEW로 생성가능**   
+    * **Built-in으로 Serverless를 주긴하지만 사용하지 않을 겁니다.**
+
+<br/>
+
+
+* **생성 된 SQL Pools은 Data Tab에서 다음과 같이 확인이 가능합니다.**
+
+    ![캡처22](https://user-images.githubusercontent.com/69498804/109244981-064f9780-7823-11eb-9c00-47998f326b06.JPG)
+
+<br/>
+
+* #### **이 후 간단히 만든 TEST_data를 넣어서 확인해봅시다.**
 
     ![캡처8](https://user-images.githubusercontent.com/69498804/109240640-309d5700-781b-11eb-973f-2825baafa97a.JPG)
 
@@ -158,3 +178,5 @@ tags: DATA
 * #### **저는 다음과 같이 미리 생성해둔 test csv 파일을 업로드 했습니다.**
 
     ![캡처5](https://user-images.githubusercontent.com/69498804/109240823-87a32c00-781b-11eb-85e3-421b3e2c98d8.JPG)
+
+<br/>
