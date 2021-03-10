@@ -47,10 +47,7 @@ tags: DATA
 
 
 - [Spark 설치](#a1)
-- [Zeppelin 설치](#a2)
-- [pyspark 실행 ERROR 발생 및 해결..](#a5)
-- [Azure Blob Storage에 csv 파일 Upload](#a6)
-- [Spark Cluster에 blob csv 파일 올리기 - ERROR 발생!](#a7)
+- [Zeppelin 설치 후 연동](#a2)
 
 --- 
 
