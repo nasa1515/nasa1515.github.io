@@ -327,6 +327,15 @@ tags: DATA
     ```
     [zeppelin@hadoop-master ~]$ echo export PATH="$PATH:/home/zeppelin/zeppelin/bin" >> ~/.bashrc
     [zeppelin@hadoop-master ~]$ source ~/.bashrc
+
+    ### 총 내용 
+
+    export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.275.b01-1.el8_3.x86_64"
+    export HADOOP_HOME="/usr/local/hadoop"
+    export SPARK_HOME="/home/spark/spark"
+    export PATH="$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:"
+    export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
+    export PATH=$PATH:$SPARK_HOME/bin:$HADDOP_HOME/bin:$HADOOP_HOME/sbin
     ```
 
     <br/>
@@ -341,8 +350,14 @@ tags: DATA
     ### 설정 추가
 
 
-    [zeppelin@hadoop-master hadoop]$ echo export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.275.b01-1.el8_3.x86_64" >> zeppelin-env.sh
-    [zeppelin@hadoop-master hadoop]$ echo export SPARK_HOME=/home/spark/spark >> zeppelin-env.sh
+   
+    export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.275.b01-1.el8_3.x86_64"
+    export SPARK_HOME="/home/spark/spark"
+    export MASTER=yarn-client
+    export HADOOP_HOME="/usr/local/hadoop"
+    export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+    export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+
 
     ### zeppelin-site.xml 수정
 
@@ -369,4 +384,53 @@ tags: DATA
 
 * #### **Zeppelin 기동 테스트** 
 
-```
+    ```
+    [zeppelin@hadoop-master conf]$ zeppelin-daemon.sh start
+    ```
+
+
+    ![12313231](https://user-images.githubusercontent.com/69498804/110597015-651df500-81c3-11eb-8cb1-371a512f7b8b.JPG)
+
+    <br/>
+
+
+* #### **아참! zeppelin-env 설정이 적용이 안되는 이슈가 있었습니다 ㅠㅠ** 
+    **그래서 저는 직접 zeppelin web의 Interpreter 설정을 수정했습니다.**  
+    ![캡처1231321](https://user-images.githubusercontent.com/69498804/110597241-9e566500-81c3-11eb-980d-43b03fa5d704.JPG)
+
+    <br/>
+
+    **다음과 같이 Spark.matser, deploymode를 수정해줍니다.** 
+
+    ![12312313231](https://user-images.githubusercontent.com/69498804/110597343-c645c880-81c3-11eb-9c6c-06b1ce953c44.JPG)
+
+<br/>
+
+
+* #### **그럼 아까 test로 작성했던 코드가 동작하는지 확인해보죠** 
+
+    ![12312312312312312321312](https://user-images.githubusercontent.com/69498804/110597530-060cb000-81c4-11eb-933f-6b914cabd5b4.JPG)
+
+    **아주 잘 돌아갑니다.** 
+
+
+<br/>
+
+
+* #### **그럼 yarn manager에서도 확인이 가능한지 봅시다**
+
+    ![1111111](https://user-images.githubusercontent.com/69498804/110597695-3c4a2f80-81c4-11eb-9c1a-365dc2c8d727.JPG)
+
+    **다음과 같이 zeppelin app의 동작을 확인 할 수 있습니다!!** 
+
+<br/>
+
+---
+
+## **마치며…**  
+
+  
+**여러가지 문제가 있었지만 그래도 하루만에 성공했습니다.**  
+**이제 드디어 pyspark 문법이나 data를 다루는 방법들에 대해서 실습하겠네요.**  
+**추가적으로 ambari 설치해서 클러스터도 모니터링 해보겠습니다.**  
+
