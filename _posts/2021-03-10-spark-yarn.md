@@ -3,7 +3,7 @@ layout: post
 title: "[DATA] - Apache Spark v3.0 on yarn 설치 With Zeppelin"
 author: nasa1515
 categories: DATA
-date: 2021-03-05 13:36
+date: 2021-03-10 13:36
 comments: true
 cover: "/assets/1800-550.jpg"
 tags: DATA
