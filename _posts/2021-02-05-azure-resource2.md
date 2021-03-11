@@ -75,7 +75,7 @@ tags: AZURE
 <br/>
 
 **Azure의 모든 리소스를 생성한거나 사용하기 위해서는 리소스를 관리하는 RG가 먼저 필요합니다.**  
-**이론적인 내용은 Azure 시리즈의 [Resource & Resource Manager](https://nasa1515.github.io/azure/2021/01/22/azure-resoure.html) 포스트를 확인해주세요**  
+**이론적인 내용은 Azure 시리즈의 [Resource, Resource Manager](https://nasa1515.github.io/azure/2021/01/22/azure-resoure.html) 포스트를 확인해주세요**  
 
 
 
