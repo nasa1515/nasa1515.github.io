@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[AZURE] - AAD & Tanant"
+title: "[AZURE] - AAD, Tanant"
 author: nasa1515
 categories: AZURE
 date: 2021-02-05 14:36
@@ -11,7 +11,7 @@ tags: AZURE
 
 
 
-## **AAD & Tanant**
+## **AAD, Tanant**
 
 
 <br/>
