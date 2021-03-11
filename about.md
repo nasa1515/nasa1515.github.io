@@ -31,9 +31,9 @@ cover: "/assets/1800-550.jpg"
 
 <br/>
 
-  * **2020-12 ~ Cloocus 재직**  
-  * **2020-06 ~ 2020-11 CCCR ACADEMY DevSecOps**  
-  * **2014-07 ~ 2016-09 KT VOD 인프라 엔지니어**
+  * **2020-12 ~ Cloocus**  
+  * **2020-06 ~ 2020-11 CCCR DevSecOps**  
+  * **2014-07 ~ 2016-09 KT 인프라 엔지니어**
 
 <br/>
 
