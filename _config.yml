@@ -34,24 +34,19 @@ jekyll-archives:
   permalinks:
     category: "/category/:name/"   
 disqus_shortname: nasa1415
-
 social:
-
   - name: GitHub
     icon: github
     username: Github
     url: https://github.com/nasa1515
     desc: Fork me on GitHub
     share: false
-
 protocols:
     fb_image: "/assets/PINGGU.jpg"
     fb_image_width: 612
     fb_image_height: 605
     fb_image_type: "image/png"
-
     twitter_image: "/assets/PINGGU.jpg"
-
     os_repo: "https://github.com/bencentra/centrarium.com"
     os_rcs_type: "git"
     os_src: "git@github.com:bencentra/centrarium.com.git"
