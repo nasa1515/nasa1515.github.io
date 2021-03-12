@@ -13,7 +13,7 @@ email: h43254@gmail.com
 name: WONSEOK LEE
 description: >
   nasa's DevOps blog
-baseurl: ""
+baseurl: /
 url: "http://nasa1515.github.io"
 plugins_dir:
 - jekyll-sitemap 
