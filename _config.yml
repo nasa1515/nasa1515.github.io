@@ -47,6 +47,6 @@ protocols:
     fb_image_height: 605
     fb_image_type: "image/png"
     twitter_image: "/assets/PINGGU.jpg"
-    os_repo: "https://github.com/bencentra/centrarium.com"
+    os_repo: "https://github.com/nasa1515/nasa1515.github.io"
     os_rcs_type: "git"
-    os_src: "git@github.com:bencentra/centrarium.com.git"
+    os_src: "git@github.com:nasa1515/nasa1515.github.io.git"
