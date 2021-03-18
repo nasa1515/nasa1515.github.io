@@ -103,7 +103,7 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
 
 ### **``kubectl 기본 사용법``** <a name="a2"></a>
 
-**간단히 에코 서버(=클라이언트가 전송해주는 데이터를 그대로 되돌려 전송하는 서버)를 동작시켜보겠습니다.**
+**간단히 에코 서버(=클라이언트가 전송해주는 데이터를 그대로 되돌려 전송하는 서버)를 동작시켜보죠**
 
 * **먼저 아래 명령어를 통해서 nasaehco라는 pod를 하나 생성하겠습니다.**
 
@@ -260,7 +260,7 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
     kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   23d
     ```
 
-    **이와 같이 간단한 실습으로 간단한 사용법에 대해서 알아보았다**
+    **이와 같이 간단한 실습으로 간단한 사용법에 대해서 알아보았습니다.**
 
 ---
 
@@ -357,14 +357,15 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
  
 
 * ### **``Output 옵션``**
-    **kubectl으로 얻은 여러 정보들을 file로 저장하기를 원할 수 있다. 
-    이때 아래와 같은 옵션으로 추출 가능합니다.**
+    **kubectl으로 얻은 정보들을 file로 저장하기를 원할 수 있죠.**   
+    **이때 아래와 같은 옵션으로 추출 가능합니다.**
 
  
     ```
     kubectl [command] [TYPE] [NAME] -o=<output_format>
     ```
 
+<br/>
 
 * **``output_format으로 아래와 같은 format들을 지원.``**
 
@@ -379,6 +380,8 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
     |-o=name|	리소스 이름만 조회
     |-o=wide	|pod, node 이름 등 추가적인 정보 모두 조회
     |-o=yaml	|yaml 형식의 API object로 저장
+
+<br/>
 
 * **output 옵션 예제**
 
@@ -407,6 +410,8 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
     $ kubectl create -f example-controller.yaml
     ```
 
+    <br/>
+
     * **kubectl get**
 
     ```
@@ -429,6 +434,8 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
     $ kubectl get pods --field-selector=spec.nodeName=server01
     ```
 
+    <br/>
+
     * **kubectl describe**
 
     ```
@@ -444,6 +451,8 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
     // 모든 pod 정보 출력(uninitialized pod은 제외)
     $ kubectl describe pods --include-uninitialized=false
     ```
+
+    <br/>
 
     * **kubectl delete**
 
@@ -461,6 +470,7 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
     $ kubectl delete pods --all
     ```
 
+    <br/>
 
     * **kubectl exec**
 
@@ -475,7 +485,8 @@ The connection to the server 10.146.0.6:6443 was refused - did you specify the r
     $ kubectl exec -ti <pod-name> /bin/bash
     ```
  
-
+    <br/>
+    
     * **kubectl logs**
 
     ```
