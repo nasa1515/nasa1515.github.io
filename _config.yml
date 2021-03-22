@@ -17,6 +17,7 @@ baseurl: /
 url: "http://nasa1515.github.io"
 plugins_dir:
 - jekyll-sitemap 
+g-analytics: G-81S10BN84R
 cover: "/assets/1800-550.jpg"
 logo: "/assets/PINGGU.jpg"
 timezone: Asia/Seoul
