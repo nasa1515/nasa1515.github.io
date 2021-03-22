@@ -17,7 +17,6 @@ baseurl: /
 url: "http://nasa1515.github.io"
 plugins_dir:
 - jekyll-sitemap 
-ga_tracking_id: "UA-192755809-1"
 cover: "/assets/1800-550.jpg"
 logo: "/assets/PINGGU.jpg"
 timezone: Asia/Seoul
@@ -35,6 +34,7 @@ jekyll-archives:
   permalinks:
     category: "/category/:name/"   
 disqus_shortname: nasa1415
+ga_tracking_id: "UA-192755809-1"
 social:
   - name: GitHub
     icon: github
