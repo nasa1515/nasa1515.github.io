@@ -60,6 +60,11 @@ tags: AZURE
     - [LoadBalancer](https://nasa1515.github.io/azure/2021/02/09/Azure-lb2.html)   
     - [VSCODE <-> Cloudshell](https://nasa1515.github.io/azure/2021/02/09/Azure-vdcode.html)   
     - [VM 으로 LAPM 서비스 구축하기](https://nasa1515.github.io/azure/2021/02/24/AZURE-WEB.html)   
+    - [VSCODE로 AKS 관리하기](https://nasa1515.github.io/azure/2021/03/19/aks-vscode.html)
+
+* **ERROR Report**  
+
+    - [Cloudshell error = Error creating Azure Storage Account - code : 409](https://nasa1515.github.io/azure/2021/03/24/azure-cloudshellerror.html)
 
 ---
 
