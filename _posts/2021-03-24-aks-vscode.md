@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[DATA] - VSCODE에 AKS 연결하기"
+title: "[AZURE] - VSCODE에 AKS 연결하기"
 author: nasa1515
-categories: DATA
+categories: AZURE
 date: 2021-03-19 12:36
 comments: true
 cover: "/assets/1800-550.jpg"
-tags: DATA
+tags: AZURE
 ---
 
 
@@ -31,21 +31,35 @@ tags: DATA
  
 ---
 
-**DATA 시리즈**
 
-**이론**
+**Azure 시리즈**
+
+* **이론**
+
+    - [Subscription & management Group](https://nasa1515.github.io/azure/2021/01/21/azure.subscriptions.html)
+    - [Resource & Resource Manager](https://nasa1515.github.io/azure/2021/01/22/azure-resoure.html)
+    - [Azure Region & availability zones](https://nasa1515.github.io/azure/2021/01/22/azure.region.html)
+    - [Azure Computing Service](https://nasa1515.github.io/azure/2021/01/25/azure.compute.html)
+    - [Azure Storage](https://nasa1515.github.io/azure/2021/01/26/azure.storage.html)
+    - [Azure Network VNET](https://nasa1515.github.io/azure/2021/01/26/azure-vnet.html)
+    - [Azure VPN GATEWAY](https://nasa1515.github.io/azure/2021/01/27/Azure-VPN.html)
+    - [Azure ExpressRoute](https://nasa1515.github.io/azure/2021/01/27/azure-expreroute.html)
+    - [Azure Storage Account](https://nasa1515.github.io/azure/2021/02/08/storage2.html)
 
 
+* **실습**
 
- - [Apache Spark](https://nasa1515.github.io/data/2021/03/03/spark.html)
-
-
-**실습** 
-
- - [Azure Synapse Analytics](https://nasa1515.github.io/data/2021/02/25/azure-synapse.html)
- - [Azure VM에 Apache Spark v3.0 Standalone 설치 With Zeppelin](https://nasa1515.github.io/data/2021/03/04/Spark2.html)
- - [Hadoop 3.3.0 Full Distribute mode infra 구축](https://nasa1515.github.io/data/2021/03/08/hadoop.html)
- - [Apache Spark v3.0 on yarn 설치 With Zeppelin](https://nasa1515.github.io/data/2021/03/10/spark-yarn.html)
+    - [RG 생성, Resource 생성, TAGING, Resoureces 이동하기](https://nasa1515.github.io/azure/2021/02/05/azure-resource2.html)
+    - [Vnet 생성하기](https://nasa1515.github.io/azure/2021/02/05/vnet2.html)
+    - [가상머신(VM)](https://nasa1515.github.io/azure/2021/02/08/VM2.html)
+    - [Storage Service 생성](https://nasa1515.github.io/azure/2021/02/08/AZURE-Storageservice.html)
+    - [가용성(Availability)](https://nasa1515.github.io/azure/2021/02/08/scale.html)
+    - [가상 머신 확장 집합 (VMSS)](https://nasa1515.github.io/azure/2021/02/09/Azure-VMSS.html)   
+    - [Virtual Network Gateway - VPN](https://nasa1515.github.io/azure/2021/02/09/Azure-vpngw.html)   
+    - [Application GateWay](https://nasa1515.github.io/azure/2021/02/09/Azure-LB.html)   
+    - [LoadBalancer](https://nasa1515.github.io/azure/2021/02/09/Azure-lb2.html)   
+    - [VSCODE <-> Cloudshell](https://nasa1515.github.io/azure/2021/02/09/Azure-vdcode.html)   
+    - [VM 으로 LAPM 서비스 구축하기](https://nasa1515.github.io/azure/2021/02/24/AZURE-WEB.html)   
 
 ---
 
@@ -58,14 +72,14 @@ tags: DATA
 - [VSCODE Kubernetes extentions 사용](#a2)
 - [Extentions 에 AKS 연결하기](#a3)
 
+<br/>
 
 --- 
 
-<br/>
 
 ## **AKS 구성**   <a name="a1"></a>     
 
-#### **저는 Azure의 공식 DOC로 CLI를 이용해서 AKS Cluster를 구축했습니다.** 
+#### **아래 Azure의 공식 DOC로 CLI, Portal을 이용해서 AKS Cluster를 구축합니다.** 
 
 * #### **[Azure AKS DOC](https://docs.microsoft.com/ko-kr/azure/aks/kubernetes-walkthrough)**  
 * #### **[Azure Portal 용 AKS DOC](https://docs.microsoft.com/ko-kr/azure/aks/kubernetes-walkthrough-portal)**
@@ -74,70 +88,74 @@ tags: DATA
 <br/>
 
 
-#### **Cluster 생성이 완료되었다면 아래와 같이 RG들과 Resource들이 생성됩니다.**  
+* #### **Cluster 생성되면 아래와 같이 RG와 Resource들이 생성됩니다.**  
 
-![123](https://user-images.githubusercontent.com/69498804/112254765-762b3380-8ca4-11eb-88b9-b64266de090c.JPG)
+    ![123](https://user-images.githubusercontent.com/69498804/112254765-762b3380-8ca4-11eb-88b9-b64266de090c.JPG)
+
+    * **k8s : AKS Resource가 있는 RG** 
+    * **MC_k8s_nasa1515_koreacentral : AKS의 실제 VMSS나 PIP들의 Resource가 있는 RG**  
 
 
 <br/>
 
 
-#### **이제 Cloud shell에서 kubelet 명령어를 입력해보려고 했으나 ERROR가 발생하네요?**  
+* #### **이제 Cloud shell에서 kubelet 명령어를 입력해보려는데 ERROR가 발생합니다.**  
 
-![캡처](https://user-images.githubusercontent.com/69498804/112254836-9529c580-8ca4-11eb-9edf-f971a165e43b.JPG)
+    ![캡처](https://user-images.githubusercontent.com/69498804/112254836-9529c580-8ca4-11eb-9edf-f971a165e43b.JPG)
 
-* **Cloud shell에서 AKS에 연결하기 위해선 Credentials이 필요합니다.!!**  
-
-<br/>
-
-#### **다음 명령어로 credentials을 가져 올 수 있습니다.**
-
-```
-az aks get-credentials --resource-group [myResourceGroup] --name [myAKSCluster]
-```
+    * **Cloud shell에서 AKS에 연결하기 위해선 Credentials이 필요하기 때문입니다.**  
 
 <br/>
 
-#### **Credentials을 가져온 뒤 정상적으로 kebectl 명령이 실행됩니다.**
+* #### **다음 명령어로 credentials을 가져 올 수 있습니다.**
 
-![캡처2](https://user-images.githubusercontent.com/69498804/112256786-97d9ea00-8ca7-11eb-90a6-56a7150ef2b7.JPG)
+    ```
+    az aks get-credentials --resource-group [myResourceGroup] --name [myAKSCluster]
+    ```
+
+<br/>
+
+* #### **Credentials을 가져온 뒤 정상적으로 kebectl 명령이 실행됩니다.**
+
+    ![캡처2](https://user-images.githubusercontent.com/69498804/112256786-97d9ea00-8ca7-11eb-90a6-56a7150ef2b7.JPG)
 
 <br/>
 
 
-#### **위 작업으로 Azure extentions을 이용해 VSCODE로 Cloud shell에 연결해 사용 가능합니다.**  
+* #### **사실 이미 VSCODE의 Azure extentions을 이용해 Cloud shell에 연결해 사용 가능합니다.**  
 
-![캡처3333](https://user-images.githubusercontent.com/69498804/112258604-1afc3f80-8caa-11eb-8641-fe03947a05a8.JPG)
+    ![캡처3333](https://user-images.githubusercontent.com/69498804/112258604-1afc3f80-8caa-11eb-8641-fe03947a05a8.JPG)
 
-* **다만 저는 왼쪽의 File list에서 여러 yaml file을 관리하고 싶습니다.**  
+    * **다만 저는 CloudShell의 불편함을 해결하고, 왼쪽의 File list에서 여러 yaml 을 관리하고 싶습니다.**  
 
 
 
 <br/>
 
 ---
+
 ### **VSCODE Kubernetes extentions 사용** <a name="a2"></a>   
 
 
-#### **그래서 VSCODE의 extentions을 사용해서 AKS와 직접 연결하는 방법을 찾았습니다.**  
+#### **그래서 VSCODE의 Kubernetes extentions을 사용해 AKS와 직접 연결하겠습니다.**  
 
 
-* #### **[가이드](https://mountainss.wordpress.com/2018/07/17/create-azure-kubernetes-cluster-and-manage-in-visual-studio-code-vsc-kubernetes-cloud/)** 
-
-<br/>
-
-#### **위의 링크에서 설명하는 방법은 다음과 같습니다.**  
-
-* #### **1. AKS Cluster 생성** 
-* #### **2. Local에 Azure CLI 설치**
-* #### **3. vscode에 kubernetes extentions 설치** 
-* #### **4. kubernetes extentions을 사용해 AKS와 직접 연결** 
-
-<br/>
+* #### **[설정 가이드](https://mountainss.wordpress.com/2018/07/17/create-azure-kubernetes-cluster-and-manage-in-visual-studio-code-vsc-kubernetes-cloud/)** 
 
 
-#### **1,2번은 이미 완료했습니다.** 
-#### **2번 작업 이후 local 에서 Azure cli에 연결하는 방법은 다음과 같습니다.**  
+
+    #### **위의 링크에서 설명하는 방법은 다음과 같습니다.**  
+
+    * #### **1. AKS Cluster 생성** 
+    * #### **2. Local에 Azure CLI 설치**
+    * #### **3. vscode에 kubernetes extentions 설치** 
+    * #### **4. kubernetes extentions을 사용해 AKS와 직접 연결** 
+
+    <br/>
+
+
+    #### **1,2번 작업은 이미 완료했다고 가정하고** 
+    #### **2번 작업 이후 local 에서 Azure cli에 연결해야 합니다.**  
 
 <br/>
 
@@ -239,7 +257,7 @@ az aks get-credentials --resource-group [myResourceGroup] --name [myAKSCluster]
 
 ---
 
-* #### **이미 설치된 kubectl 말고도 따로 바이너리를 설치 할 수도 있습니다.**  
+### **이미 설치된 kubectl 말고도 따로 바이너리를 설치 할 수도 있습니다.**  
 
 * **[가이드](https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-windows/)**  
 
@@ -293,11 +311,12 @@ az aks get-credentials --resource-group [myResourceGroup] --name [myAKSCluster]
 
 ---
 
-* #### **이후 AKS와 연결하는 방법을 동일하게 진행했지만 다른 에러가 발생합니다.**  
+
+* #### **환경변수 설정 후 동일하게 진행했지만 이번엔 다른 에러가 발생합니다.**  
 
     ![KakaoTalk_20210324_164952086](https://user-images.githubusercontent.com/69498804/112276614-49871400-8cc4-11eb-868e-0a7db41a3c2d.png)
 
-    * **해당 경로는 한글파일이나 깨질만한 언어의 디렉토리가 없었습니다.**  
+    * **해당 경로에는 한글이나 깨질만한 언어로 생성된 것이 없었습니다.**  
 
 <br/>
 
@@ -345,9 +364,23 @@ az aks get-credentials --resource-group [myResourceGroup] --name [myAKSCluster]
 
 <br/>
 
-* #### **위 까지 모든 설정을 완료했으면 가이드 대로 AKS 연결 시 정상입니다.**  
+* #### **위 까지 모든 설정을 완료했으면 가이드 대로 AKS 연결 시 정상 연결됩니다.**  
 
     ![222313121](https://user-images.githubusercontent.com/69498804/112278060-c23aa000-8cc5-11eb-8b3a-623f0f11f9ca.JPG)
 
     * **그럼 위처럼 vscode <-> aks cluster가 직접 연결되어 환경관리나 배포가 가능합니다.**  
+
+---
+
+## **마치며…**  
+
+  
+**환경변수의 문제의 경우 제 노트북 환경에서만 발생한 문제라 (검색해도 나오질 않음)**  
+**꽤나 애를 먹었습니다. 결국은 하루를 사용해서 잘 해결하긴 했지만 돌이켜보면**  
+**충분히 가지고 있는 지식만으로 1~2시간 내에 해결 할 수 있었던 문제 인 것 같습니다.**   
+**다음에는 연결된 aks에 kafka를 구동시키는 포스트로 뵙겠습니다.**  
+
+
+
+
 
