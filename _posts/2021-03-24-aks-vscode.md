@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[AZURE] - VSCODE에 AKS 연결하기"
+title: "[AZURE] - VSCODE로 Cloud PaaS k8s (AKS) 관리하기"
 author: nasa1515
 categories: AZURE
-date: 2021-03-19 12:36
+date: 2021-03-19 13:36
 comments: true
 cover: "/assets/1800-550.jpg"
 tags: AZURE
@@ -11,7 +11,7 @@ tags: AZURE
 
 
 
-## **VSCODE에 AKS 연결하기**
+## **VSCODE로 Cloud PaaS k8s (AKS) 관리하기**
 
 
 <br/>
