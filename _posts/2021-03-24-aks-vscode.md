@@ -142,7 +142,7 @@ tags: AZURE
 <br/>
 
 
-* #### **사실 이미 VSCODE의 Azure extentions을 이용해 Cloud shell에 연결해 사용 가능합니다.**  
+* #### **사실 이미 VSCODE의 Azure extentions을 이용해 Cloud shell로 사용 가능합니다.**  
 
     ![캡처3333](https://user-images.githubusercontent.com/69498804/112258604-1afc3f80-8caa-11eb-8641-fe03947a05a8.JPG)
 
