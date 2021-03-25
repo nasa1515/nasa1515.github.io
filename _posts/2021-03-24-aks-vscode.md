@@ -82,9 +82,11 @@ tags: AZURE
 ![nasagif](https://user-images.githubusercontent.com/69498804/112405756-40468780-8d56-11eb-923c-2eb754abb929.gif)
 
 
-* **위처럼 pod, service 등의 yaml 형식을 자동으로 정의해 편리하게 사용하가능**  
+* **위처럼 pod, service 등의 yaml 형식을 자동으로 정의해 편리하게 사용 가능**  
 * **굳이 명령어를 치지 않고도 배포 및 상태 확인이 가능**  
 * **yaml manifest 모아서 관리 한 뒤 helm Chart를 만들기 간편하다.**  
+
+### **그냥 겁나 편하다**  
 
 <br/>
 
