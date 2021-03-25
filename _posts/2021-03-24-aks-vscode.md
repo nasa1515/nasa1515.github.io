@@ -370,6 +370,54 @@ tags: AZURE
 
     * **그럼 위처럼 vscode <-> aks cluster가 직접 연결되어 환경관리나 배포가 가능합니다.**  
 
+<br/>
+<br/>
+
+
+* ### **추가 이슈 발생 : Cluster는 연결이되나 명령어 실행이 되지 않음**  
+ 
+
+    ![캡처](https://user-images.githubusercontent.com/69498804/112402848-a03a2f80-8d50-11eb-8e70-eee856ff7a16.JPG)
+
+    * **사실 ERROR만 봐도 알 수 있는 error 입니다.** 
+    * **위의 Settings.json File에서 Config File의 위치를 지정해야함**  
+
+
+<br/>
+
+* #### **저의 최종 Settings.json File은 다음과 같습니다.** 
+
+    ![캡처2](https://user-images.githubusercontent.com/69498804/112403164-425a1780-8d51-11eb-8132-c792deee9559.JPG)
+
+<br/>
+
+
+* #### **간단한 테스트 Yaml을 하나 생성해서 배포해보겠습니다.**  
+
+    ![캡처3](https://user-images.githubusercontent.com/69498804/112403390-aa106280-8d51-11eb-97f5-f91408e8fa4d.JPG)
+
+    <br/>
+
+* #### **vscode에서 yaml 작성 후 Shift + Ctrl + P 입력 후 Create로 배포**
+
+    ![캡처4](https://user-images.githubusercontent.com/69498804/112403539-ef349480-8d51-11eb-9239-54a97f38e4fc.JPG)
+
+<br/>
+
+* #### **실제 연결된 Cluster의 pod 목록에서도 확인히 가능합니다.**  
+
+    ![캡처5](https://user-images.githubusercontent.com/69498804/112403663-2b67f500-8d52-11eb-9b83-57a2646d5bc9.JPG)
+
+<br/>
+
+* #### **또한 명령어로 입력하지 않고 클릭으로만 확인이 가능합니다.**  
+
+    ![캡처6](https://user-images.githubusercontent.com/69498804/112403794-6c600980-8d52-11eb-895e-872580f22dea.JPG)
+
+
+<br/>
+
+
 ---
 
 ## **마치며…**  
