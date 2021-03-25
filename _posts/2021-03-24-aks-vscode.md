@@ -90,6 +90,14 @@ tags: AZURE
 * **위처럼 pod, service 등의 yaml 형식을 자동으로 정의해 편리하게 사용 가능**  
 * **굳이 명령어를 치지 않고도 배포 및 상태 확인이 가능**  
 * **yaml manifest 모아서 관리 한 뒤 helm Chart를 만들기 간편하다.**  
+* **추가적으로 AKS은 대체로 Cloud Shell을 이용하는데 - Cloud Shell은 docker 명령을 지원하지 않는다.**  
+    * **실제로 Master Node는 존재하지 않고 (PaaS 형태) NodePool에만 docker가 깔려있음**  
+    * **때문에 Imaging을 할 Docker Client를 따로 구성해야 하는 불편함이 있음**  
+    * **그래서 어짜피 구성해야하면 VSCODE가 깔린 Window의 Local에서 Docker를 구성해서** 
+    * **Imaging 작업은 Local vscode terminal에서 진행하고 바로 aks에서 인식하게 하려는 계획**  
+
+
+
 
 ### **그냥 겁나 편하다**  
 
