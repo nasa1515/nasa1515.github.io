@@ -130,7 +130,7 @@ tags: AZURE
 <br/>
 
 
-## **Helm Install**  
+## **Helm Install**   <a name="a2"></a>
 
 **저의 경우에는 Fluentd를 [bitnami](https://bitnami.com/stack/fluentd/helm) Chart를 이용하여 설치 예정입니다.**  
 **AKS의 경우 이미 helm이 배포되어 있어 굳이 설치하지 않아도 됩니다.**  
@@ -164,3 +164,18 @@ tags: AZURE
     ```
     # helm delete nasafl
     ```
+
+    <br/>
+
+## **azure blob plugin Image build** <a name="a3"></a>
+
+**[Azure Plugin](https://github.com/microsoft/fluent-plugin-azure-storage-append-blob) Fluentd Plugin을 설치하려고 합니다.**  
+**저는 따로 VM 한대를 생성해서 Docker를 설치한 뒤 진행 했습니다.**  
+
+* **VM : Centos 8.2**
+
+    * #### **Docker 설치 [DOC](https://docs.docker.com/engine/install/centos/) 페이지를 참고하세요.**
+
+    <br/>
+
+* #### **이후 [SITE](https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/docker-image/v1.12/debian-azureblob/Dockerfile)를 참고해서 DockerFile을 수정했습니다.**  
