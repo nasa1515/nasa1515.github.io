@@ -179,3 +179,7 @@ tags: AZURE
     <br/>
 
 * #### **이후 [SITE](https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/docker-image/v1.12/debian-azureblob/Dockerfile)를 참고해서 DockerFile을 수정했습니다.**  
+
+
+
+## 잠시 정지
