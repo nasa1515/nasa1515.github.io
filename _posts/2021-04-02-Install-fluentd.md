@@ -209,22 +209,22 @@ tags: DATA
 
 <br/>
 
-* **Agent Server의 td-agent.conf**
+* #### **Agent Server의 td-agent.conf**
 
     ```
     <source>
-        @type tail
-        path /home/nasa1515/send/*
+        @type tail      #읽을때 맨 아래 줄부터 읽는다.
+        path /home/nasa1515/send/*          # 읽을 Path
         pos_file /home/nasa1515/send/test_log.pos
-        tag nasalog
-        format json
-        refresh_interval 5s
+        tag nasalog         #Tag 설정
+        format json         #File format 설정
+        refresh_interval 5s     # 전송주기
     </source> 
 
     <match nasa*>
-        @type forward
+        @type forward           # 전달타입
         flush_interval 10s
-        <server>
+        <server>                # remote 서버 설정
             name Aggregator
             host {Aggregator ServerIP}
             port 24224
@@ -234,9 +234,10 @@ tags: DATA
 
     <br/>
 
-* **Aggregator Server의 td-agent.conf**
+* #### **Aggregator Server의 td-agent.conf**
 
     ```
+    # INPUT
     <source>
         @type forward     # forward 프로토콜을 이용하여 전송받는다. (forward는 전송은 tcp로 하고, health check는 udp로 하는 방식)
         port 24224           # 24224 포트를 이용한한다.
@@ -245,6 +246,6 @@ tags: DATA
     # Output
     <match nasalog>     # 보내는 부분에서 tag를 지정하여, tag별로 설정 가능하다.
         @type file      # 받은 내용을 파일로 저장함
-            path /home/nasa1515/recv/nasa-total.json   # 이 경로에 저장함. (파일명을 명시할 수도 있는 것 같다.)
+        path /home/nasa1515/recv/nasa-total.json   # 이 경로에 저장함. (파일명을 명시할 수도 있는 것 같다.)
     </match>
     ```
