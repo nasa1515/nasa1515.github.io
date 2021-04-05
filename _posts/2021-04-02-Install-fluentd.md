@@ -191,7 +191,7 @@ tags: DATA
     #
     # tail -n 1 /var/log/td-agent/td-agent.log
 
-    ### 결과
+    ### 결과 정상!
 
     [root@agent td-agent]# curl -X POST -d 'json={"message":"Hello IM NASA1515"}' http://localhost:8888/debug.test
     [root@agent td-agent]# tail -n -1 /var/log/td-agent/td-agent.log 
@@ -200,3 +200,51 @@ tags: DATA
 
     <br/>
 
+#### **Fluentd 설정**
+
+**저의 경우에는 여러 VM의 특정 로그를 하나의 Aggregator에 수집하고 싶습니다.**  
+**그래서 Agent Server는 -> Aggregator로**  
+**Aggregator는 받은 정보를 한 파일에 남기도록 구성했습니다.**  
+
+
+<br/>
+
+* **Agent Server의 td-agent.conf**
+
+    ```
+    <source>
+        @type tail
+        path /home/nasa1515/send/*
+        pos_file /home/nasa1515/send/test_log.pos
+        tag nasalog
+        format json
+        refresh_interval 5s
+    </source> 
+
+    <match nasa*>
+        @type forward
+        flush_interval 10s
+        <server>
+            name Aggregator
+            host {Aggregator ServerIP}
+            port 24224
+        </server>
+    </match>
+    ```
+
+    <br/>
+
+* **Aggregator Server의 td-agent.conf**
+
+    ```
+    <source>
+        @type forward     # forward 프로토콜을 이용하여 전송받는다. (forward는 전송은 tcp로 하고, health check는 udp로 하는 방식)
+        port 24224           # 24224 포트를 이용한한다.
+    </source>
+    
+    # Output
+    <match nasalog>     # 보내는 부분에서 tag를 지정하여, tag별로 설정 가능하다.
+        @type file      # 받은 내용을 파일로 저장함
+            path /home/nasa1515/recv/nasa-total.json   # 이 경로에 저장함. (파일명을 명시할 수도 있는 것 같다.)
+    </match>
+    ```
