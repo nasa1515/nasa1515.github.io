@@ -249,3 +249,93 @@ tags: DATA
         path /home/nasa1515/recv/nasa-total.json   # 이 경로에 저장함. (파일명을 명시할 수도 있는 것 같다.)
     </match>
     ```
+
+
+#### **로그 수집 확인**
+
+**JSON 형식의 로그를 쌓는 간단한 스크립트를 작성해서 로그를 쌓아봤습니다.**  
+
+<br/>
+
+
+* #### **스크립트**
+
+    ```
+    #!/bin/bash 
+
+
+
+    for i in `seq 0 1000` ;do 
+        NOW=`date "+%Y-%m-%d"T"%H:%M:%S"Z""`
+        echo '{"board_id": '$i',"playtime": 5,"minimum_play": "Y","timestamp": "'$NOW'","user_id": '$i',"interest": 100}' >> send/nasa1515.json
+        sleep 30
+    done
+    ```
+
+    <br/>
+
+* #### **Agent 확인**  
+
+    #### **임의의 JSON로그는 다음과 같이 남습니다.**  
+
+    ```
+    {"board_id": 197,"playtime": 5,"minimum_play": "Y","timestamp": "2021-04-05T16:06:02Z","user_id": 197,"interest": 100}
+    {"board_id": 198,"playtime": 5,"minimum_play": "Y","timestamp": "2021-04-05T16:06:32Z","user_id": 198,"interest": 100}
+    {"board_id": 199,"playtime": 5,"minimum_play": "Y","timestamp": "2021-04-05T16:07:02Z","user_id": 199,"interest": 100}
+    {"board_id": 200,"playtime": 5,"minimum_play": "Y","timestamp": "2021-04-05T16:07:32Z","user_id": 200,"interest": 100}
+    ```
+
+    <br/>
+
+    #### **생성된 해당 파일을 Agentd에서 읽어 들이는 Log**
+
+    ```
+    2021-04-05 14:14:44 +0900 [info]: #0 detected rotation of /home/nasa1515/send/nasa1515.json; waiting 5 seconds
+    2021-04-05 14:19:42 +0900 [info]: #0 following tail of /home/nasa1515/send/nasa1515.json
+    ```
+
+    <br/>
+
+
+* #### **Aggregator 확인**  
+
+
+    #### **특정 Buffer를 받게되면 다음과 같이 폴더를 생성합니다.**
+    ```
+    [root@Aggregator recv]# pwd
+    /home/nasa1515/recv
+    [root@Aggregator recv]# ls
+    nasa-total.json
+    [root@Aggregator recv]#     
+    ```
+
+    <br/>
+
+    #### **해당 디렉토리에는 전달받은 Data의 buffer.log와 metadata가 존재합니다.**  
+
+    ```
+    [root@Aggregator nasa-total.json]# ls -alrt 
+    total 40
+    drwxr-xr-x. 2 td-agent td-agent   115 Apr  5 14:20 .
+    drwxrwxrwx. 3 root     root        29 Apr  5 16:12 ..
+    -rw-r--r--. 1 td-agent td-agent    80 Apr  5 16:14 buffer.b5bf32dab39be6dff270bba644af168fd.log.meta
+    -rw-r--r--. 1 td-agent td-agent 35123 Apr  5 16:14 buffer.b5bf32dab39be6dff270bba644af168fd.log
+    [root@Aggregator nasa-total.json]# 
+    [root@Aggregator nasa-total.json]# cat buffer.b5bf32dab39be6dff270bba644af168fd.log.meta 
+    �J��timekey�`i�p�tag��variables��seq�id�[�-�9�m�'
+                                                    �dJ�h��s��c�`j��m�`j��[root@Aggregator nasa-total.json]# 
+    [root@Aggregator nasa-total.json]# 
+    [root@Aggregator nasa-total.json]# tail -n 10 buffer.b5bf32dab39be6dff270bba644af168fd.log
+    2021-04-05T16:09:32+09:00       nasalog {"board_id":204,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:09:32Z","user_id":204,"interest":100}
+    2021-04-05T16:10:02+09:00       nasalog {"board_id":205,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:10:02Z","user_id":205,"interest":100}
+    2021-04-05T16:10:32+09:00       nasalog {"board_id":206,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:10:32Z","user_id":206,"interest":100}
+    2021-04-05T16:11:02+09:00       nasalog {"board_id":207,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:11:02Z","user_id":207,"interest":100}
+    2021-04-05T16:11:32+09:00       nasalog {"board_id":208,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:11:32Z","user_id":208,"interest":100}
+    2021-04-05T16:12:02+09:00       nasalog {"board_id":209,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:12:02Z","user_id":209,"interest":100}
+    2021-04-05T16:12:32+09:00       nasalog {"board_id":210,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:12:32Z","user_id":210,"interest":100}
+    2021-04-05T16:13:02+09:00       nasalog {"board_id":211,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:13:02Z","user_id":211,"interest":100}
+    2021-04-05T16:13:32+09:00       nasalog {"board_id":212,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:13:32Z","user_id":212,"interest":100}
+    2021-04-05T16:14:02+09:00       nasalog {"board_id":213,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:14:02Z","user_id":213,"interest":100}
+    ```
+
+## **[잠시 대기,]이제 Aggregator에서 수집한 로그를 Azure LakeStorage에 전달하겠습니다.**  
