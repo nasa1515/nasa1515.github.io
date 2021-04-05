@@ -197,3 +197,6 @@ tags: DATA
     [root@agent td-agent]# tail -n -1 /var/log/td-agent/td-agent.log 
     2021-04-02 14:44:47.835275366 +0900 debug.test: {"message":"Hello IM NASA1515"}
     ```
+
+    <br/>
+
