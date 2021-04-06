@@ -79,7 +79,11 @@ tags: DATA
 
 <br/>
 
-#### **NTP (시간동기화 설정)**  
+---
+
+
+
+### **NTP (시간동기화 설정)**  
 
 * **NTP 삭제 (Centos 7 이후로는 chrony를 사용합니다.)**
 
@@ -139,7 +143,9 @@ tags: DATA
 
     <br/>
 
-#### **Network Kernel Parameters 설정**  
+---
+
+### **Network Kernel Parameters 설정**  
 
 * **/etc/sysctl.conf의 설정 변경**  
 
@@ -166,7 +172,9 @@ tags: DATA
 
     <br/>
 
-#### **Fluentd 설치 with RPM pakage td-agent** 
+---
+
+### **Fluentd 설치 with RPM pakage td-agent** 
 
 * **td-agent 설치**
 
@@ -200,7 +208,9 @@ tags: DATA
 
     <br/>
 
-#### **Fluentd 설정**
+---
+
+### **Fluentd 설정**
 
 **저의 경우에는 여러 VM의 특정 로그를 하나의 Aggregator에 수집하고 싶습니다.**  
 **그래서 Agent Server는 -> Aggregator로**  
@@ -250,8 +260,11 @@ tags: DATA
     </match>
     ```
 
+<br/>
 
-#### **로그 수집 확인**
+---
+
+### **로그 수집 확인**
 
 **JSON 형식의 로그를 쌓는 간단한 스크립트를 작성해서 로그를 쌓아봤습니다.**  
 
