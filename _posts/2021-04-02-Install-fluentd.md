@@ -289,7 +289,7 @@ tags: DATA
 
 * #### **Agent 확인**  
 
-    #### **임의의 JSON로그는 다음과 같이 남습니다.**  
+    **임의의 JSON로그는 다음과 같이 남습니다.**  
 
     ```
     {"board_id": 197,"playtime": 5,"minimum_play": "Y","timestamp": "2021-04-05T16:06:02Z","user_id": 197,"interest": 100}
@@ -300,7 +300,7 @@ tags: DATA
 
     <br/>
 
-    #### **생성된 해당 파일을 Agentd에서 읽어 들이는 Log**
+    **생성된 해당 파일을 Agentd에서 읽어 들이는 Log**
 
     ```
     2021-04-05 14:14:44 +0900 [info]: #0 detected rotation of /home/nasa1515/send/nasa1515.json; waiting 5 seconds
@@ -313,7 +313,8 @@ tags: DATA
 * #### **Aggregator 확인**  
 
 
-    #### **특정 Buffer를 받게되면 다음과 같이 폴더를 생성합니다.**
+    **특정 Buffer를 받게되면 다음과 같이 폴더를 생성합니다.**
+
     ```
     [root@Aggregator recv]# pwd
     /home/nasa1515/recv
@@ -324,7 +325,7 @@ tags: DATA
 
     <br/>
 
-    #### **해당 디렉토리에는 전달받은 Data의 buffer.log와 metadata가 존재합니다.**  
+    **해당 디렉토리에는 전달받은 Data의 buffer.log와 metadata가 존재합니다.**  
 
     ```
     [root@Aggregator nasa-total.json]# ls -alrt 
