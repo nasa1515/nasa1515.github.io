@@ -352,4 +352,7 @@ tags: DATA
     2021-04-05T16:14:02+09:00       nasalog {"board_id":213,"playtime":5,"minimum_play":"Y","timestamp":"2021-04-05T16:14:02Z","user_id":213,"interest":100}
     ```
 
-## **[잠시 대기,]이제 Aggregator에서 수집한 로그를 Azure LakeStorage에 전달하겠습니다.**  
+#### **이제 Aggregator에서 수집한 로그를 Azure LakeStorage에 전달하겠습니다.**  
+
+
+## **[일이 바빠서] ㅠㅠ 잠시만 기다려주세요**
