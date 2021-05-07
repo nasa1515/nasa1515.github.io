@@ -134,12 +134,14 @@ tags: DATA
 
 * #### **저는 다음과 같은 Spec으로 Cluster를 생성했습니다.**  
 
-    ![454534545](https://user-images.githubusercontent.com/69498804/117230462-1d7cb800-ae58-11eb-9c4e-0ffe450e4038.JPG)
-
+    ![2222](https://user-images.githubusercontent.com/69498804/117380571-f20bd300-af14-11eb-9cae-69720f7c2043.JPG)
+    
     * **Nmae : Cluster01** 
     * **Runtime Version : 8.1**  
     * **Worker Type : n2-standard-8** 
+    * **Advanced Option Tab을 열어 Google Service Account 입력** 
+        **주의 : Service Account는 GCS에 권한이 있어야 합니다.**
+
 
 
 <br/>
-
