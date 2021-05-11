@@ -51,9 +51,6 @@ tags: DATA
 
 - [DataBricks?](#a1)
 - [GCP DataBricks](#a2)
-- [Data 준비하기](#a3)
-- [결과 확인](#a4)
-
 
 
 --- 
@@ -142,6 +139,85 @@ tags: DATA
     * **Advanced Option Tab을 열어 Google Service Account 입력** 
         **주의 : Service Account는 GCS에 권한이 있어야 합니다.**
 
+<br/>
 
+* **이제 Notebook을 생성하고 GCS를 DBFS에 Mount해서 사용하시면 됩니다.**  
+
+
+    ```
+    bucket_name = "nasagcp"
+    mount_name = "gcpdata"
+    dbutils.fs.mount("gs://%s" % bucket_name, "/mnt/%s" % mount_name)
+    ```
+    * **다음과 같은 형식으로 사용하시면 됩니다.**
 
 <br/>
+
+* **저는 이전에 짜놨었던 스크립트를 다음과 같은 형식으로 사용했습니다.** 
+
+    ```
+    bucket_name = "nasagcp"
+    mount_name = "gcpdat11"
+    dbutils.fs.mount("gs://%s" % bucket_name, "/mnt/%s" % mount_name)
+
+
+    from pyspark.context import SparkContext
+    from pyspark.sql.session import SparkSession
+
+
+    # ------------------------------------------------------------------
+    def renameCols(df1, old_columns, new_columns):
+        for old_col,new_col in zip(old_columns,new_columns):
+            d1f = df1.withColumnRenamed(old_col,new_col)
+        return df1
+
+
+    # Old_columns
+    old_columns = ['avg(min_temperature_air_2m_f)',
+                    'avg(max_temperature_air_2m_f)',
+                    'avg(avg_temperature_air_2m_f)'
+                    ]
+
+    # New_columns
+    new_columns = ['temperature_air_min_avg',
+                    'temperature_air_max_avg',
+                    'temperature_air_avg_avg'
+                    ]
+    # --------------------------------------------
+    # ----------------------
+
+    # Read CSV from GCS
+    df_lee = spark.read.csv("/mnt/gcpdat11/", header=True, inferSchema=True)
+
+    # data transform
+    df_lee = df_lee.groupBy('country', 'date').agg({'min_temperature_air_2m_f' : 'avg', 'max_temperature_air_2m_f' : 'avg', 'avg_temperature_air_2m_f' : 'avg'}).sort(desc('country')).orderBy('date')
+
+    df_result = renameCols(df_lee, old_columns, new_columns)
+
+    country1 = df_result.select("country")
+    country_dis10 = df_result.select("country").distinct()
+    print("country_count =",country_dis10.count())
+
+
+    # Write CSV to GCS
+    df_result.coalesce(1).write.option("header", "true").mode("overwrite").csv("/mnt/gcpdat11/dbfsre/")
+    ```
+
+    * **이전에 받아놨던 Covid-19 기상 데이터를 정렬하는 Code 입니다.**  
+
+<br/> 
+
+
+
+## **끝!**
+
+
+
+---
+
+## **마치며…**  
+
+  
+**사실 DataBricks는 사용법에 대한 가이드를 남기기에는 너무 간편합니다..**  
+**그래서 그나마 어려움이 있을 것 같은 DBFS Mount 부분만 설명했습니다.**  
+
