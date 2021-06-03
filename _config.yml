@@ -25,12 +25,12 @@ logo: "/assets/PINGGU.jpg"
 
 timezone: Asia/Seoul
 
-#markdown: kramdown
-#highlighter: rouge
-#paginate: 5
-#paginate_path: "/page:num/"
-#inter_post_navigation: true
-#highlightjs_theme: "monokai-sublime"
+markdown: kramdown
+highlighter: rouge
+paginate: 5
+paginate_path: "/page:num/"
+inter_post_navigation: true
+highlightjs_theme: "monokai-sublime"
 
 #jekyll-archives:
 #  enabled:
@@ -52,7 +52,7 @@ social:
     desc: Fork me on GitHub
     share: false
 
-    
+
 protocols:
     fb_image: "/assets/PINGGU.jpg"
     fb_image_width: 612
