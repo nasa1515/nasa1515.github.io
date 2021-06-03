@@ -10,14 +10,11 @@
 			<ul class="pages">
 				<li><a href="/about/">About</a></li>
 				<li><a href="/posts/">Posts</a></li>
-				
-				<!-- <li><a href="/works">Works</a></li> -->
-
-				<!-- {% for page in site.pages %}
-					{% if page.title and page.main_nav != false %}
-						<li class="nav-link"><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+				<!-- {% for page in site.pages %} -->
+				<!-- {% if page.title and page.main_nav != false %}
+				<li class="nav-link"><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
 					{% endif %}
-				{% endfor %} -->
+					{% endfor %} -->
 			</ul>
 		</div>
 
@@ -57,21 +54,26 @@
 		<p id="year" class="text"></p>
 		<script>
 			const p = document.getElementById("year");
-			p.innerHTML = `© ${new Date().getFullYear()}, Built by Yangeok`;;
+			p.innerHTML = `© ${new Date().getFullYear()}, Built by Wonseok`;;
 		</script>
 	</div>
 </footer>
 
 <!-- Scripts -->
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script> -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script> -->
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/github.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+<link
+	rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/tomorrow-night-bright.min.css"
+/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function () {
 		// Default syntax highlighting
-		hljs.highlightAll();
+		hljs.initHighlightingOnLoad();
 
 		// Header
 		var menuToggle = $('#js-mobile-menu').unbind();
