@@ -2,14 +2,19 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-	<meta name="description" content="{% if page.excerpt %}{{
-			page.excerpt | strip_html | strip_newlines | truncate: 160
-		}}{% else %}{{ site.description }}{% endif %}" />
+	<meta name="description" content="{% if page.title %}{{ page.title }}{% else %}{{ site.description }}{% endif %}" />
+	<meta name="keywords" content="{{ page.tags | join: ', ' }}" />
 	{% if site.name %}
 	<meta name="author" content="{{ site.name }}" />
 	<meta name="copyright" content="&copy; {{ site.name }} {{ site.time | date: '%Y' }}" />
 	{% endif %}
+
+	<!-- Pixel Code for https://lul.lu/ -->
+	<script async src="https://lul.lu/pixel/pWnbmJOb3iINlKJV"></script>
+	<!-- END Pixel Code -->
+
+	<!-- Google Search Console -->
+	<meta name="google-site-verification" content="DHfuRMH2zEAmkf823DTbhM6ES_IJNldUP_GzIDDOi4w"/>
 
 	<!-- External libraries -->
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
@@ -63,7 +68,7 @@
 		}}{% endif %}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="{% if page.cover %}{{
-			page.cover | prepend: site.baseurl | prepend: site.url
+			page.cover
 		}}{% else %}{{
 			site.protocols.fb_image | prepend: site.baseurl | prepend: site.url
 		}}{% endif %}" />
