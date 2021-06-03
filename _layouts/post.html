@@ -34,16 +34,24 @@ layout: default
 		</section>
 
 		<article class="post-content">
-			<!-- google adsense start -->
-			{% include google_adsense_top.html %}
-			<!-- google adsense end -->
-			{{ content }}
+			<article class="post-article">
+				<div class="toc">
+					{% include toc.html html=content %}
+				</div>
+				{{ content }}
+			</article>
 		</article>
+
+
+		<div style="display: flex; margin: 5% 0;">
+			{% include buy_me_a_coffee.html %}
+			{% include donaricano.html %}
+		</div>
 
 		{% if site.jekyll-archives %} {% if page.tags.size > 0 %}
 		<section class="tags">
 			<strong>Tags:</strong> {% for tag in page.tags %}<a
-				href="{{ site.baseurl }}/tag/{{ tag }}">{{ tag }}</a>{% if forloop.last == false %},&nbsp;{% endif %}{% endfor %}
+				href="{{ site.baseurl }}/tag/{{ tag }}">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}{% endfor %}
 		</section>
 		{% endif %} {% endif %} {% if site.inter_post_navigation == true %}
 		<section class="post-navigation">
@@ -73,7 +81,7 @@ layout: default
 		{% endif %}
 
 		<section class="disqus">
-			<script src="https://utteranc.es/client.js" repo="nasa1515/blog-comments" issue-term="pathname"
+			<script src="https://utteranc.es/client.js" repo="Yangeok/blog-comments" issue-term="pathname"
 				theme="github-light" crossorigin="anonymous" async></script>
 		</section>
 	</div>
