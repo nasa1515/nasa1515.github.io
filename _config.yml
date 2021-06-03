@@ -32,13 +32,13 @@ paginate_path: "/page:num/"
 inter_post_navigation: true
 highlightjs_theme: "monokai-sublime"
 
-#jekyll-archives:
-#  enabled:
-#    - categories
-#    - tags
-#  layout: "archive"
-#  permalinks:
-#    category: "/category/:name/"   
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: "archive"
+  permalinks:
+    category: "/category/:name/"   
 
 
 disqus_shortname: nasa1415
