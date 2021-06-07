@@ -3,9 +3,10 @@ layout: post
 title: "[블로그 시작]"
 author: nasa1515
 categories: LINUX
-date: 2021-05-12 12:36
+date: 2020-07-28 12:36
 comments: true
 cover: "/assets/1800-550.jpg"
+
 ---
 
 
