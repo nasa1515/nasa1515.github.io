@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[블로그 시작]"
+title: "[NASA1515 BLOG]"
 author: nasa1515
 categories: LINUX
 date: 2020-07-28 12:36
@@ -11,5 +11,5 @@ cover: "/assets/1800-550.jpg"
 
 
 
-## **2021-08-01을 기점으로 개인 블로그를 시작했습니다!.**
+## **NASA1515 BLOG**
 
