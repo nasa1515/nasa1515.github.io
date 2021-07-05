@@ -4,6 +4,7 @@ title: "[LINUX] - 파티션 설정, Partition"
 author: nasa1515
 categories: LINUX
 comments: true
+date: 2020-08-01 16:36
 tags: LINUX
 cover: "/assets/LINUX.jpg"
 ---
