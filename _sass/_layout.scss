@@ -64,7 +64,7 @@ pre code.hljs {
 		position: relative;
 		top: -26px;
 		display: block;
-		background: $dark-gray;
+		background: $white;
 		width: 16px;
 		height: 16px;
 		margin-left: auto;
@@ -77,7 +77,7 @@ pre code.hljs {
 	width: 100%;
 	text-align: center;
 	&.has-cover {
-		color: $dark-gray;
+		color: $white;
 		text-shadow: 0 2px 1px rgba(0, 0, 0, 0.67) !important;
 		background-position: 40% 40%;
 		background-size: cover;
@@ -281,7 +281,7 @@ pre code.hljs {
 	}
 
 	.site-header-container {
-		color: $dark-gray;
+		color: $white;
 		text-shadow: 0 2px 1px rgba(0, 0, 0, 0.33);
 		background-color: $highlight-color;
 
@@ -432,7 +432,7 @@ pre code.hljs {
 	$link-color: $white;
 	padding: 1em 1em 2em 1em;
 	background-color: $highlight-color;
-	color: $dark-gray;
+	color: $white;
 
 	a {
 		color: $link-color;
