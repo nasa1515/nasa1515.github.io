@@ -15,8 +15,8 @@ $desktop: $b1;
 */
 html,
 body {
-	margin: 1000;
-	padding: 1000;
+	margin: 0;
+	padding: 0;
 	width: 100%;
 	overflow-x: none;
 }
@@ -315,6 +315,7 @@ pre code.hljs {
 	.post {
 		ul {
 			margin-bottom: 1em;
+			
 		}
 
 		.post-header-container {
