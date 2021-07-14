@@ -64,7 +64,7 @@ pre code.hljs {
 		position: relative;
 		top: -26px;
 		display: block;
-		background: $white;
+		background: $dark-gray;
 		width: 16px;
 		height: 16px;
 		margin-left: auto;
@@ -77,7 +77,7 @@ pre code.hljs {
 	width: 100%;
 	text-align: center;
 	&.has-cover {
-		color: $white;
+		color: $dark-gray;
 		text-shadow: 0 2px 1px rgba(0, 0, 0, 0.67) !important;
 		background-position: 40% 40%;
 		background-size: cover;
