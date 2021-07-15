@@ -1,0 +1,64 @@
+---
+# External gems
+# See http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html for making `jekyll archives` work.
+plugins:
+  - jekyll-archives
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-include-cache
+
+exclude:
+  - "/vendor/"
+  - .jekyll-cache
+
+title: "NASA1515"
+subtitle: "Nasa Tech Blog"
+email: h43254@gmail.com
+name: WonSeok Lee
+description: Nasa Tech blog
+baseurl: ""
+url: "http://nasa1515.github.io"
+#plugins_dir:
+#- jekyll-sitemap 
+cover: "/assets/1800-550.jpg"
+logo: "/assets/PINGGU.jpg"
+
+timezone: Asia/Seoul
+
+markdown: kramdown
+highlighter: rouge
+paginate: 5
+paginate_path: "/page:num/"
+inter_post_navigation: true
+highlightjs_theme: "monokai-sublime"
+
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: "archive"
+  permalinks:
+    category: "/category/:name/"   
+
+
+disqus_shortname: nasa1415
+ga_tracking_id: "UA-192755809-1"
+
+social:
+  - name: GitHub
+    icon: github
+    username: Github
+    url: https://github.com/nasa1515
+    desc: Fork me on GitHub
+    share: false
+
+
+protocols:
+    fb_image: "/assets/PINGGU.jpg"
+    fb_image_width: 612
+    fb_image_height: 605
+    fb_image_type: "image/png"
+    twitter_image: "/assets/PINGGU.jpg"
+    os_repo: "https://github.com/nasa1515/nasa1515.github.io"
+    os_rcs_type: "git"
+    os_src: "git@github.com:nasa1515/nasa1515.github.io.git"
