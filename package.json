@@ -1,5 +1,5 @@
 {
-  "name": "zoomkoding.com",
+  "name": "nasa1515.com",
   "private": false,
   "description": "A neat blog theme for developers",
   "version": "1.1.0",
@@ -60,9 +60,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoomkoding/zoomkoding-gatsby-blog"
+    "url": "git+https://github.com/zoomkoding/zoomkoding-gatsby-blog.git"
   },
   "bugs": {
     "url": "https://github.com/zoomkoding/zoomkoding-gatsby-blog/issues"
-  }
+  },
+  "homepage": "https://github.com/zoomkoding/zoomkoding-gatsby-blog#readme",
+  "main": "gatsby-browser.js"
 }
